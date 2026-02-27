@@ -1,0 +1,222 @@
+/* Footer.css */
+
+/* ── Main wrapper ────────────────────────────── */
+.footer {
+  width: 100%;
+  background: #0054AD;
+  padding: 0;
+  font-family: 'Montserrat', sans-serif;
+}
+
+/* ── Inner 3-column grid ─────────────────────── */
+.footer-inner {
+  display: flex;
+  align-items: flex-start;
+  justify-content: space-between;
+  max-width: 1440px;
+  margin: 0 auto;
+  padding: 87px 128px 0 128px;
+  gap: 60px;
+}
+
+/* ── Brand column (left) ─────────────────────── */
+.footer-brand {
+  flex: 0 0 320px;
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
+  gap: 0;
+}
+
+.footer-logo {
+  width: 156px;
+  height: 35px;
+  object-fit: contain;
+  object-position: left;
+  margin-bottom: 24px;
+}
+
+.footer-tagline {
+  font-weight: 600;
+  font-size: 20px;
+  line-height: 24px;
+  color: #FFFFFF;
+  margin: 0 0 32px 0;
+  max-width: 320px;
+}
+
+/* Social icons row */
+.footer-socials {
+  display: flex;
+  gap: 23px; /* (181px total - 3*45px) / 2 = ~23px */
+  margin-top: 8px;
+}
+
+.footer-social-btn {
+  width: 45px;
+  height: 45px;
+  background: rgba(255, 255, 255, 0.25);
+  border-radius: 50%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  text-decoration: none;
+  transition: background 0.25s ease, transform 0.2s ease;
+  flex-shrink: 0;
+}
+
+.footer-social-btn:hover {
+  background: rgba(255, 255, 255, 0.45);
+  transform: translateY(-2px);
+}
+
+/* ── Nav columns (middle + right) ────────────── */
+.footer-col {
+  flex: 0 0 auto;
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
+  gap: 0;
+}
+
+/* Column heading — "Platform" / "Compliance" */
+.footer-col-title {
+  font-weight: 700;
+  font-size: 24px;
+  line-height: 29px;
+  color: #F6AA17;
+  margin: 0 0 33px 0; /* gap antara judul dan link pertama */
+}
+
+/* Link list */
+.footer-links {
+  list-style: none;
+  padding: 0;
+  margin: 0;
+  display: flex;
+  flex-direction: column;
+  gap: 21px; /* jarak antar link: sesuai top 143→176→209→242→275px */
+}
+
+.footer-links li a {
+  font-weight: 500;
+  font-size: 20px;
+  line-height: 24px;
+  color: #FFFFFF;
+  text-decoration: none;
+  transition: opacity 0.2s ease;
+  white-space: nowrap;
+}
+
+.footer-links li a:hover {
+  opacity: 0.75;
+}
+
+/* ── Divider line ─────────────────────────────── */
+.footer-divider {
+  width: calc(100% - 256px); /* 1262px di layar 1440px ≈ margin 128px kiri kanan */
+  max-width: 1262px;
+  margin: 60px auto 0 auto;
+  height: 0;
+  border: none;
+  border-top: 2px solid rgba(255, 255, 255, 0.25);
+}
+
+/* ── Bottom bar ───────────────────────────────── */
+.footer-bottom {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  max-width: 1440px;
+  margin: 0 auto;
+  padding: 28px 128px 40px 128px;
+}
+
+.footer-copy {
+  font-weight: 500;
+  font-size: 20px;
+  line-height: 24px;
+  color: #FFFFFF;
+}
+
+.footer-bottom-links {
+  display: flex;
+  gap: 32px;
+}
+
+.footer-bottom-links a {
+  font-weight: 500;
+  font-size: 20px;
+  line-height: 24px;
+  color: #FFFFFF;
+  text-decoration: none;
+  transition: opacity 0.2s ease;
+  white-space: nowrap;
+}
+
+.footer-bottom-links a:hover {
+  opacity: 0.75;
+}
+
+/* ── Responsive ──────────────────────────────── */
+@media (max-width: 1200px) {
+  .footer-inner {
+    padding: 72px 64px 0 64px;
+    gap: 40px;
+  }
+  .footer-bottom {
+    padding: 28px 64px 40px 64px;
+  }
+  .footer-divider {
+    width: calc(100% - 128px);
+  }
+  .footer-brand {
+    flex: 0 0 260px;
+  }
+  .footer-tagline {
+    font-size: 17px;
+  }
+}
+
+@media (max-width: 900px) {
+  .footer-inner {
+    flex-wrap: wrap;
+    padding: 56px 40px 0 40px;
+    gap: 48px;
+  }
+  .footer-brand {
+    flex: 0 0 100%;
+  }
+  .footer-bottom {
+    flex-direction: column;
+    align-items: flex-start;
+    gap: 16px;
+    padding: 24px 40px 40px 40px;
+  }
+  .footer-divider {
+    width: calc(100% - 80px);
+  }
+}
+
+@media (max-width: 600px) {
+  .footer-inner {
+    padding: 48px 24px 0 24px;
+    gap: 40px;
+  }
+  .footer-col-title {
+    font-size: 20px;
+  }
+  .footer-links li a {
+    font-size: 16px;
+  }
+  .footer-copy,
+  .footer-bottom-links a {
+    font-size: 14px;
+  }
+  .footer-bottom {
+    padding: 20px 24px 32px 24px;
+  }
+  .footer-divider {
+    width: calc(100% - 48px);
+  }
+}

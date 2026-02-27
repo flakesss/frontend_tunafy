@@ -1,0 +1,253 @@
+/* Navbar.css - Navigation bar styles based on design specifications */
+
+.navbar {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 75px;
+  z-index: 1000;
+  padding: 16px 104px;
+  box-sizing: border-box;
+  transition: background-color 0.3s ease;
+}
+
+/* Background biru muncul setelah melewati hero section */
+.navbar.scrolled {
+  background-color: #0273FF;
+}
+
+.navbar-container {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  max-width: 1232px;
+  margin: 0 auto;
+  height: 43px;
+}
+
+/* Navigation Links - Left Side */
+.navbar-links {
+  display: flex;
+  align-items: center;
+  gap: 20px;
+  /* Safety net: tidak boleh melewati batas kiri logo (logo absolute di 50% navbar) */
+  max-width: 40%;
+  transition: opacity 0.3s ease;
+}
+
+/* Hidden state - menu items invisible during hero animation */
+.navbar-links.hidden {
+  opacity: 0;
+  pointer-events: none;
+}
+
+/* Visible state - menu items appear after hero animation completes */
+.navbar-links.visible {
+  opacity: 1;
+  pointer-events: auto;
+}
+
+.navbar-link {
+  position: relative;
+  font-family: 'Montserrat', sans-serif;
+  font-style: normal;
+  font-weight: 600;
+  font-size: 16px;
+  line-height: 24px;
+  color: #FFFFFF;
+  text-decoration: none;
+  transition: opacity 0.3s ease;
+  white-space: nowrap;
+  padding: 7px 14px; /* lebih rapat dari 20px agar tidak overlap logo */
+  border-radius: 20px;
+  z-index: 1;
+}
+
+.navbar-link:hover {
+  opacity: 0.8;
+}
+
+/* Active link — pill kuning mengikuti ukuran link (bukan fixed 130px) */
+.navbar-link.active {
+  color: #FFFFFF;
+}
+
+.navbar-link.active::before {
+  content: '';
+  position: absolute;
+  inset: 0; /* otomatis menyesuaikan lebar & tinggi teks + padding */
+  background: #F6AA17;
+  border-radius: 20px;
+  z-index: -1;
+  transition: opacity 0.2s ease;
+}
+
+/* Logo - Center (absolute, tidak ikut flex flow) */
+.navbar-logo-container {
+  position: absolute;
+  left: 50%;
+  transform: translateX(-50%);
+  /* No transition for instant swap */
+}
+
+/* Hidden state - logo invisible during hero animation */
+.navbar-logo-container.hidden {
+  visibility: hidden;
+}
+
+/* Visible state - logo appears when hero animation completes */
+.navbar-logo-container.visible {
+  visibility: visible;
+}
+
+.navbar-logo {
+  width: 156px;
+  height: 35px;
+  object-fit: contain;
+}
+
+/* Actions - Right Side */
+.navbar-actions {
+  display: flex;
+  align-items: center;
+  gap: 24px;
+  transition: opacity 0.3s ease;
+}
+
+/* Hidden state - actions invisible during hero animation */
+.navbar-actions.hidden {
+  opacity: 0;
+  pointer-events: none;
+}
+
+/* Visible state - actions appear after hero animation completes */
+.navbar-actions.visible {
+  opacity: 1;
+  pointer-events: auto;
+}
+
+/* Language Selector */
+.navbar-language {
+  display: flex;
+  align-items: center;
+  gap: 6px;
+  cursor: pointer;
+  padding: 4px;
+  transition: opacity 0.3s ease;
+}
+
+.navbar-language:hover {
+  opacity: 0.8;
+}
+
+.language-flag {
+  width: 34px;
+  height: 34px;
+  border-radius: 50%;
+  overflow: hidden;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.flag-icon {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+}
+
+.arrow-down-icon {
+  width: 24px;
+  height: 24px;
+}
+
+/* Login Button */
+.navbar-login-btn {
+  width: 140px;
+  height: 43px;
+  background: #FFFFFF;
+  border: none;
+  border-radius: 16px;
+  font-family: 'Montserrat', sans-serif;
+  font-style: normal;
+  font-weight: 600;
+  font-size: 16px;
+  line-height: 24px;
+  color: #000000;
+  cursor: pointer;
+  transition: all 0.3s ease;
+}
+
+.navbar-login-btn:hover {
+  background: #f0f0f0;
+  transform: translateY(-2px);
+}
+
+/* Responsive Styles */
+@media (max-width: 1200px) {
+  .navbar {
+    padding: 16px 40px;
+  }
+}
+
+@media (max-width: 992px) {
+  .navbar {
+    padding: 16px 24px;
+  }
+
+  .navbar-links {
+    gap: 20px;
+  }
+
+  .navbar-link {
+    font-size: 14px;
+  }
+
+  .navbar-logo {
+    width: 120px;
+    height: auto;
+  }
+
+  .navbar-login-btn {
+    width: 100px;
+    height: 38px;
+    font-size: 14px;
+  }
+}
+
+@media (max-width: 768px) {
+  .navbar-links {
+    display: none;
+  }
+
+  .navbar-logo-container {
+    position: static;
+    transform: none;
+  }
+
+  .navbar-container {
+    justify-content: space-between;
+  }
+
+  .navbar-language {
+    display: none;
+  }
+}
+
+@media (max-width: 480px) {
+  .navbar {
+    padding: 12px 16px;
+  }
+
+  .navbar-logo {
+    width: 100px;
+  }
+
+  .navbar-login-btn {
+    width: 80px;
+    height: 34px;
+    font-size: 12px;
+    border-radius: 12px;
+  }
+}

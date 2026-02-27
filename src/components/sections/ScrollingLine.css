@@ -1,0 +1,55 @@
+/* ScrollingLine.css */
+
+/* ── Wrapper: overflow clip ──────────────────── */
+.scrolling-line-wrapper {
+  width: 100%;
+  overflow: hidden;
+  background: #ffffff;
+  line-height: 0;
+  user-select: none;
+}
+
+/* ── Background div — lebar 600vw, di-animate dengan transform ── */
+.scrolling-line-bg {
+  /*
+   * LEBAR: jauh melebihi viewport sehingga background-repeat
+   * selalu mengisi area yang terlihat, bahkan saat bergerak.
+   * 600vw = 6× lebar viewport — lebih dari cukup.
+   */
+  width: 600vw;
+  height: 80px;
+
+  background-repeat: repeat-x;
+  background-size: auto 100%;
+  background-position: 0 center;
+
+  /*
+   * --tile-w: lebar natural 1 tile, di-set oleh JS.
+   * Default 800px agar animasi tetap jalan sebelum JS selesai.
+   */
+  --tile-w: 800px;
+
+  /*
+   * KUNCI KELANCARAN:
+   * transform → GPU compositor layer → zero stutter
+   * (background-position → CPU paint → stutter)
+   *
+   * Loop seamless: bergeser tepat -tile-w → background-repeat
+   * membuat posisi 0 dan -tile-w terlihat identik → tidak ada lompatan.
+   */
+  animation: marquee-transform 25s linear infinite;
+  will-change: transform;
+}
+
+@keyframes marquee-transform {
+  from { transform: translateX(0); }
+  to   { transform: translateX(calc(-1 * var(--tile-w))); }
+}
+
+/* Hentikan untuk pengguna yang prefer reduced motion */
+@media (prefers-reduced-motion: reduce) {
+  .scrolling-line-bg {
+    animation: none;
+  }
+}
+

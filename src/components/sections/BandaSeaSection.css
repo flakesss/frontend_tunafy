@@ -1,0 +1,338 @@
+/* BandaSeaSection.css */
+
+.banda-section {
+  position: relative;
+  width: 100%;
+  min-height: 100vh;
+  display: flex;
+  align-items: flex-start;
+  overflow: hidden;
+}
+
+/* ── Background photo ────────────────────────── */
+.banda-bg {
+  position: absolute;
+  inset: 0;
+  background-size: cover;
+  background-position: center;
+  background-repeat: no-repeat;
+  /* Subtle parallax feel — scale slightly so edges don't show on scroll */
+  transform: scale(1.05);
+  transition: transform 0.1s linear;
+  will-change: transform;
+}
+
+/* ── White gradient at top ────────────────────────────── */
+.banda-gradient-top {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 431px;
+  background: linear-gradient(180deg, #FFFFFF 40.36%, rgba(153, 153, 153, 0) 100%);
+  pointer-events: none;
+}
+
+/* ── Content ─────────────────────────────────── */
+.banda-content {
+  position: relative;
+  z-index: 2;
+  width: 100%;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  text-align: center;
+  padding-top: 80px;
+}
+
+/* Judul utama */
+.banda-heading {
+  font-family: 'Montserrat', sans-serif;
+  font-style: normal;
+  font-weight: 700;
+  font-size: 48px;
+  line-height: 59px;
+  color: #0273FF;
+  margin: 0 0 16px 0;
+  max-width: 1065px;
+}
+
+/* Paragraf deskripsi */
+.banda-body {
+  font-family: 'Montserrat', sans-serif;
+  font-style: normal;
+  font-weight: 500;
+  font-size: 24px;
+  line-height: 29px;
+  color: #0273FF;
+  margin: 0;
+  max-width: 855px;
+}
+
+/* ── Stats Cards ─────────────────────────────────── */
+.banda-stats {
+  display: flex;
+  gap: 27px;
+  margin-top: 75px;
+}
+
+.stat-card {
+  width: 312px;
+  height: 158px;
+  background: #FFFFFF;
+  border-radius: 24px;
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
+  padding: 35px 0 0 33px;
+}
+
+.stat-number {
+  font-family: 'Montserrat', sans-serif;
+  font-style: normal;
+  font-weight: 600;
+  font-size: 48px;
+  line-height: 59px;
+  color: #0273FF;
+}
+
+.stat-label {
+  font-family: 'Montserrat', sans-serif;
+  font-style: normal;
+  font-weight: 600;
+  font-size: 24px;
+  line-height: 29px;
+  color: #0273FF;
+}
+
+/* ── CTA Email Block ──────────────────────────────── */
+.banda-cta {
+  width: 692px;
+  /* 284px total: ~142px title + ~24px subtitle + gap + 68px form bar */
+  margin-top: 80px;
+  margin-bottom: 80px;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  text-align: center;
+  gap: 0;
+}
+
+/* "Fresh Tuna Direct From Maluku" */
+.banda-cta-title {
+  font-family: 'Montserrat', sans-serif;
+  font-style: normal;
+  font-weight: 700;
+  font-size: 64px;
+  line-height: 78px;
+  text-align: center;
+  /* White gradient sesuai Figma */
+  background: linear-gradient(90deg, #FFFFFF 0%, #FFFFFF 52.92%);
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  background-clip: text;
+  margin: 0 0 16px 0;
+  width: 100%;
+}
+
+/* "Traceable, Trusted, and Legal" */
+.banda-cta-subtitle {
+  font-family: 'Montserrat', sans-serif;
+  font-style: normal;
+  font-weight: 500;
+  font-size: 24px;
+  line-height: 24px;
+  text-align: center;
+  color: #FFFFFF;
+  margin: 0 0 30px 0;
+}
+
+/* Email input bar — Rectangle 125 */
+.banda-cta-form {
+  position: relative;
+  width: 692px;
+  height: 68px;
+  background: #FFFFFF;
+  box-shadow: 0px 4px 4px rgba(0, 0, 0, 0.25);
+  border-radius: 10px;
+  display: flex;
+  align-items: center;
+  overflow: hidden;
+}
+
+/* Input field */
+.banda-cta-input {
+  flex: 1;
+  height: 100%;
+  border: none;
+  outline: none;
+  background: transparent;
+  padding: 0 24px;
+  font-family: 'Montserrat', sans-serif;
+  font-style: normal;
+  font-weight: 500;
+  font-size: 24px;
+  line-height: 24px;
+  color: rgba(0, 43, 97, 0.9);
+}
+
+.banda-cta-input::placeholder {
+  color: rgba(0, 43, 97, 0.5);
+}
+
+/* "Get Started" button — Rectangle 126 */
+.banda-cta-btn {
+  flex-shrink: 0;
+  width: 197px;
+  height: 52px;
+  margin: 0 8px;
+  background: #F5AB17;
+  border: none;
+  border-radius: 8px;
+  font-family: 'Montserrat', sans-serif;
+  font-style: normal;
+  font-weight: 600;
+  font-size: 20px;
+  line-height: 24px;
+  text-align: center;
+  color: #FFFFFF;
+  cursor: pointer;
+  transition: background 0.25s ease, transform 0.2s ease;
+}
+
+.banda-cta-btn:hover {
+  background: #e59d0f;
+  transform: translateY(-1px);
+}
+
+/* ── Responsive — CTA ──────────────────────────── */
+@media (max-width: 768px) {
+  .banda-cta {
+    width: 100%;
+    max-width: 692px;
+    padding: 0 24px;
+    box-sizing: border-box;
+  }
+  .banda-cta-title {
+    font-size: 36px;
+    line-height: 44px;
+  }
+  .banda-cta-subtitle {
+    font-size: 18px;
+  }
+  .banda-cta-form {
+    width: 100%;
+    height: 56px;
+  }
+  .banda-cta-input {
+    font-size: 16px;
+  }
+  .banda-cta-btn {
+    width: 140px;
+    font-size: 15px;
+  }
+}
+
+@media (max-width: 480px) {
+  .banda-cta-title {
+    font-size: 28px;
+    line-height: 34px;
+  }
+  .banda-cta-form {
+    flex-direction: column;
+    height: auto;
+    gap: 8px;
+    padding: 12px;
+    border-radius: 12px;
+  }
+  .banda-cta-input {
+    width: 100%;
+    height: 44px;
+    font-size: 14px;
+    padding: 0 12px;
+  }
+  .banda-cta-btn {
+    width: 100%;
+    height: 44px;
+    margin: 0;
+    border-radius: 8px;
+  }
+}
+
+/* ── Responsive ──────────────────────────────── */
+@media (max-width: 1200px) {
+  .banda-heading {
+    font-size: 38px;
+    line-height: 48px;
+    max-width: 800px;
+  }
+  .banda-body {
+    font-size: 20px;
+    line-height: 26px;
+    max-width: 700px;
+  }
+  .banda-stats {
+    flex-wrap: wrap;
+    justify-content: center;
+    gap: 20px;
+  }
+  .stat-card {
+    width: 280px;
+  }
+}
+
+@media (max-width: 768px) {
+  .banda-section {
+    min-height: 80vh;
+  }
+  .banda-content {
+    padding: 40px 24px;
+  }
+  .banda-heading {
+    font-size: 28px;
+    line-height: 36px;
+  }
+  .banda-body {
+    font-size: 16px;
+    line-height: 22px;
+  }
+  .banda-stats {
+    flex-direction: column;
+    align-items: center;
+    gap: 16px;
+    margin-top: 40px;
+  }
+  .stat-card {
+    width: 100%;
+    max-width: 312px;
+    height: auto;
+    padding: 24px;
+  }
+  .stat-number {
+    font-size: 36px;
+    line-height: 44px;
+  }
+  .stat-label {
+    font-size: 18px;
+    line-height: 24px;
+  }
+}
+
+@media (max-width: 480px) {
+  .banda-heading {
+    font-size: 22px;
+    line-height: 30px;
+  }
+  .banda-body {
+    font-size: 14px;
+    line-height: 20px;
+  }
+  .stat-number {
+    font-size: 28px;
+    line-height: 36px;
+  }
+  .stat-label {
+    font-size: 16px;
+    line-height: 22px;
+  }
+}

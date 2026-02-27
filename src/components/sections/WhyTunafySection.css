@@ -1,0 +1,155 @@
+/* WhyTunafySection.css */
+
+.why-tunafy-section {
+  width: 100%;
+  background: #ffffff;
+  padding: 80px 0;
+  overflow: hidden;
+}
+
+/* Two-column inner wrapper — full width, no centered container */
+.why-tunafy-inner {
+  display: flex;
+  align-items: center;
+  width: 100%;
+  gap: 40px;
+}
+
+/* ── Left: Text Column ─────────────────────────── */
+.why-tunafy-text {
+  flex: 0 0 608px;
+  /* margin-left dinamis:
+     - Di atas 1440px: geser ke kanan mengikuti posisi container 1440px
+     - Di bawah 1440px: minimal 20px agar tidak mepet tepi */
+  margin-left: max(20px, calc((100% - 1440px) / 2 + 20px));
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
+}
+
+/* "WHY CHOOSE TUNAFY" label */
+.why-tunafy-label {
+  font-family: 'Montserrat', sans-serif;
+  font-style: normal;
+  font-weight: 700;
+  font-size: 24px;
+  line-height: 29px;
+  color: #F5AB17;
+  margin: 0 0 16px 0;
+}
+
+/* Main heading */
+.why-tunafy-heading {
+  font-family: 'Montserrat', sans-serif;
+  font-style: normal;
+  font-weight: 600;
+  font-size: 40px;
+  line-height: 49px;
+  color: #0058C7;
+  margin: 0 0 24px 0;
+  max-width: 608px;
+}
+
+/* Body paragraph */
+.why-tunafy-body {
+  font-family: 'Montserrat', sans-serif;
+  font-style: normal;
+  font-weight: 400;
+  font-size: 24px;
+  line-height: 29px;
+  color: #0058C7;
+  margin: 0 0 48px 0;
+  max-width: 608px;
+}
+
+/* CTA Button */
+.why-tunafy-btn {
+  width: 226px;
+  height: 46px;
+  background: #F6AA17;
+  border: none;
+  border-radius: 16px;
+  font-family: 'Montserrat', sans-serif;
+  font-style: normal;
+  font-weight: 700;
+  font-size: 14px;
+  line-height: 17px;
+  color: #ffffff;
+  cursor: pointer;
+  transition: background 0.25s ease, transform 0.2s ease, box-shadow 0.25s ease;
+  box-shadow: 0 4px 20px rgba(246, 170, 23, 0.35);
+  flex-shrink: 0;
+}
+
+.why-tunafy-btn:hover {
+  background: #e59d0f;
+  transform: translateY(-2px);
+  box-shadow: 0 6px 30px rgba(246, 170, 23, 0.55);
+}
+
+/* ── Right: Image Column ───────────────────────── */
+.why-tunafy-image-wrap {
+  /* flex:1 = isi SEMUA sisa ruang sampai tepi kanan viewport.
+     Ini konsisten di 100% / 110% / 125% zoom karena
+     tidak bergantung pada perhitungan 100vw. */
+  flex: 1;
+  min-width: 0;
+  align-self: stretch;       /* tinggi wrap = tinggi baris flex */
+  overflow: hidden;
+}
+
+.why-tunafy-image {
+  width: 100%;               /* lebar penuh wrap (= sisa viewport) */
+  height: auto;              /* proporsi asli foto, tidak terpotong */
+  display: block;
+}
+
+/* ── Responsive ────────────────────────────────── */
+@media (max-width: 1200px) {
+  .why-tunafy-text {
+    flex: 0 0 460px;
+    margin-left: 32px;
+  }
+  .why-tunafy-heading {
+    font-size: 32px;
+    line-height: 40px;
+  }
+  .why-tunafy-body {
+    font-size: 18px;
+    line-height: 26px;
+  }
+}
+
+@media (max-width: 900px) {
+  .why-tunafy-inner {
+    flex-direction: column;
+    gap: 24px;
+  }
+  .why-tunafy-text {
+    flex: 0 0 auto;
+    width: calc(100% - 48px);
+    margin-left: 24px;
+  }
+  .why-tunafy-image-wrap {
+    width: 100%;
+    flex: 0 0 auto;
+    align-self: auto;
+  }
+}
+
+@media (max-width: 480px) {
+  .why-tunafy-section {
+    padding: 48px 0;
+  }
+  .why-tunafy-label {
+    font-size: 18px;
+  }
+  .why-tunafy-heading {
+    font-size: 24px;
+    line-height: 30px;
+  }
+  .why-tunafy-body {
+    font-size: 15px;
+    line-height: 22px;
+  }
+}

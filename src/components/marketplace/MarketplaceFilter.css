@@ -1,0 +1,117 @@
+/* MarketplaceFilter.css */
+
+/* ── Sidebar container ───────────────────────────────── */
+.marketplace-filter {
+  width: 244px;
+  flex-shrink: 0;
+  background: #ffffff;
+  padding: 0;
+}
+
+/* ── "Filters" heading ───────────────────────────────── */
+.filter-heading {
+  font-family: 'Montserrat', sans-serif;
+  font-weight: 600;
+  font-size: 16px;
+  line-height: 20px;
+  color: #000F1E;
+  margin: 0 0 28px 0;
+}
+
+/* ── Section ─────────────────────────────────────────── */
+.filter-section {
+  margin-bottom: 24px;
+  border-bottom: 1px solid #F0F0F0;
+  padding-bottom: 16px;
+}
+
+.filter-section:last-child {
+  border-bottom: none;
+}
+
+/* ── Section header (title + arrow) ─────────────────── */
+.filter-section-header {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  width: 100%;
+  background: none;
+  border: none;
+  padding: 0;
+  cursor: pointer;
+  margin-bottom: 12px;
+}
+
+.filter-section-title {
+  font-family: 'Montserrat', sans-serif;
+  font-weight: 600;
+  font-size: 16px;
+  line-height: 20px;
+  color: #000F1E;
+}
+
+/* Arrow rotates saat section tertutup */
+.filter-arrow {
+  transition: transform 0.2s ease;
+  flex-shrink: 0;
+}
+
+.filter-arrow.open {
+  transform: rotate(180deg);
+}
+
+/* ── Checkbox item ───────────────────────────────────── */
+.filter-checkbox-item {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  cursor: pointer;
+  margin-bottom: 12px;
+  user-select: none;
+}
+
+.filter-checkbox-item:last-child {
+  margin-bottom: 0;
+}
+
+/* Hide native input */
+.filter-checkbox-input {
+  position: absolute;
+  opacity: 0;
+  width: 0;
+  height: 0;
+}
+
+/* Custom checkbox box */
+.filter-checkbox {
+  width: 20px;
+  height: 20px;
+  border-radius: 4px;
+  border: 1.5px solid #0273FF;
+  background: #ffffff;
+  flex-shrink: 0;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  transition: background 0.15s ease;
+}
+
+.filter-checkbox.checked {
+  background: #0273FF;
+  border-color: #0273FF;
+}
+
+/* Label teks */
+.filter-checkbox-label {
+  font-family: 'Montserrat', sans-serif;
+  font-weight: 400;
+  font-size: 13px;
+  line-height: 16px;
+  color: #000000;
+}
+
+/* Hover effect pada row */
+.filter-checkbox-item:hover .filter-checkbox:not(.checked) {
+  border-color: #0273FF;
+  background: rgba(2, 115, 255, 0.06);
+}

@@ -1,0 +1,30 @@
+/* MarketplacePage.css */
+
+/* Override dark background global dari index.css */
+.marketplace-page,
+.marketplace-page * {
+  color-scheme: light;
+}
+
+.marketplace-page {
+  min-height: 100vh;
+  background-color: #ffffff !important;
+  padding-top: 75px; /* clearance untuk fixed navbar */
+  color: #000000;
+}
+
+/* Layout 2 kolom: [filter sidebar] [area produk] */
+.marketplace-layout {
+  display: flex;
+  align-items: flex-start;
+  gap: 40px;
+  width: 100%;
+  padding: 48px 54px 80px 24px;
+}
+
+/* Area produk mengisi sisa ruang */
+.marketplace-products {
+  flex: 1;
+  min-height: 400px;
+}
+
