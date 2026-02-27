@@ -1,140 +1,74 @@
-import { useRef, useMemo, useState, useEffect, useCallback } from 'react';
+import { useRef, useMemo, useState, useEffect } from 'react';
 import { useScroll } from 'framer-motion';
 import './WhyTunafySection.css';
 
 const TOTAL_FRAMES = 83;
-const START_FRAME  = 41; // animasi mulai dari frame 41
+const START_FRAME  = 41; // animasi mulai dari frame 45
 
-/**
- * WhyTunafySection — scroll-based frame animation (Apple-style)
- *
- * Optimasi:
- * 1. WebP frames (89% lebih kecil dari PNG)
- * 2. Canvas context { alpha: false, desynchronized: true } — GPU async
- * 3. createImageBitmap() — decode off main thread
- * 4. passive: true pada event listeners
- */
 const WhyTunafySection = () => {
+  // Ref untuk section ini (target scroll) dan img element (update langsung di DOM)
   const sectionRef = useRef(null);
-  const canvasRef  = useRef(null);
-  const ctxRef     = useRef(null);
+  const imageRef   = useRef(null);
 
   const [imagesReady, setImagesReady] = useState(false);
 
-  // Simpan ImageBitmap (sudah decoded off-thread)
-  const bitmapsRef = useRef([]);
-
+  // Scroll progress: 0 = section mulai masuk viewport, 1 = section habis keluar
   const { scrollYProgress } = useScroll({
     target: sectionRef,
     offset: ['start end', 'end start'],
   });
 
-  // ── FIX #1: Pakai WebP glob ───────────────────────────────────────────────
+  // Lazy-load semua frame dari folder /src/assets/images/frame/
   const imageModules = useMemo(() => {
-    return import.meta.glob('/src/assets/images/frame webp/FRAME *.webp', { eager: true });
+    return import.meta.glob('/src/assets/images/frame/FRAME *.png', { eager: true });
   }, []);
 
+  // Sort secara numerik: "FRAME 1.png" < "FRAME 2.png" < ... < "FRAME 83.png"
   const sortedImageUrls = useMemo(() => {
     const entries = Object.entries(imageModules);
     entries.sort((a, b) => {
-      const numA = parseInt(a[0].match(/FRAME (\d+)\.webp$/)?.[1] || '0');
-      const numB = parseInt(b[0].match(/FRAME (\d+)\.webp$/)?.[1] || '0');
+      const numA = parseInt(a[0].match(/FRAME (\d+)\.png$/)?.[1] || '0');
+      const numB = parseInt(b[0].match(/FRAME (\d+)\.png$/)?.[1] || '0');
       return numA - numB;
     });
+    // Slice dari START_FRAME-1 (index 44) sampai TOTAL_FRAMES (index 82)
     return entries.slice(START_FRAME - 1, TOTAL_FRAMES).map(([, mod]) => mod.default);
   }, [imageModules]);
 
-  // ── FIX #2: Init canvas dengan alpha:false + desynchronized:true ──────────
-  const initCanvas = useCallback(() => {
-    const canvas = canvasRef.current;
-    if (!canvas || ctxRef.current) return;
-    canvas.width  = canvas.offsetWidth  || 800;
-    canvas.height = canvas.offsetHeight || 600;
-    ctxRef.current = canvas.getContext('2d', {
-      alpha: false,
-      desynchronized: true,
-    });
-  }, []);
-
-  // ── FIX #3: createImageBitmap untuk decode off main thread ────────────────
+  // Preload semua frame ke cache browser
   useEffect(() => {
     if (sortedImageUrls.length === 0) return;
-    initCanvas();
+    let loaded = 0;
+    const total = sortedImageUrls.length;
 
-    const total   = sortedImageUrls.length;
-    const bitmaps = new Array(total);
+    const preload = (url) =>
+      new Promise((resolve) => {
+        const img = new Image();
+        const done = () => { loaded++; resolve(); };
+        img.onload = done;
+        img.onerror = done;
+        img.src = url;
+      });
 
-    const loadBitmap = async (url, index) => {
-      try {
-        const res    = await fetch(url);
-        const blob   = await res.blob();
-        bitmaps[index] = await createImageBitmap(blob);
-      } catch {
-        // fallback
-        await new Promise((resolve) => {
-          const img = new Image();
-          img.onload = async () => {
-            try { bitmaps[index] = await createImageBitmap(img); } catch { /* noop */ }
-            resolve();
-          };
-          img.onerror = resolve;
-          img.src = url;
-        });
-      }
-    };
+    Promise.all(sortedImageUrls.map(preload)).then(() => setImagesReady(true));
+  }, [sortedImageUrls]);
 
-    Promise.all(sortedImageUrls.map((url, i) => loadBitmap(url, i))).then(() => {
-      bitmapsRef.current = bitmaps;
-      setImagesReady(true);
-
-      // Render frame pertama langsung
-      const canvas = canvasRef.current;
-      const ctx    = ctxRef.current;
-      if (canvas && ctx && bitmaps[0]) {
-        ctx.drawImage(bitmaps[0], 0, 0, canvas.width, canvas.height);
-      }
-    });
-  }, [sortedImageUrls, initCanvas]);
-
-  // Resize → redraw frame saat ini
-  useEffect(() => {
-    const handleResize = () => {
-      const canvas = canvasRef.current;
-      if (!canvas) return;
-      canvas.width  = canvas.offsetWidth;
-      canvas.height = canvas.offsetHeight;
-      const idx    = parseInt(canvas.dataset.frameIdx || '0');
-      const bitmap = bitmapsRef.current[idx];
-      const ctx    = ctxRef.current;
-      if (ctx && bitmap) {
-        ctx.drawImage(bitmap, 0, 0, canvas.width, canvas.height);
-      }
-    };
-    window.addEventListener('resize', handleResize, { passive: true }); // Fix #4
-    return () => window.removeEventListener('resize', handleResize);
-  }, []);
-
-  // ── Update frame di scroll — tanpa re-render, tanpa decode ───────────────
+  // Update frame langsung di DOM saat scroll — tanpa re-render
   useEffect(() => {
     if (!imagesReady) return;
 
     const unsubscribe = scrollYProgress.on('change', (latest) => {
-      const canvas  = canvasRef.current;
-      const ctx     = ctxRef.current;
-      const bitmaps = bitmapsRef.current;
-      if (!canvas || !ctx || bitmaps.length === 0) return;
-
+      // Animasi mulai dari 0% scroll section dan selesai di 100%
       const clamped = Math.max(0, Math.min(latest, 1));
-      const idx     = Math.round(clamped * (bitmaps.length - 1));
-      const bitmap  = bitmaps[idx];
-      if (!bitmap) return;
+      const idx = Math.round(clamped * (TOTAL_FRAMES - 1));
 
-      canvas.dataset.frameIdx = idx;
-      ctx.drawImage(bitmap, 0, 0, canvas.width, canvas.height);
+      if (imageRef.current && sortedImageUrls[idx]) {
+        imageRef.current.src = sortedImageUrls[idx];
+      }
     });
 
     return () => unsubscribe();
-  }, [scrollYProgress, imagesReady]);
+  }, [scrollYProgress, sortedImageUrls, imagesReady]);
 
   return (
     <section className="why-tunafy-section" ref={sectionRef}>
@@ -153,16 +87,19 @@ const WhyTunafySection = () => {
           <button className="why-tunafy-btn">View Product Catalog</button>
         </div>
 
-        {/* Right — Canvas animation (WebP + createImageBitmap) */}
+        {/* Right — Animated frame image */}
         <div className="why-tunafy-image-wrap">
-          <canvas
-            ref={canvasRef}
-            className="why-tunafy-image"
-            aria-label="Tunafy — Traceable Sourcing from Banda Sea"
-            style={{ display: imagesReady ? 'block' : 'none' }}
-          />
+          {/* Tampilkan frame pertama langsung; frame berikutnya diupdate via ref */}
+          {sortedImageUrls.length > 0 && (
+            <img
+              ref={imageRef}
+              src={sortedImageUrls[0]}
+              alt="Tunafy — Traceable Sourcing from Banda Sea"
+              className="why-tunafy-image"
+            />
+          )}
 
-          {/* Loading spinner saat preload belum selesai */}
+          {/* Loading overlay saat preload belum selesai */}
           {!imagesReady && (
             <div className="why-tunafy-loading">
               <div className="why-tunafy-spinner" />
@@ -175,3 +112,4 @@ const WhyTunafySection = () => {
 };
 
 export default WhyTunafySection;
+

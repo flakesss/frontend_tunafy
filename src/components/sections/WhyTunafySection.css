@@ -89,41 +89,19 @@
 
 /* ── Right: Image Column ───────────────────────── */
 .why-tunafy-image-wrap {
+  /* flex:1 = isi SEMUA sisa ruang sampai tepi kanan viewport.
+     Ini konsisten di 100% / 110% / 125% zoom karena
+     tidak bergantung pada perhitungan 100vw. */
   flex: 1;
   min-width: 0;
-  align-self: stretch;
+  align-self: stretch;       /* tinggi wrap = tinggi baris flex */
   overflow: hidden;
-  position: relative; /* dibutuhkan loading overlay absolute */
 }
 
-/* Canvas menggantikan <img> — harus mengisi penuh wrap */
 .why-tunafy-image {
-  width: 100%;
-  height: 100%;   /* canvas perlu height eksplisit (img pakai auto) */
+  width: 100%;               /* lebar penuh wrap (= sisa viewport) */
+  height: auto;              /* proporsi asli foto, tidak terpotong */
   display: block;
-}
-
-/* Loading overlay */
-.why-tunafy-loading {
-  position: absolute;
-  inset: 0;
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  background: #f0f4ff;
-}
-
-.why-tunafy-spinner {
-  width: 40px;
-  height: 40px;
-  border: 3px solid rgba(2, 115, 255, 0.15);
-  border-top-color: #0273FF;
-  border-radius: 50%;
-  animation: why-spin 0.8s linear infinite;
-}
-
-@keyframes why-spin {
-  to { transform: rotate(360deg); }
 }
 
 /* ── Responsive ────────────────────────────────── */
