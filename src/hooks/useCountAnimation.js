@@ -6,33 +6,47 @@ import { useState, useEffect, useRef } from 'react';
  * @param {number} duration - Durasi animasi dalam ms (default: 2000)
  * @param {number} start - Nilai awal (default: 0)
  * @param {string} suffix - Suffix yang ditambahkan (contoh: '+', '%')
- * @returns {Object} - { count, elementRef, isVisible }
+ * @returns {Object} - { countRef, elementRef, isVisible }
+ *
+ * PERFORMA: Menggunakan direct DOM manipulation (countRef.current.textContent)
+ * alih-alih setState, sehingga tidak ada React re-render per frame animasi.
+ * Ini mengurangi dari ~240 re-render/detik (4 stat cards × 60fps) menjadi 0.
  */
 const useCountAnimation = (end, duration = 2000, start = 0, suffix = '') => {
-  const [count, setCount] = useState(start);
   const [isVisible, setIsVisible] = useState(false);
-  const elementRef = useRef(null);
+  const elementRef = useRef(null);   // ref ke container (untuk IntersectionObserver)
+  const countRef   = useRef(null);   // ref ke <span> teks angka (untuk direct DOM update)
   const animationFrameRef = useRef(null);
+
+  // Handle decimal numbers (seperti 5.000)
+  const hasDecimal = String(end).includes('.');
+  const numericEnd = typeof end === 'string'
+    ? parseFloat(end.replace(/\./g, '').replace(/[+%]/g, ''))
+    : end;
 
   // Intersection Observer untuk mendeteksi visibility
   useEffect(() => {
     const observer = new IntersectionObserver(
       ([entry]) => {
         if (entry.isIntersecting) {
-          // Reset count ke start ketika masuk viewport
-          setCount(start);
+          // Reset tampilan ke start
+          if (countRef.current) {
+            countRef.current.textContent = start;
+          }
           setIsVisible(true);
         } else {
-          // Stop animation dan reset ketika keluar viewport
           setIsVisible(false);
           if (animationFrameRef.current) {
             cancelAnimationFrame(animationFrameRef.current);
           }
-          setCount(start);
+          // Reset tampilan
+          if (countRef.current) {
+            countRef.current.textContent = start;
+          }
         }
       },
       {
-        threshold: 0.3, // Trigger ketika 30% elemen terlihat
+        threshold: 0.3,
         rootMargin: '0px'
       }
     );
@@ -49,14 +63,10 @@ const useCountAnimation = (end, duration = 2000, start = 0, suffix = '') => {
     };
   }, [start]);
 
-  // Counting animation
+  // Counting animation — menggunakan direct DOM, BUKAN setState
   useEffect(() => {
     if (!isVisible) return;
 
-    // Handle decimal numbers (seperti 5.000)
-    const hasDecimal = String(end).includes('.');
-    const numericEnd = typeof end === 'string' ? parseFloat(end.replace(/[+%]/g, '')) : end;
-    
     let startTime = null;
 
     const animate = (timestamp) => {
@@ -66,26 +76,28 @@ const useCountAnimation = (end, duration = 2000, start = 0, suffix = '') => {
 
       // Easing function (ease-out-cubic)
       const easeOut = 1 - Math.pow(1 - percentage, 3);
-      
+
       let currentCount = start + (numericEnd - start) * easeOut;
 
-      // Format angka
-      if (hasDecimal) {
-        // Untuk angka seperti 5.000, tampilkan dengan format Indonesia
-        currentCount = Math.floor(currentCount);
-        setCount(currentCount.toLocaleString('id-ID'));
-      } else {
-        setCount(Math.floor(currentCount));
+      // ── Direct DOM update (tanpa setState → tanpa re-render React) ──
+      if (countRef.current) {
+        if (hasDecimal) {
+          countRef.current.textContent = Math.floor(currentCount).toLocaleString('id-ID');
+        } else {
+          countRef.current.textContent = Math.floor(currentCount);
+        }
       }
 
       if (percentage < 1) {
         animationFrameRef.current = requestAnimationFrame(animate);
       } else {
-        // Pastikan nilai akhir sesuai
-        if (hasDecimal) {
-          setCount(numericEnd.toLocaleString('id-ID'));
-        } else {
-          setCount(numericEnd);
+        // Pastikan nilai akhir tepat
+        if (countRef.current) {
+          if (hasDecimal) {
+            countRef.current.textContent = numericEnd.toLocaleString('id-ID');
+          } else {
+            countRef.current.textContent = numericEnd;
+          }
         }
       }
     };
@@ -97,9 +109,9 @@ const useCountAnimation = (end, duration = 2000, start = 0, suffix = '') => {
         cancelAnimationFrame(animationFrameRef.current);
       }
     };
-  }, [isVisible, end, duration, start]);
+  }, [isVisible, numericEnd, duration, start, hasDecimal]);
 
-  return { count, elementRef, isVisible };
+  return { countRef, elementRef, isVisible };
 };
 
 export default useCountAnimation;

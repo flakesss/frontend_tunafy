@@ -2,43 +2,35 @@ import './BandaSeaSection.css';
 import bgPhoto from '../../assets/images/Tangkapan-Tuna-di-Perairan-Maluku-Utara.-Foto-USAID-for-Kieraha.com_.jpg';
 import useCountAnimation from '../../hooks/useCountAnimation';
 
-// Komponen StatCard dengan animasi counting
+/**
+ * StatCard menggunakan ref-based counter (direct DOM update).
+ * countRef menunjuk ke <span> yang diupdate langsung tanpa React re-render.
+ */
 const StatCard = ({ endValue, label, suffix = '', duration = 2000 }) => {
-  // Parse nilai akhir dari string (contoh: "300+" -> 300)
   const parseEndValue = (value) => {
     if (typeof value === 'number') return value;
     if (typeof value === 'string') {
-      // Handle format Indonesia (5.000 -> 5000)
       const cleanValue = value.replace(/\./g, '').replace(/[+%]/g, '');
       return parseFloat(cleanValue);
     }
     return 0;
   };
 
-  // Detect if value has decimal format (like "5.000")
-  const hasDecimalFormat = typeof endValue === 'string' && endValue.includes('.');
   const numericEnd = parseEndValue(endValue);
-  
-  const { count, elementRef, isVisible } = useCountAnimation(
+
+  // countRef = ref ke <span>, elementRef = ref ke container card
+  const { countRef, elementRef } = useCountAnimation(
     numericEnd,
     duration,
     0,
     suffix
   );
 
-  // Format display value
-  const formatValue = () => {
-    if (hasDecimalFormat) {
-      // Format dengan titik sebagai pemisah ribuan (format Indonesia)
-      return count.toLocaleString('id-ID');
-    }
-    return count;
-  };
-
   return (
     <div className="stat-card" ref={elementRef}>
       <span className="stat-number">
-        {formatValue()}{suffix}
+        {/* countRef menunjuk ke span ini — diupdate langsung via textContent */}
+        <span ref={countRef}>0</span>{suffix}
       </span>
       <span className="stat-label">{label}</span>
     </div>
@@ -46,7 +38,6 @@ const StatCard = ({ endValue, label, suffix = '', duration = 2000 }) => {
 };
 
 const BandaSeaSection = () => {
-  // Data statistik dengan nilai target dan suffix
   const statsData = [
     { endValue: 300, suffix: '+', label: 'Traceable Fishers', duration: 2000 },
     { endValue: '5.000', suffix: '+', label: 'Daily Tuna Logistics', duration: 2500 },
@@ -89,13 +80,8 @@ const BandaSeaSection = () => {
 
         {/* CTA Email Block */}
         <div className="banda-cta">
-          {/* Heading */}
           <h3 className="banda-cta-title">Fresh Tuna Direct From Maluku</h3>
-
-          {/* Subtitle */}
           <p className="banda-cta-subtitle">Traceable, Trusted, and Legal</p>
-
-          {/* Email input bar */}
           <div className="banda-cta-form">
             <input
               className="banda-cta-input"

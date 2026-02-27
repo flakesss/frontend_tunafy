@@ -19,13 +19,19 @@ const TEXT_FULL  = 0.60;       // teks fully visible di progress 60%
  *
  * Scale dihitung dari ukuran NYATA logo di DOM (bukan estimasi),
  * sehingga logo hero selalu tepat sama ukurannya dengan logo navbar saat swap.
+ *
+ * PERFORMA: Menggunakan Canvas API + pre-decoded HTMLImageElement
+ * alih-alih img.src swap, sehingga tidak ada decode overhead per frame.
  */
 const HeroSection = ({ heroRef, scrollYProgress }) => {
-  const imageRef   = useRef(null); // untuk update frame animasi background
+  const canvasRef   = useRef(null); // canvas untuk rendering frame animasi
   const heroLogoRef = useRef(null); // untuk mengukur lebar logo hero di DOM
 
   const [imagesReady, setImagesReady] = useState(false);
   const [loadingProgress, setLoadingProgress] = useState(0);
+
+  // Simpan Image objects (sudah ter-decode) — bukan hanya URL
+  const decodedImagesRef = useRef([]);
 
   // Refs untuk nilai transform — dibaca oleh useTransform setiap frame
   // (dipakai ref bukan state agar tidak re-render saat resize)
@@ -52,7 +58,7 @@ const HeroSection = ({ heroRef, scrollYProgress }) => {
     return () => window.removeEventListener('resize', updateTransforms);
   }, [updateTransforms]);
 
-  // Preload images
+  // Kumpulkan URL gambar via import.meta.glob
   const imageModules = useMemo(() => {
     return import.meta.glob('/src/assets/images/foto animasi/*.png', { eager: true });
   }, []);
@@ -67,15 +73,20 @@ const HeroSection = ({ heroRef, scrollYProgress }) => {
     return entries.slice(0, TOTAL_FRAMES).map(([, module]) => module.default);
   }, [imageModules]);
 
+  // ── KUNCI PERFORMA: Preload sebagai HTMLImageElement (ter-decode di memori) ──
+  // drawImage(img) jauh lebih cepat dari swap img.src karena tidak perlu decode.
   useEffect(() => {
     if (sortedImageUrls.length === 0) return;
+
     let loadedCount = 0;
     const total = sortedImageUrls.length;
+    const images = new Array(total);
 
-    const preloadImage = (url) =>
+    const preloadImage = (url, index) =>
       new Promise((resolve) => {
         const img = new Image();
         const done = () => {
+          images[index] = img; // simpan Image object, bukan URL
           loadedCount++;
           setLoadingProgress(Math.round((loadedCount / total) * 100));
           resolve();
@@ -85,23 +96,62 @@ const HeroSection = ({ heroRef, scrollYProgress }) => {
         img.src = url;
       });
 
-    Promise.all(sortedImageUrls.map(preloadImage)).then(() => setImagesReady(true));
-  }, [sortedImageUrls]);
+    Promise.all(sortedImageUrls.map((url, i) => preloadImage(url, i))).then(() => {
+      decodedImagesRef.current = images;
+      setImagesReady(true);
 
-  // Update background frame langsung di DOM (tanpa re-render)
-  useEffect(() => {
-    const unsubscribe = scrollYProgress.on('change', (latest) => {
-      const idx = Math.max(0, Math.min(Math.round(latest * (TOTAL_FRAMES - 1)), TOTAL_FRAMES - 1));
-      if (imageRef.current && sortedImageUrls[idx]) {
-        imageRef.current.src = sortedImageUrls[idx];
+      // Render frame pertama ke canvas segera setelah siap
+      const canvas = canvasRef.current;
+      if (canvas && images[0]) {
+        canvas.width  = canvas.offsetWidth  || window.innerWidth;
+        canvas.height = canvas.offsetHeight || window.innerHeight;
+        const ctx = canvas.getContext('2d');
+        ctx.drawImage(images[0], 0, 0, canvas.width, canvas.height);
       }
     });
+  }, [sortedImageUrls]);
+
+  // Resize canvas saat window berubah ukuran
+  useEffect(() => {
+    const handleResize = () => {
+      const canvas = canvasRef.current;
+      if (!canvas) return;
+      const images = decodedImagesRef.current;
+      // Simpan index frame saat ini agar bisa di-redraw setelah resize
+      const currentIdx = canvas.dataset.frameIdx ? parseInt(canvas.dataset.frameIdx) : 0;
+      canvas.width  = canvas.offsetWidth;
+      canvas.height = canvas.offsetHeight;
+      if (images[currentIdx]) {
+        const ctx = canvas.getContext('2d');
+        ctx.drawImage(images[currentIdx], 0, 0, canvas.width, canvas.height);
+      }
+    };
+    window.addEventListener('resize', handleResize);
+    return () => window.removeEventListener('resize', handleResize);
+  }, []);
+
+  // ── Update canvas frame langsung di scroll (tanpa React re-render) ──
+  // Ini dilakukan lewat Canvas API: tidak ada setState, tidak ada DOM swap.
+  useEffect(() => {
+    const unsubscribe = scrollYProgress.on('change', (latest) => {
+      const canvas = canvasRef.current;
+      const images = decodedImagesRef.current;
+      if (!canvas || images.length === 0) return;
+
+      const idx = Math.max(0, Math.min(Math.round(latest * (TOTAL_FRAMES - 1)), TOTAL_FRAMES - 1));
+      if (!images[idx]) return;
+
+      // Simpan index agar resize handler bisa redraw frame yang benar
+      canvas.dataset.frameIdx = idx;
+
+      const ctx = canvas.getContext('2d');
+      // drawImage: hanya copy pixel → ZERO DECODE OVERHEAD
+      ctx.drawImage(images[idx], 0, 0, canvas.width, canvas.height);
+    });
     return () => unsubscribe();
-  }, [scrollYProgress, sortedImageUrls]);
+  }, [scrollYProgress]);
 
   // ─── Transform functions ─────────────────────────────────────────────────
-  // Membaca dari ref → selalu gunakan nilai terbaru (termasuk setelah resize)
-
   // Logo bergerak naik ke posisi navbar
   const logoY = useTransform(scrollYProgress, (v) => {
     const t = Math.max(0, Math.min(v / SWAP_PROGRESS, 1));
@@ -111,7 +161,6 @@ const HeroSection = ({ heroRef, scrollYProgress }) => {
   // Logo mengecil sampai TEPAT sama dengan ukuran navbar logo
   const logoScale = useTransform(scrollYProgress, (v) => {
     const t = Math.max(0, Math.min(v / SWAP_PROGRESS, 1));
-    // Interpolasi linear: 1 (hero size) → scaleEnd (navbar size)
     return 1 + (scaleEndRef.current - 1) * t;
   });
 
@@ -122,19 +171,12 @@ const HeroSection = ({ heroRef, scrollYProgress }) => {
   );
 
   // ─── Text & Button Animation ─────────────────────────────────────────────────
-  // Muncul fade in dari bawah ke atas SETELAH navbar selesai (progress 0.52)
-  // Timing:
-  //  - 0.52 : mulai muncul (logo swap sudah selesai, navbar links sudah fade in)
-  //  - 0.60 : fully visible
-  //  - tetap visible sampai akhir scroll
-
   const textOpacity = useTransform(
     scrollYProgress,
     [TEXT_START, TEXT_FULL],
     [0, 1]
   );
 
-  // Slide up: mulai 40px di bawah, naik ke posisi asli
   const textTranslateY = useTransform(
     scrollYProgress,
     [TEXT_START, TEXT_FULL],
@@ -156,22 +198,19 @@ const HeroSection = ({ heroRef, scrollYProgress }) => {
           </div>
         )}
 
-        {/* Animated background */}
+        {/* Canvas animation — menggantikan <img> swap */}
         <div className="hero-animation-container">
-          {imagesReady && sortedImageUrls.length > 0 && (
-            <img
-              ref={imageRef}
-              src={sortedImageUrls[0]}
-              alt="Animation frame"
-              className="hero-animation-image"
-            />
-          )}
+          <canvas
+            ref={canvasRef}
+            className="hero-animation-canvas"
+            style={{ display: imagesReady ? 'block' : 'none' }}
+          />
           <div className="hero-blue-overlay"></div>
           <div className="hero-gradient-overlay"></div>
           <div className="hero-bottom-gradient"></div>
         </div>
 
-        {/* Logo hero — selalu di DOM, visibility dikontrol MotionValue (instan, tanpa fade) */}
+        {/* Logo hero — selalu di DOM, visibility dikontrol MotionValue */}
         <div className="hero-content-wrapper">
           <motion.div
             className="hero-content"
@@ -187,13 +226,13 @@ const HeroSection = ({ heroRef, scrollYProgress }) => {
                 src={logoTunafy}
                 alt="Tunafy Logo"
                 className="hero-logo"
-                onLoad={updateTransforms} // hitung ulang scale setelah gambar termuat
+                onLoad={updateTransforms}
               />
             </div>
           </motion.div>
         </div>
 
-        {/* Text & Button - muncul dengan fade in dari bawah mulai frame 70 */}
+        {/* Text & Button - muncul dengan fade in dari bawah */}
         <div className="hero-text-wrapper">
           <motion.div
             className="hero-text-container"
