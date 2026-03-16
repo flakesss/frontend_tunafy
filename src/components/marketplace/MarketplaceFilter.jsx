@@ -64,11 +64,22 @@ const FilterSection = ({ title, children, defaultOpen = true }) => {
 }
 
 const MarketplaceFilter = ({ filters, onChange }) => {
+  const [isMobileOpen, setIsMobileOpen] = useState(false)
+
   return (
     <aside className="marketplace-filter">
-      <h3 className="filter-heading">Filters</h3>
+      {/* Header untuk mobile toggle */}
+      <div 
+        className={`filter-mobile-header ${isMobileOpen ? 'open' : ''}`}
+        onClick={() => setIsMobileOpen(!isMobileOpen)}
+      >
+        <h3 className="filter-heading">Filters</h3>
+        <ChevronIcon open={isMobileOpen} className="filter-mobile-chevron" />
+      </div>
 
-      {/* Species */}
+      {/* Container sections - hidden on mobile when closed */}
+      <div className={`filter-sections-container ${isMobileOpen ? 'mobile-open' : 'mobile-closed'}`}>
+        {/* Species */}
       <FilterSection title="Species">
         <CheckboxItem
           label="All"
@@ -119,6 +130,11 @@ const MarketplaceFilter = ({ filters, onChange }) => {
           onChange={() => onChange('grade', 'all')}
         />
         <CheckboxItem
+          label="A+"
+          checked={filters.grade.includes('A+')}
+          onChange={() => onChange('grade', 'A+')}
+        />
+        <CheckboxItem
           label="A"
           checked={filters.grade.includes('A')}
           onChange={() => onChange('grade', 'A')}
@@ -139,6 +155,7 @@ const MarketplaceFilter = ({ filters, onChange }) => {
           onChange={() => onChange('grade', 'C')}
         />
       </FilterSection>
+      </div>
     </aside>
   )
 }

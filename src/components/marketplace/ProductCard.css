@@ -1,0 +1,170 @@
+/* ProductCard.css */
+/* Matches Figma spec: 318×463 card - sekarang responsif */
+
+.product-card {
+  width: 100%;
+  max-width: 318px;
+  height: max-content;
+  background: #ffffff;
+  border-radius: 16px;
+  overflow: hidden;
+  box-shadow: 0 4px 24px rgba(0, 0, 0, 0.10);
+  display: flex;
+  flex-direction: column;
+  flex-shrink: 0;
+  transition: transform 0.22s ease, box-shadow 0.22s ease;
+}
+
+.product-card:hover {
+  transform: translateY(-4px);
+  box-shadow: 0 12px 36px rgba(2, 115, 255, 0.16);
+}
+
+/* ── Image Area ── */
+.product-card__image-wrap {
+  position: relative;
+  width: 100%;
+  height: 189px;
+  flex-shrink: 0;
+  overflow: hidden;
+  border-radius: 16px 16px 0 0;
+}
+
+.product-card__image {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  border-radius: 16px 16px 0 0;
+  display: block;
+}
+
+/* Dark gradient overlay — bottom of image */
+.product-card__gradient {
+  position: absolute;
+  inset: 0;
+  background: linear-gradient(180deg, rgba(255, 255, 255, 0) 0%, #002C60 100%);
+  border-radius: 16px 16px 0 0;
+  pointer-events: none;
+}
+
+/* Tags row — di dalam body, setelah nama dan lokasi */
+.product-card__tags {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 6px;
+}
+
+.product-card__tag {
+  background: #0273FF;
+  border-radius: 6px;
+  padding: 6px 8px;
+  font-family: 'Montserrat', sans-serif;
+  font-weight: 500;
+  font-size: 13px;
+  line-height: 16px;
+  color: #ffffff;
+  white-space: nowrap;
+}
+
+/* ── Card Body ── */
+.product-card__body {
+  flex: 1;
+  display: flex;
+  flex-direction: column;
+  padding: 14px 16px 16px;
+  gap: 6px;
+}
+
+/* Name + Location */
+.product-card__info {
+  display: flex;
+  flex-direction: column;
+  gap: 4px;
+}
+
+.product-card__name {
+  font-family: 'Montserrat', sans-serif;
+  font-weight: 700;
+  font-size: 22px;
+  line-height: 27px;
+  color: #0273FF;
+}
+
+.product-card__location {
+  display: flex;
+  align-items: center;
+  gap: 4px;
+  font-family: 'Montserrat', sans-serif;
+  font-weight: 500;
+  font-size: 13px;
+  line-height: 16px;
+  color: #0273FF;
+}
+
+/* Price */
+.product-card__price-wrap {
+  display: flex;
+  flex-direction: column;
+  gap: 2px;
+}
+
+.product-card__price {
+  display: flex;
+  align-items: baseline;
+  gap: 4px;
+}
+
+.product-card__price-currency,
+.product-card__price-amount {
+  font-family: 'Montserrat', sans-serif;
+  font-weight: 600;
+  font-size: 24px;
+  line-height: 29px;
+  color: #000000;
+}
+
+.product-card__price-label {
+  font-family: 'Montserrat', sans-serif;
+  font-weight: 500;
+  font-size: 16px;
+  line-height: 20px;
+  color: #000000;
+}
+
+/* ── Buy Button ── */
+.product-card__buy-btn {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 6px;
+  width: 100%;
+  height: 44px;
+  background: #F6AA17;
+  border-radius: 12px;
+  border: none;
+  cursor: pointer;
+  margin-top: 12px;
+  transition: background 0.18s ease, transform 0.15s ease;
+}
+
+.product-card__buy-btn:hover {
+  background: #e09c0c;
+  transform: scale(1.02);
+}
+
+.product-card__buy-btn:active {
+  transform: scale(0.98);
+}
+
+.product-card__buy-btn span {
+  font-family: 'Montserrat', sans-serif;
+  font-weight: 600;
+  font-size: 18px;
+  line-height: 22px;
+  color: #ffffff;
+}
+
+.product-card__buy-btn svg {
+  width: 18px;
+  height: 18px;
+}

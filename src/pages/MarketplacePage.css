@@ -13,7 +13,7 @@
   color: #000000;
 }
 
-/* Layout 2 kolom: [filter sidebar] [area produk] */
+/* Layout 2 kolom: [filter sidebar] [area konten] */
 .marketplace-layout {
   display: flex;
   align-items: flex-start;
@@ -22,9 +22,151 @@
   padding: 48px 54px 80px 24px;
 }
 
-/* Area produk mengisi sisa ruang */
-.marketplace-products {
+/* Area konten - kanan (header + produk) */
+.marketplace-content {
   flex: 1;
+  display: flex;
+  flex-direction: column;
+}
+
+/* Header section - di atas produk */
+.marketplace-header {
+  margin-bottom: 24px;
+}
+
+.marketplace-header__title {
+  font-family: 'Montserrat', sans-serif;
+  font-weight: 700;
+  font-size: 32px;
+  line-height: 39px;
+  color: #0373FF;
+  margin: 0 0 6px 0;
+}
+
+.marketplace-header__description {
+  font-family: 'Montserrat', sans-serif;
+  font-weight: 500;
+  font-size: 16px;
+  line-height: 20px;
+  color: #000F1E;
+  margin: 0;
+  max-width: 756px;
+}
+
+/* Toolbar - Active filters + Sort dropdown */
+.marketplace-toolbar {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  margin-bottom: 16px;
+}
+
+.marketplace-toolbar__filters {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  flex-wrap: wrap;
+}
+
+.marketplace-toolbar__label {
+  font-family: 'Montserrat', sans-serif;
+  font-weight: 600;
+  font-size: 16px;
+  line-height: 20px;
+  color: #000000;
+}
+
+.marketplace-toolbar__filter-tag {
+  display: inline-flex;
+  align-items: center;
+  padding: 4px 10px;
+  background: #E8F2FF;
+  border-radius: 4px;
+  font-family: 'Montserrat', sans-serif;
+  font-weight: 500;
+  font-size: 12px;
+  line-height: 15px;
+  color: #0273FF;
+}
+
+.marketplace-toolbar__filter-tag--all {
+  background: #F0F0F0;
+  color: #666666;
+}
+
+/* Area produk dengan CSS Grid - 4 kolom responsif */
+.marketplace-products {
+  display: grid;
+  grid-template-columns: repeat(4, 1fr);
+  gap: 24px;
+  align-content: start;
   min-height: 400px;
+  width: 100%;
+}
+
+/* Batasi lebar maksimum card agar tidak terlalu besar di layar besar */
+.marketplace-products > * {
+  max-width: 318px;
+  justify-self: stretch;
+}
+
+/* Empty state styling */
+.marketplace-products__empty {
+  grid-column: 1 / -1;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  min-height: 300px;
+  font-family: 'Montserrat', sans-serif;
+  font-size: 16px;
+  color: #666666;
+}
+
+/* Responsive adjustments - menggunakan min-width untuk transisi kolom */
+
+/* 3 kolom ketika lebar tersedia kurang dari 4 kolom penuh */
+@media (max-width: 1400px) {
+  .marketplace-products {
+    grid-template-columns: repeat(3, 1fr);
+  }
+}
+
+/* 2 kolom untuk tablet landscape */
+@media (max-width: 1100px) {
+  .marketplace-layout {
+    padding: 32px 32px 60px 16px;
+    gap: 24px;
+  }
+  
+  .marketplace-products {
+    grid-template-columns: repeat(2, 1fr);
+  }
+}
+
+/* Layout kolom tunggal untuk tablet portrait */
+@media (max-width: 900px) {
+  .marketplace-layout {
+    flex-direction: column;
+    padding: 24px 24px 48px 24px;
+  }
+  
+  .marketplace-products {
+    grid-template-columns: repeat(2, 1fr);
+  }
+}
+
+/* 1 kolom untuk mobile */
+@media (max-width: 600px) {
+  .marketplace-layout {
+    padding: 16px 16px 32px 16px;
+  }
+  
+  .marketplace-products {
+    grid-template-columns: 1fr;
+  }
+  
+  .marketplace-products > * {
+    max-width: 100%;
+  }
 }
 

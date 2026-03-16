@@ -1,4 +1,5 @@
 import './BandaSeaSection.css';
+import { useTranslation } from 'react-i18next';
 import bgPhoto from '../../assets/images/Tangkapan-Tuna-di-Perairan-Maluku-Utara.-Foto-USAID-for-Kieraha.com_.jpg';
 import useCountAnimation from '../../hooks/useCountAnimation';
 
@@ -38,11 +39,12 @@ const StatCard = ({ endValue, label, suffix = '', duration = 2000 }) => {
 };
 
 const BandaSeaSection = () => {
+  const { t } = useTranslation();
   const statsData = [
-    { endValue: 300, suffix: '+', label: 'Traceable Fishers', duration: 2000 },
-    { endValue: '5.000', suffix: '+', label: 'Daily Tuna Logistics', duration: 2500 },
-    { endValue: 98, suffix: '%', label: 'Average Quality', duration: 1800 },
-    { endValue: 0, suffix: '%', label: 'Illegal Fishing', duration: 1500 },
+    { endValue: 300, suffix: '+', label: t('bandaSea.stats.fishers'), duration: 2000 },
+    { endValue: '5.000', suffix: '+', label: t('bandaSea.stats.logistics'), duration: 2500 },
+    { endValue: 98, suffix: '%', label: t('bandaSea.stats.quality'), duration: 1800 },
+    { endValue: 0, suffix: '%', label: t('bandaSea.stats.illegal'), duration: 1500 },
   ];
 
   return (
@@ -59,10 +61,10 @@ const BandaSeaSection = () => {
       {/* Content */}
       <div className="banda-content">
         <h2 className="banda-heading">
-          Connecting Indonesian Fisheries to Global
+          {t('bandaSea.heading')}
         </h2>
         <p className="banda-body">
-          We empower traceable and sustainable seafood commerce in the Coral Triangle, facilitating the Southeast Asian region to directly serve markets like Japan ensured with ease of access and complete legality.
+          {t('bandaSea.body')}
         </p>
 
         {/* Stats Cards dengan animasi counting */}
@@ -80,15 +82,15 @@ const BandaSeaSection = () => {
 
         {/* CTA Email Block */}
         <div className="banda-cta">
-          <h3 className="banda-cta-title">Fresh Tuna Direct From Maluku</h3>
-          <p className="banda-cta-subtitle">Traceable, Trusted, and Legal</p>
+          <h3 className="banda-cta-title">{t('bandaSea.ctaTitle')}</h3>
+          <p className="banda-cta-subtitle">{t('bandaSea.ctaSubtitle')}</p>
           <div className="banda-cta-form">
             <input
               className="banda-cta-input"
               type="email"
-              placeholder="Enter your email"
+              placeholder={t('bandaSea.emailPlaceholder')}
             />
-            <button className="banda-cta-btn">Get Started</button>
+            <button className="banda-cta-btn">{t('bandaSea.getStarted')}</button>
           </div>
         </div>
       </div>

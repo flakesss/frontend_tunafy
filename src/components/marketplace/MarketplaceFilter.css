@@ -8,17 +8,39 @@
   padding: 0;
 }
 
-/* ── "Filters" heading ───────────────────────────────── */
+/* ── "Filters" heading & Mobile Toggle ─────────────────── */
+.filter-mobile-header {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  margin-bottom: 28px;
+  cursor: default;
+}
+
 .filter-heading {
   font-family: 'Montserrat', sans-serif;
   font-weight: 600;
   font-size: 16px;
   line-height: 20px;
   color: #000F1E;
-  margin: 0 0 28px 0;
+  margin: 0;
+}
+
+/* Sembunyikan chevron utama di desktop */
+.filter-mobile-header svg {
+  display: none;
+  transition: transform 0.2s ease;
+}
+
+.filter-mobile-header.open svg {
+  transform: rotate(180deg);
 }
 
 /* ── Section ─────────────────────────────────────────── */
+.filter-sections-container {
+  display: block;
+}
+
 .filter-section {
   margin-bottom: 24px;
   border-bottom: 1px solid #F0F0F0;
@@ -114,4 +136,42 @@
 .filter-checkbox-item:hover .filter-checkbox:not(.checked) {
   border-color: #0273FF;
   background: rgba(2, 115, 255, 0.06);
+}
+
+/* ── Responsive ─────────────────────────────────────────── */
+@media (max-width: 900px) {
+  .marketplace-filter {
+    width: 100%;
+    margin-bottom: 16px;
+  }
+
+  .filter-mobile-header {
+    cursor: pointer;
+    background: #F8FBFF;
+    border: 1.5px solid #E5EDFF;
+    border-radius: 12px;
+    padding: 14px 20px;
+    margin-bottom: 0; /* no space if closed */
+  }
+
+  .filter-mobile-header.open {
+    margin-bottom: 24px;
+    border-color: #0373FF;
+    background: #EBF4FF;
+  }
+
+  /* Munculkan chevron utama di mobile */
+  .filter-mobile-header svg {
+    display: block;
+  }
+
+  /* Container disembunyikan jika ditutup di mobile */
+  .filter-sections-container.mobile-closed {
+    display: none;
+  }
+
+  .filter-sections-container.mobile-open {
+    display: block;
+    padding: 0 4px; /* Slight padding for the content when open */
+  }
 }

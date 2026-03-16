@@ -1,10 +1,18 @@
 import { useRef, useMemo, useState, useEffect, useCallback } from 'react';
+import { useNavigate } from 'react-router-dom';
 import { motion, useTransform } from 'framer-motion';
+import { useTranslation } from 'react-i18next';
 import './HeroSection.css';
 import logoTunafy from '../../assets/images/logo tunafy.png';
 
 const TOTAL_FRAMES = 160;
-const NAVBAR_LOGO_WIDTH = 156;
+// Lebar logo navbar sesuai breakpoint CSS Navbar.css
+const getNavbarLogoWidth = () => {
+  const w = window.innerWidth;
+  if (w <= 480) return 100;
+  if (w <= 992) return 120;
+  return 156;
+};
 const NAVBAR_HEIGHT = 75;
 const SWAP_PROGRESS = 0.5;
 const TEXT_START = 0.52;
@@ -20,6 +28,8 @@ const TEXT_FULL  = 0.60;
  * 4. Framer Motion scroll listener berjalan di compositor thread (passive)
  */
 const HeroSection = ({ heroRef, scrollYProgress }) => {
+  const navigate = useNavigate();
+  const { t } = useTranslation();
   const canvasRef   = useRef(null);
   const heroLogoRef = useRef(null);
 
@@ -39,7 +49,7 @@ const HeroSection = ({ heroRef, scrollYProgress }) => {
     const vh = window.innerHeight;
     translateYEndRef.current = -(vh / 2 - NAVBAR_HEIGHT / 2);
     if (heroLogoRef.current && heroLogoRef.current.offsetWidth > 0) {
-      scaleEndRef.current = NAVBAR_LOGO_WIDTH / heroLogoRef.current.offsetWidth;
+      scaleEndRef.current = getNavbarLogoWidth() / heroLogoRef.current.offsetWidth;
     }
   }, []);
 
@@ -75,12 +85,23 @@ const HeroSection = ({ heroRef, scrollYProgress }) => {
     canvas.width  = canvas.offsetWidth  || window.innerWidth;
     canvas.height = canvas.offsetHeight || window.innerHeight;
 
-    // alpha: false     → browser skip compositing transparency layer
-    // desynchronized: true → GPU renders async, tidak nunggu CPU
     ctxRef.current = canvas.getContext('2d', {
       alpha: false,
       desynchronized: true,
     });
+  }, []);
+
+  // Helper: drawImage dengan object-fit: cover (aspek rasio tetap terjaga)
+  const drawCover = useCallback((ctx, bitmap, canvasW, canvasH) => {
+    if (!ctx || !bitmap) return;
+    const bw = bitmap.width;
+    const bh = bitmap.height;
+    const scale = Math.max(canvasW / bw, canvasH / bh);
+    const sw = bw * scale;
+    const sh = bh * scale;
+    const sx = (canvasW - sw) / 2;
+    const sy = (canvasH - sh) / 2;
+    ctx.drawImage(bitmap, sx, sy, sw, sh);
   }, []);
 
   // ── FIX #3: createImageBitmap untuk decode off main thread ───────────────
@@ -126,7 +147,7 @@ const HeroSection = ({ heroRef, scrollYProgress }) => {
       const canvas = canvasRef.current;
       const ctx    = ctxRef.current;
       if (canvas && ctx && bitmaps[0]) {
-        ctx.drawImage(bitmaps[0], 0, 0, canvas.width, canvas.height);
+        drawCover(ctx, bitmaps[0], canvas.width, canvas.height);
       }
     });
   }, [sortedImageUrls, initCanvas]);
@@ -142,7 +163,7 @@ const HeroSection = ({ heroRef, scrollYProgress }) => {
       const bitmap  = bitmapsRef.current[idx];
       const ctx     = ctxRef.current;
       if (ctx && bitmap) {
-        ctx.drawImage(bitmap, 0, 0, canvas.width, canvas.height);
+        drawCover(ctx, bitmap, canvas.width, canvas.height);
       }
     };
     window.addEventListener('resize', handleResize, { passive: true }); // Fix #4
@@ -165,8 +186,8 @@ const HeroSection = ({ heroRef, scrollYProgress }) => {
       if (!bitmap) return;
 
       canvas.dataset.frameIdx = idx;
-      // drawImage(ImageBitmap) = hanya blitting pixel → tidak ada decode
-      ctx.drawImage(bitmap, 0, 0, canvas.width, canvas.height);
+      // drawCover: object-fit cover untuk mempertahankan aspek rasio
+      drawCover(ctx, bitmap, canvas.width, canvas.height);
     });
     return () => unsubscribe();
   }, [scrollYProgress]);
@@ -193,11 +214,23 @@ const HeroSection = ({ heroRef, scrollYProgress }) => {
 
         {!imagesReady && (
           <div className="hero-loading">
-            <div className="loading-spinner"></div>
-            <p>Loading animation... {loadingProgress}%</p>
-            <div className="loading-bar">
-              <div className="loading-bar-fill" style={{ width: `${loadingProgress}%` }}></div>
+            {/* Tuna Custom Silhouette Loading */}
+            <div className="tuna-loader">
+              <svg viewBox="0 0 100 50" xmlns="http://www.w3.org/2000/svg" className="tuna-svg">
+                <defs>
+                  <linearGradient id="tuna-grad" x1="0%" y1="0%" x2="100%" y2="0%">
+                    <stop offset={`${loadingProgress}%`} stopColor="#0373FF" />
+                    <stop offset={`${loadingProgress}%`} stopColor="#E5EDFF" />
+                  </linearGradient>
+                </defs>
+                {/* Simplified Tuna Silhouette Path */}
+                <path
+                  d="M10,25 C20,10 40,5 60,15 C75,20 85,15 95,10 L90,25 L95,40 C85,35 75,30 60,35 C40,45 20,40 10,25 Z M90,25 L100,25"
+                  fill="url(#tuna-grad)"
+                />
+              </svg>
             </div>
+            <p className="loading-text">Menyiapkan Pengalaman Tuna Terbaik... {loadingProgress}%</p>
           </div>
         )}
 
@@ -235,11 +268,11 @@ const HeroSection = ({ heroRef, scrollYProgress }) => {
             className="hero-text-container"
             style={{ opacity: textOpacity, y: textTranslateY }}
           >
-            <h1 className="hero-title">Sourcing Premium Tuna Made Simple</h1>
+            <h1 className="hero-title">{t('hero.title')}</h1>
             <p className="hero-description">
-              The smartest way to buy Premium Grade Tuna. Fully traceable, legally compliant, and delivered globally.
+              {t('hero.description')}
             </p>
-            <button className="hero-cta-button">View Product Catalog</button>
+            <button className="hero-cta-button" onClick={() => navigate('/marketplace')}>{t('hero.cta')}</button>
           </motion.div>
         </div>
 

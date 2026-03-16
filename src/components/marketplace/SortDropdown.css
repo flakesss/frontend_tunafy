@@ -1,0 +1,92 @@
+/* SortDropdown.css */
+/* Matches Figma spec: 170x25px dropdown with blue border */
+
+.sort-dropdown {
+  position: relative;
+  display: inline-block;
+}
+
+.sort-dropdown__button {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  width: auto;
+  min-width: 170px;
+  height: 25px;
+  padding: 0 10px;
+  background: #ffffff;
+  border: 0.6px solid rgba(3, 115, 255, 0.4);
+  border-radius: 4px;
+  cursor: pointer;
+  transition: border-color 0.2s ease;
+  white-space: nowrap;
+}
+
+.sort-dropdown__button:hover {
+  border-color: rgba(3, 115, 255, 0.8);
+}
+
+.sort-dropdown__label {
+  font-family: 'Montserrat', sans-serif;
+  font-weight: 500;
+  font-size: 11px;
+  line-height: 13px;
+  color: #0054AD;
+  flex-shrink: 0;
+}
+
+.sort-dropdown__value {
+  font-family: 'Montserrat', sans-serif;
+  font-weight: 500;
+  font-size: 11px;
+  line-height: 13px;
+  color: #0054AD;
+  flex-shrink: 0;
+}
+
+.sort-dropdown__arrow {
+  margin-left: auto;
+  flex-shrink: 0;
+  transition: transform 0.2s ease;
+}
+
+.sort-dropdown__arrow--open {
+  transform: rotate(180deg);
+}
+
+/* Dropdown menu */
+.sort-dropdown__menu {
+  position: absolute;
+  top: 100%;
+  right: 0;
+  margin-top: 4px;
+  min-width: 170px;
+  background: #ffffff;
+  border: 0.6px solid rgba(3, 115, 255, 0.4);
+  border-radius: 4px;
+  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
+  list-style: none;
+  padding: 4px 0;
+  margin: 4px 0 0 0;
+  z-index: 100;
+}
+
+.sort-dropdown__option {
+  padding: 6px 12px;
+  font-family: 'Montserrat', sans-serif;
+  font-weight: 500;
+  font-size: 11px;
+  line-height: 13px;
+  color: #0054AD;
+  cursor: pointer;
+  transition: background 0.15s ease;
+}
+
+.sort-dropdown__option:hover {
+  background: rgba(3, 115, 255, 0.1);
+}
+
+.sort-dropdown__option--selected {
+  background: rgba(3, 115, 255, 0.15);
+  font-weight: 600;
+}

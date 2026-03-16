@@ -24,6 +24,7 @@
   max-width: 1232px;
   margin: 0 auto;
   height: 43px;
+  position: relative; /* diperlukan agar logo absolute selalu center */
 }
 
 /* Navigation Links - Left Side */
@@ -127,43 +128,169 @@
   pointer-events: auto;
 }
 
-/* Language Selector */
+/* ─── Language Selector ─────────────────────────── */
 .navbar-language {
+  position: relative;
+  display: flex;
+  align-items: center;
+}
+
+.navbar-lang-btn {
   display: flex;
   align-items: center;
   gap: 6px;
+  background: rgba(255, 255, 255, 0.15);
+  border: 1.5px solid rgba(255, 255, 255, 0.35);
+  border-radius: 20px;
+  padding: 5px 10px 5px 6px;
   cursor: pointer;
-  padding: 4px;
-  transition: opacity 0.3s ease;
+  transition: background 0.2s ease, border-color 0.2s ease;
+  height: 36px;
 }
 
-.navbar-language:hover {
-  opacity: 0.8;
+.navbar-lang-btn:hover {
+  background: rgba(255, 255, 255, 0.25);
+  border-color: rgba(255, 255, 255, 0.6);
 }
 
-.language-flag {
-  width: 34px;
-  height: 34px;
+.navbar-lang-btn .flag-icon {
+  width: 22px;
+  height: 22px;
   border-radius: 50%;
-  overflow: hidden;
-  display: flex;
-  align-items: center;
-  justify-content: center;
+  object-fit: cover;
+  flex-shrink: 0;
 }
 
-.flag-icon {
-  width: 100%;
-  height: 100%;
-  object-fit: cover;
+.navbar-lang-label {
+  font-family: 'Montserrat', sans-serif;
+  font-weight: 700;
+  font-size: 12px;
+  color: #ffffff;
+  letter-spacing: 0.5px;
 }
 
 .arrow-down-icon {
-  width: 24px;
-  height: 24px;
+  transition: transform 0.2s ease;
+  flex-shrink: 0;
 }
+
+.arrow-down-icon.open {
+  transform: rotate(180deg);
+}
+
+/* Language Dropdown */
+.navbar-lang-dropdown {
+  position: absolute;
+  top: calc(100% + 10px);
+  right: 0;
+  min-width: 150px;
+  background: white;
+  border-radius: 14px;
+  box-shadow: 0 8px 30px rgba(0, 0, 0, 0.15);
+  overflow: hidden;
+  animation: dropdown-in 0.15s ease;
+  z-index: 200;
+}
+
+.navbar-lang-option {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  width: 100%;
+  padding: 11px 14px;
+  font-size: 0.875rem;
+  font-weight: 500;
+  font-family: 'Montserrat', sans-serif;
+  color: #374151;
+  background: none;
+  border: none;
+  cursor: pointer;
+  transition: background 0.15s ease, color 0.15s ease;
+  text-align: left;
+}
+
+.navbar-lang-option:hover {
+  background: #F3F8FF;
+  color: #0273FF;
+}
+
+.navbar-lang-option.active {
+  color: #0273FF;
+  font-weight: 700;
+}
+
+.navbar-lang-option .flag-icon {
+  width: 22px;
+  height: 22px;
+  border-radius: 50%;
+  object-fit: cover;
+  flex-shrink: 0;
+}
+
+.navbar-lang-option svg {
+  margin-left: auto;
+  color: #0273FF;
+}
+
+/* Mobile Language Switcher */
+.navbar-mobile-lang {
+  display: flex;
+  gap: 8px;
+  padding: 10px 24px 4px;
+  border-top: 1px solid rgba(255,255,255,0.15);
+  margin-top: 4px;
+}
+
+.navbar-mobile-lang-btn {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  background: rgba(255, 255, 255, 0.1);
+  border: 1.5px solid rgba(255, 255, 255, 0.25);
+  border-radius: 12px;
+  padding: 8px 14px;
+  font-size: 0.875rem;
+  font-weight: 600;
+  font-family: 'Montserrat', sans-serif;
+  color: rgba(255,255,255,0.8);
+  cursor: pointer;
+  transition: all 0.2s ease;
+  flex: 1;
+  justify-content: center;
+}
+
+.navbar-mobile-lang-btn .flag-icon {
+  width: 20px;
+  height: 20px;
+  border-radius: 50%;
+  object-fit: cover;
+}
+
+.navbar-mobile-lang-btn:hover,
+.navbar-mobile-lang-btn.active {
+  background: rgba(255, 255, 255, 0.22);
+  border-color: rgba(255, 255, 255, 0.6);
+  color: #ffffff;
+}
+
+.navbar-mobile-lang-btn.active {
+  border-color: #F6AA17;
+  color: #F6AA17;
+}
+
+@media (max-width: 768px) {
+  .navbar-language {
+    display: none;
+  }
+}
+
+
 
 /* Login Button */
 .navbar-login-btn {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
   width: 140px;
   height: 43px;
   background: #FFFFFF;
@@ -173,10 +300,15 @@
   font-style: normal;
   font-weight: 600;
   font-size: 16px;
-  line-height: 24px;
+  line-height: 1;
   color: #000000;
+  text-decoration: none;
   cursor: pointer;
   transition: all 0.3s ease;
+  white-space: nowrap;
+  padding: 0;
+  margin: 0;
+  box-sizing: border-box;
 }
 
 .navbar-login-btn:hover {
@@ -217,21 +349,29 @@
 }
 
 @media (max-width: 768px) {
+  /* Sembunyikan nav links desktop — navigasi via hamburger menu */
   .navbar-links {
     display: none;
   }
 
-  .navbar-logo-container {
-    position: static;
-    transform: none;
-  }
+  /* Logo TETAP di tengah menggunakan position: absolute */
+  /* Tidak perlu override — default CSS sudah position: absolute; left: 50%; transform: translateX(-50%) */
 
+  /* Pastikan ada cukup ruang di kiri untuk hamburger, dan logo tetap center */
   .navbar-container {
     justify-content: space-between;
   }
 
+  /* Sembunyikan language selector di mobile */
   .navbar-language {
     display: none;
+  }
+
+  /* Login button lebih kecil di mobile */
+  .navbar-login-btn {
+    width: 80px;
+    height: 38px;
+    font-size: 13px;
   }
 }
 
@@ -251,3 +391,233 @@
     border-radius: 12px;
   }
 }
+
+/* ─── Hamburger Button ─────────────────────────── */
+.navbar-hamburger {
+  display: none;
+  background: none;
+  border: none;
+  cursor: pointer;
+  padding: 4px;
+  border-radius: 8px;
+  transition: background 0.2s ease;
+  align-items: center;
+  justify-content: center;
+}
+
+.navbar-hamburger.visible {
+  opacity: 1;
+  pointer-events: auto;
+}
+
+.navbar-hamburger.hidden {
+  opacity: 0;
+  pointer-events: none;
+}
+
+.navbar-hamburger:hover {
+  background: rgba(255, 255, 255, 0.15);
+}
+
+@media (max-width: 768px) {
+  .navbar-hamburger {
+    display: flex;
+  }
+}
+
+/* ─── Mobile Overlay Menu ─────────────────────── */
+.navbar-mobile-menu {
+  position: absolute;
+  top: 75px;
+  left: 0;
+  right: 0;
+  background: #0273FF;
+  display: flex;
+  flex-direction: column;
+  padding: 12px 0 20px;
+  box-shadow: 0 8px 24px rgba(0, 0, 0, 0.15);
+  animation: mobileMenuIn 0.22s ease;
+  z-index: 999;
+}
+
+@keyframes mobileMenuIn {
+  from { opacity: 0; transform: translateY(-8px); }
+  to   { opacity: 1; transform: translateY(0); }
+}
+
+.navbar-mobile-link {
+  font-family: 'Montserrat', sans-serif;
+  font-weight: 600;
+  font-size: 16px;
+  color: rgba(255, 255, 255, 0.85);
+  text-decoration: none;
+  padding: 14px 24px;
+  transition: background 0.15s ease, color 0.15s ease;
+}
+
+.navbar-mobile-link:hover {
+  background: rgba(255, 255, 255, 0.1);
+  color: #ffffff;
+}
+
+.navbar-mobile-link.active {
+  color: #F6AA17;
+}
+
+.navbar-mobile-link--cta {
+  margin: 8px 24px 0;
+  padding: 12px 24px;
+  background: #ffffff;
+  color: #0273FF;
+  border-radius: 12px;
+  text-align: center;
+}
+
+.navbar-mobile-link--cta:hover {
+  background: #f0f0f0;
+  color: #0273FF;
+}
+
+/* ─── User Avatar & Dropdown ──────────────────────────────── */
+.navbar-user {
+  position: relative;
+}
+
+.navbar-avatar-btn {
+  display: flex;
+  align-items: center;
+  gap: 6px;
+  background: rgba(255, 255, 255, 0.15);
+  border: 1.5px solid rgba(255, 255, 255, 0.4);
+  border-radius: 24px;
+  padding: 4px 10px 4px 4px;
+  cursor: pointer;
+  transition: background 0.2s ease, border-color 0.2s ease;
+  height: 43px;
+}
+
+.navbar-avatar-btn:hover {
+  background: rgba(255, 255, 255, 0.25);
+  border-color: rgba(255, 255, 255, 0.7);
+}
+
+.navbar-avatar-img {
+  width: 32px;
+  height: 32px;
+  border-radius: 50%;
+  object-fit: cover;
+}
+
+/* Fallback inisial ketika tidak ada foto profil */
+.navbar-avatar-initial {
+  width: 32px;
+  height: 32px;
+  border-radius: 50%;
+  background: #F6AA17;
+  color: white;
+  font-size: 14px;
+  font-weight: 700;
+  font-family: 'Montserrat', sans-serif;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  flex-shrink: 0;
+}
+
+.navbar-avatar-chevron {
+  transition: transform 0.2s ease;
+  opacity: 0.8;
+}
+
+.navbar-avatar-chevron.open {
+  transform: rotate(180deg);
+}
+
+/* Dropdown */
+.navbar-dropdown {
+  position: absolute;
+  top: calc(100% + 10px);
+  right: 0;
+  width: 220px;
+  background: white;
+  border-radius: 16px;
+  box-shadow: 0 8px 30px rgba(0, 0, 0, 0.15);
+  overflow: hidden;
+  animation: dropdown-in 0.15s ease;
+  z-index: 200;
+}
+
+@keyframes dropdown-in {
+  from {
+    opacity: 0;
+    transform: translateY(-6px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+.navbar-dropdown__header {
+  padding: 14px 16px;
+  background: #f8faff;
+}
+
+.navbar-dropdown__name {
+  font-size: 0.875rem;
+  font-weight: 700;
+  color: #111827;
+  margin: 0 0 2px 0;
+  font-family: 'Montserrat', sans-serif;
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
+}
+
+.navbar-dropdown__email {
+  font-size: 0.75rem;
+  color: #6B7280;
+  margin: 0;
+  font-family: 'Montserrat', sans-serif;
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
+}
+
+.navbar-dropdown__divider {
+  height: 1px;
+  background: #F3F4F6;
+}
+
+.navbar-dropdown__item {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  width: 100%;
+  padding: 11px 16px;
+  font-size: 0.875rem;
+  font-weight: 500;
+  color: #374151;
+  font-family: 'Montserrat', sans-serif;
+  text-decoration: none;
+  background: none;
+  border: none;
+  cursor: pointer;
+  transition: background 0.15s ease, color 0.15s ease;
+  text-align: left;
+}
+
+.navbar-dropdown__item:hover {
+  background: #F3F8FF;
+  color: #0273FF;
+}
+
+.navbar-dropdown__item--logout {
+  color: #EF4444;
+}
+
+.navbar-dropdown__item--logout:hover {
+  background: #FFF5F5;
+  color: #DC2626;
+}
+

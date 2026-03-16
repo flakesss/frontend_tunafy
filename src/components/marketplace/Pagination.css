@@ -1,0 +1,85 @@
+/* Pagination.css */
+/* Matches Figma spec: centered pagination with arrows and page numbers */
+
+.pagination {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 16px;
+  width: 100%;
+  padding: 24px 0;
+}
+
+/* Arrow buttons */
+.pagination__arrow {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: 32px;
+  height: 32px;
+  background: transparent;
+  border: none;
+  cursor: pointer;
+  transition: opacity 0.2s ease;
+}
+
+.pagination__arrow:hover:not(:disabled) {
+  opacity: 0.7;
+}
+
+.pagination__arrow:disabled {
+  cursor: not-allowed;
+  opacity: 0.5;
+}
+
+/* Page numbers container */
+.pagination__pages {
+  display: flex;
+  align-items: center;
+  gap: 16px;
+}
+
+/* Individual page button */
+.pagination__page {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  min-width: 32px;
+  height: 32px;
+  padding: 0 8px;
+  background: transparent;
+  border: none;
+  border-radius: 8px;
+  cursor: pointer;
+  font-family: 'Montserrat', sans-serif;
+  font-weight: 600;
+  font-size: 22px;
+  line-height: 27px;
+  color: #0273FF;
+  transition: background 0.2s ease, color 0.2s ease;
+}
+
+.pagination__page:hover:not(:disabled):not(.pagination__page--active) {
+  background: rgba(2, 115, 255, 0.1);
+}
+
+/* Active page state */
+.pagination__page--active {
+  background: #0273FF;
+  color: #FFFFFF;
+}
+
+/* Ellipsis styling */
+.pagination__page--ellipsis {
+  cursor: default;
+  background: transparent;
+}
+
+.pagination__page--ellipsis:hover {
+  background: transparent;
+}
+
+/* Disabled state for ellipsis */
+.pagination__page:disabled {
+  cursor: default;
+}

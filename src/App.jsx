@@ -3,6 +3,7 @@ import { useScroll } from 'framer-motion'
 import Navbar from './components/layout/Navbar'
 import HeroSection from './components/sections/HeroSection'
 import WhyTunafySection from './components/sections/WhyTunafySection'
+import BlogPreviewSection from './components/sections/BlogPreviewSection'
 import BandaSeaSection from './components/sections/BandaSeaSection'
 import ScrollingLine from './components/sections/ScrollingLine'
 import Footer from './components/layout/Footer'
@@ -34,6 +35,9 @@ function App() {
         {/* Section 2 — background putih, konten menyusul */}
         <section className="content-section" ref={contentRef}>
           <WhyTunafySection />
+
+          {/* Blog Preview Section — antara WhyTunafy dan ScrollingLine */}
+          <BlogPreviewSection />
 
           {/* Animasi garis bergerak antara section 2 dan section 3 */}
           <ScrollingLine />
