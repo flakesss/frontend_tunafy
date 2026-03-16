@@ -4,10 +4,10 @@ import { createClient } from '@supabase/supabase-js'
 import { useAuth } from '../context/AuthContext'
 import { authAPI } from '../api/axios'
 
-const supabaseUrl = import.meta.env.VITE_SUPABASE_URL
-const supabaseAnonKey = import.meta.env.VITE_SUPABASE_ANON_KEY
-
-const supabase = createClient(supabaseUrl, supabaseAnonKey)
+const supabase = createClient(
+  import.meta.env.VITE_SUPABASE_URL,
+  import.meta.env.VITE_SUPABASE_ANON_KEY
+)
 
 const OAuthCallback = () => {
   const [status, setStatus] = useState('Memproses login...')
@@ -21,60 +21,70 @@ const OAuthCallback = () => {
 
   const handleCallback = async () => {
     try {
-      // 1. Ambil session dari Supabase (sudah di-set via URL hash oleh Supabase)
+      // Supabase PKCE / implicit flow menaruh token di URL hash atau
+      // langsung di session storage. getSession() handles keduanya.
+      // Tapi kita perlu sedikit delay agar Supabase ada waktu parse hash.
+      await new Promise((r) => setTimeout(r, 300))
+
       const { data: { session }, error: sessionError } = await supabase.auth.getSession()
 
-      if (sessionError || !session?.user) {
-        console.error('[OAuthCallback] Session error:', sessionError)
-        setStatus('Login gagal. Redirecting...')
-        setIsError(true)
-        setTimeout(() => navigate('/login'), 3000)
-        return
-      }
-
-      setStatus('Menyinkronkan profil...')
-
-      // 2. Panggil backend untuk sync profil ke tabel profiles
-      let dbProfile = null;
-      try {
-        const response = await authAPI.post('/auth/oauth/callback', { user: session.user })
-        dbProfile = response.data?.data?.user;
-      } catch (backendErr) {
-        // Jika backend error 409 (profil sudah ada) itu masih oke
-        const status = backendErr?.response?.status
-        if (status !== 409) {
-          console.warn('[OAuthCallback] Backend sync warning:', backendErr?.response?.data?.message)
+      // Jika session belum ada, coba exchange code from URL (PKCE flow)
+      if (!session) {
+        const params = new URLSearchParams(window.location.search)
+        const code = params.get('code')
+        if (code) {
+          const { data: exchanged, error: exchErr } = await supabase.auth.exchangeCodeForSession(code)
+          if (exchErr || !exchanged?.session) {
+            throw new Error(exchErr?.message || 'Gagal tukar code untuk session')
+          }
+          return continueLogin(exchanged.session)
         }
       }
 
-      // Gabungkan role dari DB (jika ada) ke dalam session.user agar context tahu
-      let userToLogin = session.user;
-      if (dbProfile) {
-        userToLogin = {
+      if (sessionError || !session?.user) {
+        throw new Error(sessionError?.message || 'Session tidak ditemukan')
+      }
+
+      await continueLogin(session)
+
+    } catch (err) {
+      console.error('[OAuthCallback] Error:', err)
+      setStatus('Login gagal. Mengarahkan ulang...')
+      setIsError(true)
+      setTimeout(() => navigate('/login'), 2500)
+    }
+  }
+
+  const continueLogin = async (session) => {
+    setStatus('Menyinkronkan profil...')
+
+    // Sync profil ke backend (boleh gagal, bukan blocker)
+    let dbProfile = null
+    try {
+      const res = await authAPI.post('/auth/oauth/callback', { user: session.user })
+      dbProfile = res.data?.data?.user
+    } catch (err) {
+      if (err?.response?.status !== 409) {
+        console.warn('[OAuthCallback] Backend sync warning:', err?.response?.data?.message)
+      }
+    }
+
+    // Gabungkan role dari DB ke user object
+    const userToLogin = dbProfile
+      ? {
           ...session.user,
           user_metadata: {
             ...session.user.user_metadata,
             role: dbProfile.role || 'buyer',
             username: dbProfile.username,
-            full_name: dbProfile.full_name
-          }
-        };
-      }
+            full_name: dbProfile.full_name,
+          },
+        }
+      : session.user
 
-      // 3. Simpan session ke AuthContext + localStorage
-      login(userToLogin, session.access_token)
-
-      setStatus('✅ Login berhasil!')
-
-      // 4. Redirect ke marketplace
-      setTimeout(() => navigate('/marketplace'), 800)
-
-    } catch (err) {
-      console.error('[OAuthCallback] Unexpected error:', err)
-      setStatus('Terjadi kesalahan. Redirecting...')
-      setIsError(true)
-      setTimeout(() => navigate('/login'), 3000)
-    }
+    login(userToLogin, session.access_token)
+    setStatus('✅ Login berhasil!')
+    setTimeout(() => navigate('/marketplace'), 800)
   }
 
   return (
