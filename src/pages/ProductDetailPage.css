@@ -736,7 +736,7 @@
   }
 
   .product-gallery__thumbnails {
-    justify-content: center;
+    justify-content: flex-start;
   }
 
   .product-info {
@@ -767,10 +767,10 @@
     box-shadow: 0 -4px 24px rgba(0,0,0,0.12);
     padding: 16px 24px;
     padding-bottom: calc(16px + env(safe-area-inset-bottom, 0px));
+    margin-bottom: 24px;
     gap: 12px;
     background: #FFFFFF;
     transition: transform 0.3s cubic-bezier(0.25, 0.46, 0.45, 0.94);
-    /* Sticky will naturally stop when its container ends (before footer) */
   }
 
   .order-card__backdrop {
