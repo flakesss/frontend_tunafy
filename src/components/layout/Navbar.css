@@ -431,13 +431,19 @@
   top: 75px;
   left: 0;
   right: 0;
-  background: #0273FF;
+  background: transparent;
   display: flex;
   flex-direction: column;
   padding: 12px 0 20px;
   box-shadow: 0 8px 24px rgba(0, 0, 0, 0.15);
   animation: mobileMenuIn 0.22s ease;
   z-index: 999;
+  transition: background-color 0.3s ease;
+}
+
+/* Background biru muncul setelah melewati hero section */
+.navbar-mobile-menu.scrolled {
+  background: #0273FF;
 }
 
 @keyframes mobileMenuIn {

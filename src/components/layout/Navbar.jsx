@@ -74,8 +74,14 @@ const Navbar = ({ scrollYProgress, contentRef, alwaysVisible = false }) => {
   useEffect(() => {
     if (!scrollYProgress) return;
     const unsubscribe = scrollYProgress.on('change', (latest) => {
-      setShowLogo(latest >= 0.5);
-      setShowMenu(latest >= 0.52);
+      const newShowLogo = latest >= 0.5;
+      const newShowMenu = latest >= 0.52;
+      setShowLogo(newShowLogo);
+      setShowMenu(newShowMenu);
+      // Tutup mobile menu ketika navbar kembali ke posisi awal (animasi hero)
+      if (!newShowMenu) {
+        setMobileMenuOpen(false);
+      }
     });
     return () => unsubscribe();
   }, [scrollYProgress]);
@@ -262,7 +268,7 @@ const Navbar = ({ scrollYProgress, contentRef, alwaysVisible = false }) => {
 
       {/* Mobile Menu Overlay */}
       {mobileMenuOpen && (
-        <div className="navbar-mobile-menu">
+        <div className={`navbar-mobile-menu${hasScrolledPastHero ? ' scrolled' : ''}`}>
           {navLinks.map((link) => (
             <Link
               key={link.name}
