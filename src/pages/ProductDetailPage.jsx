@@ -457,130 +457,6 @@ const ProductDetailPage = () => {
               </div>
             </div>
 
-            {/* Mobile Overlay Backdrop */}
-            {mobileDrawerState.open && (
-              <div 
-                className="order-card__backdrop" 
-                onClick={() => setMobileDrawerState({ open: false, action: null })}
-              />
-            )}
-
-            {/* Order Card */}
-            <div className={`product-order-card ${mobileDrawerState.open ? 'drawer-open' : ''}`}>
-              
-              {/* Mobile Drawer Header (Hanya muncul saat drawer open) */}
-              <div className="order-card__drawer-header">
-                <h3>{mobileDrawerState.action === 'cart' ? t('productDetail.drawerTitleCart') : t('productDetail.drawerTitleOrder')}</h3>
-                <button 
-                  className="order-card__drawer-close"
-                  onClick={() => setMobileDrawerState({ open: false, action: null })}
-                >
-                  <CloseIcon />
-                </button>
-              </div>
-
-              <div className="order-card__drawer-content">
-                {/* Out of Stock Banner */}
-                {product.stock_kg <= 0 && (
-                  <div className="order-card__out-of-stock-banner">
-                    Stok Habis
-                  </div>
-                )}
-
-                {/* Order Quantity Section */}
-                <div className="order-card__quantity-section">
-                  <h3 className="order-card__quantity-title">{t('productDetail.orderQty')}</h3>
-                  <img
-                    src={images[0]}
-                    alt={product.name}
-                    className="order-card__product-image"
-                  />
-                  <div className="order-card__quantity-selector">
-                    <button
-                      className="order-card__quantity-btn"
-                      onClick={() => handleQuantityChange(-1)}
-                      disabled={(parseInt(quantity, 10) || 0) <= (product.min_order_kg ?? 1) || product.stock_kg <= 0}
-                    >
-                      <MinusIcon />
-                    </button>
-                    <div className="order-card__quantity-input-wrapper">
-                      <input
-                        type="number"
-                        className="order-card__quantity-input"
-                        value={product.stock_kg <= 0 ? 0 : quantity}
-                        onChange={handleQuantityInput}
-                        onBlur={handleQuantityBlur}
-                        min={product.stock_kg <= 0 ? 0 : (product.min_order_kg ?? 1)}
-                        max={product.stock_kg ?? 100000}
-                        disabled={product.stock_kg <= 0}
-                      />
-                    </div>
-                    <button
-                      className="order-card__quantity-btn"
-                      onClick={() => handleQuantityChange(1)}
-                      disabled={(parseInt(quantity, 10) || 0) >= (product.stock_kg ?? 100000) || product.stock_kg <= 0}
-                    >
-                      <AddIcon />
-                    </button>
-                  </div>
-                </div>
-
-                {/* Info Group */}
-                <div className="order-card__info-group">
-                  {/* Min Order Info */}
-                  <div className="order-card__info-row">
-                    <span className="order-card__info-label">{t('productDetail.minOrder')}</span>
-                    <span className="order-card__info-value">{formatKgWithTon(product.min_order_kg ?? 1)}</span>
-                  </div>
-                  {/* Stock Info */}
-                  <div className={`order-card__info-row ${product.stock_kg <= 0 ? 'order-card__info-row--out' : ''}`}>
-                    <span className="order-card__info-label">{t('productDetail.stockAvail')}</span>
-                    <span className="order-card__info-value">{formatKgWithTon(product.stock_kg ?? 0)}</span>
-                  </div>
-                </div>
-
-                {/* Subtotal Section */}
-                <div className="order-card__subtotal-section">
-                  <span className="order-card__subtotal-label">{t('productDetail.subtotal')}</span>
-                  <span className="order-card__subtotal-value">{product.stock_kg <= 0 ? 0 : formattedSubtotal}</span>
-                </div>
-
-              </div>
-
-              {/* Action Buttons */}
-              <div className="order-card__actions">
-                {/* Tombol Cart: Tampilkan jika desktop ATAU drawer tutup ATAU action adalah cart */}
-                {(!mobileDrawerState.open || mobileDrawerState.action === 'cart' || window.innerWidth > 900) && (
-                  <button
-                    className={`order-card__btn-cart ${mobileDrawerState.open ? 'drawer-btn-active' : ''}`}
-                    onClick={() => handleActionClick('cart')}
-                    disabled={cartLoading || product.stock_kg <= 0}
-                    style={{ opacity: cartLoading || product.stock_kg <= 0 ? 0.5 : 1 }}
-                  >
-                    <span className="order-card__btn-icon">
-                      <OrderIcon />
-                    </span>
-                    {cartLoading ? '...' : (mobileDrawerState.open && window.innerWidth <= 900) ? t('productDetail.addCart') : t('productDetail.cart')}
-                  </button>
-                )}
-
-                {/* Tombol Order Now: Tampilkan jika desktop ATAU drawer tutup ATAU action adalah order */}
-                {(!mobileDrawerState.open || mobileDrawerState.action === 'order' || window.innerWidth > 900) && (
-                  <button
-                    className={`order-card__btn-order ${mobileDrawerState.open ? 'drawer-btn-active' : ''}`}
-                    onClick={() => handleActionClick('order')}
-                    disabled={cartLoading || product.stock_kg <= 0}
-                    style={{ opacity: cartLoading || product.stock_kg <= 0 ? 0.5 : 1 }}
-                  >
-                    <span className="order-card__btn-icon">
-                      <CartIcon />
-                    </span>
-                    {cartLoading ? '...' : (mobileDrawerState.open && window.innerWidth <= 900) ? t('productDetail.buyNow') : t('productDetail.orderNow')}
-                  </button>
-                )}
-              </div>
-            </div>
-
             {/* Delivery Info Card */}
             <div className="product-delivery-card">
               <div className="product-delivery-card__tabs" style={{ position: 'relative' }}>
@@ -620,6 +496,130 @@ const ProductDetailPage = () => {
                   </div>
                 )}
               </div>
+            </div>
+          </div>
+
+          {/* Mobile Overlay Backdrop */}
+          {mobileDrawerState.open && (
+            <div 
+              className="order-card__backdrop" 
+              onClick={() => setMobileDrawerState({ open: false, action: null })}
+            />
+          )}
+
+          {/* Order Card — desktop: 3rd column, mobile: sticky bottom */}
+          <div className={`product-order-card ${mobileDrawerState.open ? 'drawer-open' : ''}`}>
+            
+            {/* Mobile Drawer Header (Hanya muncul saat drawer open) */}
+            <div className="order-card__drawer-header">
+              <h3>{mobileDrawerState.action === 'cart' ? t('productDetail.drawerTitleCart') : t('productDetail.drawerTitleOrder')}</h3>
+              <button 
+                className="order-card__drawer-close"
+                onClick={() => setMobileDrawerState({ open: false, action: null })}
+              >
+                <CloseIcon />
+              </button>
+            </div>
+
+            <div className="order-card__drawer-content">
+              {/* Out of Stock Banner */}
+              {product.stock_kg <= 0 && (
+                <div className="order-card__out-of-stock-banner">
+                  Stok Habis
+                </div>
+              )}
+
+              {/* Order Quantity Section */}
+              <div className="order-card__quantity-section">
+                <h3 className="order-card__quantity-title">{t('productDetail.orderQty')}</h3>
+                <img
+                  src={images[0]}
+                  alt={product.name}
+                  className="order-card__product-image"
+                />
+                <div className="order-card__quantity-selector">
+                  <button
+                    className="order-card__quantity-btn"
+                    onClick={() => handleQuantityChange(-1)}
+                    disabled={(parseInt(quantity, 10) || 0) <= (product.min_order_kg ?? 1) || product.stock_kg <= 0}
+                  >
+                    <MinusIcon />
+                  </button>
+                  <div className="order-card__quantity-input-wrapper">
+                    <input
+                      type="number"
+                      className="order-card__quantity-input"
+                      value={product.stock_kg <= 0 ? 0 : quantity}
+                      onChange={handleQuantityInput}
+                      onBlur={handleQuantityBlur}
+                      min={product.stock_kg <= 0 ? 0 : (product.min_order_kg ?? 1)}
+                      max={product.stock_kg ?? 100000}
+                      disabled={product.stock_kg <= 0}
+                    />
+                  </div>
+                  <button
+                    className="order-card__quantity-btn"
+                    onClick={() => handleQuantityChange(1)}
+                    disabled={(parseInt(quantity, 10) || 0) >= (product.stock_kg ?? 100000) || product.stock_kg <= 0}
+                  >
+                    <AddIcon />
+                  </button>
+                </div>
+              </div>
+
+              {/* Info Group */}
+              <div className="order-card__info-group">
+                {/* Min Order Info */}
+                <div className="order-card__info-row">
+                  <span className="order-card__info-label">{t('productDetail.minOrder')}</span>
+                  <span className="order-card__info-value">{formatKgWithTon(product.min_order_kg ?? 1)}</span>
+                </div>
+                {/* Stock Info */}
+                <div className={`order-card__info-row ${product.stock_kg <= 0 ? 'order-card__info-row--out' : ''}`}>
+                  <span className="order-card__info-label">{t('productDetail.stockAvail')}</span>
+                  <span className="order-card__info-value">{formatKgWithTon(product.stock_kg ?? 0)}</span>
+                </div>
+              </div>
+
+              {/* Subtotal Section */}
+              <div className="order-card__subtotal-section">
+                <span className="order-card__subtotal-label">{t('productDetail.subtotal')}</span>
+                <span className="order-card__subtotal-value">{product.stock_kg <= 0 ? 0 : formattedSubtotal}</span>
+              </div>
+
+            </div>
+
+            {/* Action Buttons */}
+            <div className="order-card__actions">
+              {/* Tombol Cart: Tampilkan jika desktop ATAU drawer tutup ATAU action adalah cart */}
+              {(!mobileDrawerState.open || mobileDrawerState.action === 'cart' || window.innerWidth > 900) && (
+                <button
+                  className={`order-card__btn-cart ${mobileDrawerState.open ? 'drawer-btn-active' : ''}`}
+                  onClick={() => handleActionClick('cart')}
+                  disabled={cartLoading || product.stock_kg <= 0}
+                  style={{ opacity: cartLoading || product.stock_kg <= 0 ? 0.5 : 1 }}
+                >
+                  <span className="order-card__btn-icon">
+                    <OrderIcon />
+                  </span>
+                  {cartLoading ? '...' : (mobileDrawerState.open && window.innerWidth <= 900) ? t('productDetail.addCart') : t('productDetail.cart')}
+                </button>
+              )}
+
+              {/* Tombol Order Now: Tampilkan jika desktop ATAU drawer tutup ATAU action adalah order */}
+              {(!mobileDrawerState.open || mobileDrawerState.action === 'order' || window.innerWidth > 900) && (
+                <button
+                  className={`order-card__btn-order ${mobileDrawerState.open ? 'drawer-btn-active' : ''}`}
+                  onClick={() => handleActionClick('order')}
+                  disabled={cartLoading || product.stock_kg <= 0}
+                  style={{ opacity: cartLoading || product.stock_kg <= 0 ? 0.5 : 1 }}
+                >
+                  <span className="order-card__btn-icon">
+                    <CartIcon />
+                  </span>
+                  {cartLoading ? '...' : (mobileDrawerState.open && window.innerWidth <= 900) ? t('productDetail.buyNow') : t('productDetail.orderNow')}
+                </button>
+              )}
             </div>
           </div>
         </div>

@@ -382,9 +382,10 @@
   border-radius: 16px;
 }
 
-/* Order Card */
+/* Order Card — Desktop: sticky right column */
 .product-order-card {
   width: 312px;
+  flex-shrink: 0;
   background: #FFFFFF;
   border-radius: 16px;
   padding: 24px;
@@ -392,6 +393,17 @@
   flex-direction: column;
   gap: 16px;
   box-shadow: 0 4px 20px rgba(0, 0, 0, 0.08);
+  /* Sticky on desktop */
+  position: sticky;
+  top: calc(75px + 24px); /* navbar height + padding */
+  align-self: flex-start;
+}
+
+/* On desktop, always show drawer content (not just on mobile drawer-open) */
+.product-order-card .order-card__drawer-content {
+  display: flex;
+  flex-direction: column;
+  gap: 16px;
 }
 
 /* Order Quantity Section */
@@ -496,12 +508,6 @@
   margin: 0;
 }
 
-/* Order Card Drawer Content */
-.order-card__drawer-content {
-  display: flex;
-  flex-direction: column;
-  gap: 16px;
-}
 
 /* Info Group */
 .order-card__info-group {
@@ -710,10 +716,13 @@
   .product-info {
     width: 340px;
   }
+  .product-order-card {
+    width: 280px;
+  }
 }
 
 @media (max-width: 900px) {
-  /* Stack layout: gallery | info stack vertical, order card full width below */
+  /* Stack layout: gallery | info stack vertical, order card sticky bottom */
   .product-detail-page {
     padding-bottom: 0; /* remove padding so sticky can work properly */
   }
@@ -742,7 +751,7 @@
   .product-info {
     width: 100%;
     padding-top: 0;
-    padding-bottom: 24px; /* normal padding */
+    padding-bottom: 24px;
   }
 
   .product-info__name {
@@ -756,21 +765,28 @@
     line-height: 36px;
   }
 
-  /* Order card: sticky bottom bar on tablet/mobile */
+  /* Order card: reset desktop sticky, become sticky bottom bar */
   .product-order-card {
     width: 100%;
     box-sizing: border-box;
     position: sticky;
+    top: auto;
     bottom: 0;
+    align-self: auto;
     border-radius: 20px 20px 0 0;
     z-index: 100;
     box-shadow: 0 -4px 24px rgba(0,0,0,0.12);
     padding: 16px 24px;
     padding-bottom: calc(16px + env(safe-area-inset-bottom, 0px));
-    margin-bottom: 24px;
+    margin-bottom: 0;
     gap: 12px;
     background: #FFFFFF;
     transition: transform 0.3s cubic-bezier(0.25, 0.46, 0.45, 0.94);
+  }
+
+  /* Hide always-visible desktop drawer content on mobile: use drawer logic */
+  .product-order-card .order-card__drawer-content {
+    display: none;
   }
 
   .order-card__backdrop {
@@ -782,12 +798,11 @@
     animation: fadeIn 0.2s ease;
   }
 
-  /* Secara default di mobile, laci tertutup sehingga rincian kuantitas disembunyikan */
-  .product-order-card:not(.drawer-open) .order-card__drawer-content {
-    display: none;
+  /* Saat laci terbuka, tampilkan rincian dan atur header */
+  .product-order-card.drawer-open .order-card__drawer-content {
+    display: flex;
   }
 
-  /* Saat laci terbuka, tampilkan rincian dan atur header */
   .product-order-card.drawer-open .order-card__drawer-header {
     display: flex;
     justify-content: space-between;
@@ -803,14 +818,6 @@
     font-family: 'Montserrat', sans-serif;
     color: #000F1E;
     font-weight: 700;
-  }
-
-  .product-order-card.drawer-open .order-card__quantity-section {
-    display: flex; /* Override agar terlihat di mobile */
-  }
-
-  .product-order-card.drawer-open .order-card__subtotal-section {
-    display: flex;
   }
 
   .order-card__actions {
