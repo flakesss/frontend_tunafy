@@ -1,3 +1,4 @@
+import React, { useState } from 'react';
 import './BandaSeaSection.css';
 import { useTranslation } from 'react-i18next';
 import bgPhoto from '../../assets/images/Tangkapan-Tuna-di-Perairan-Maluku-Utara.-Foto-USAID-for-Kieraha.com_.jpg';
@@ -47,6 +48,14 @@ const BandaSeaSection = () => {
     { endValue: 0, suffix: '%', label: t('bandaSea.stats.illegal'), duration: 1500 },
   ];
 
+  const [email, setEmail] = useState('');
+
+  const handleGetStarted = () => {
+    const subject = encodeURIComponent("Inquiry about Tunafy");
+    const body = encodeURIComponent(email ? `Hello, my email is ${email}. I'm interested in getting started.` : "Hello, I'm interested in getting started.");
+    window.location.href = `mailto:support@tunafy.id?subject=${subject}&body=${body}`;
+  };
+
   return (
     <section className="banda-section">
       {/* Background image */}
@@ -88,9 +97,13 @@ const BandaSeaSection = () => {
             <input
               className="banda-cta-input"
               type="email"
+              value={email}
+              onChange={(e) => setEmail(e.target.value)}
               placeholder={t('bandaSea.emailPlaceholder')}
             />
-            <button className="banda-cta-btn">{t('bandaSea.getStarted')}</button>
+            <button className="banda-cta-btn" onClick={handleGetStarted}>
+              {t('bandaSea.getStarted')}
+            </button>
           </div>
         </div>
       </div>
