@@ -218,6 +218,47 @@
       "failed": "Login failed. Check your email and password."
     }
   },
+  "forgotPassword": {
+    "brandingTitle": "The Trusted Tuna Fish Market.",
+    "brandingDesc": "A digital platform connecting buyers with Indonesia's best fishermen. Safe transactions, guaranteed quality, transparent pricing.",
+    "heading": "Forgot Your Password?",
+    "subheading": "Enter your registered email and we'll send you a link to reset your password.",
+    "email": "Email",
+    "emailPlaceholder": "Enter your registered email",
+    "submit": "Send Reset Link",
+    "successTitle": "Check Your Email!",
+    "successDesc": "We've sent a password reset link to {{email}}. Please check your inbox or spam folder.",
+    "successHint": "The link will expire in 1 hour. If you don't receive an email, make sure your email address is correct.",
+    "backToLogin": "Back to login",
+    "errors": {
+      "emailRequired": "Email is required",
+      "failed": "Failed to send email. Please try again."
+    }
+  },
+  "resetPassword": {
+    "brandingTitle": "The Trusted Tuna Fish Market.",
+    "brandingDesc": "A digital platform connecting buyers with Indonesia's best fishermen. Safe transactions, guaranteed quality, transparent pricing.",
+    "heading": "Create New Password",
+    "subheading": "Enter your new password below. Make sure it's at least 8 characters long.",
+    "newPassword": "New Password",
+    "passwordPlaceholder": "Enter new password",
+    "passwordHint": "Minimum 8 characters",
+    "confirmPassword": "Confirm Password",
+    "confirmPlaceholder": "Repeat new password",
+    "submit": "Save New Password",
+    "checking": "Verifying link...",
+    "invalidTitle": "Invalid Link",
+    "invalidDesc": "This password reset link is invalid or has expired. Please request a new one.",
+    "retryLink": "Request New Reset Link",
+    "successTitle": "Password Changed Successfully!",
+    "successDesc": "Your password has been updated. You'll be redirected to the login page in a few seconds...",
+    "backToLogin": "Back to login",
+    "errors": {
+      "minLength": "Password must be at least 8 characters",
+      "mismatch": "Password confirmation does not match",
+      "failed": "Failed to update password. Please try again."
+    }
+  },
   "register": {
     "brandingTitle": "The Trusted Tuna Fish Market.",
     "brandingDesc": "A digital platform connecting buyers with Indonesia's best fishermen. Safe transactions, guaranteed quality, transparent pricing.",

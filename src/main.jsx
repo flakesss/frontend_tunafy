@@ -25,6 +25,8 @@ import AdminOrdersPage from './pages/admin/AdminOrdersPage.jsx'
 import AdminUsersPage from './pages/admin/AdminUsersPage.jsx'
 import AdminBlogPage from './pages/admin/AdminBlogPage.jsx'
 import OAuthCallback from './pages/OAuthCallback.jsx'
+import ForgotPasswordPage from './pages/ForgotPasswordPage.jsx'
+import ResetPasswordPage from './pages/ResetPasswordPage.jsx'
 
 createRoot(document.getElementById('root')).render(
   <StrictMode>
@@ -36,6 +38,8 @@ createRoot(document.getElementById('root')).render(
             <Route path="/" element={<App />} />
             <Route path="/login" element={<LoginPage />} />
             <Route path="/register" element={<RegisterPage />} />
+            <Route path="/forgot-password" element={<ForgotPasswordPage />} />
+            <Route path="/reset-password" element={<ResetPasswordPage />} />
             <Route path="/marketplace" element={<MarketplacePage />} />
             <Route path="/product/:id" element={<ProductDetailPage />} />
             <Route path="/orders" element={<OrdersPage />} />

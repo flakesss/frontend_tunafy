@@ -28,4 +28,8 @@ export const authApi = {
   /** Cek ketersediaan nomor telepon secara real-time */
   checkPhone: (phone) =>
     api.get('/auth/check-phone', { params: { phone } }),
+
+  /** Kirim email reset password */
+  forgotPassword: (email) =>
+    api.post('/auth/forgot-password', { email }),
 }

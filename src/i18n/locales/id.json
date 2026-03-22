@@ -1,4 +1,4 @@
-﻿{
+{
   "nav": {
     "home": "Beranda",
     "marketplace": "Marketplace",
@@ -216,6 +216,47 @@
     "errors": {
       "required": "Email dan password harus diisi",
       "failed": "Login gagal. Periksa email dan password Anda."
+    }
+  },
+  "forgotPassword": {
+    "brandingTitle": "Pasar Ikan Tuna Terpercaya.",
+    "brandingDesc": "Wadah digital yang menghubungkan pembeli dengan nelayan terbaik Indonesia. Transaksi aman, kualitas terjamin, harga transparan.",
+    "heading": "Lupa Kata Sandi?",
+    "subheading": "Masukkan email yang terdaftar dan kami akan mengirimkan tautan untuk mengatur ulang kata sandi Anda.",
+    "email": "Email",
+    "emailPlaceholder": "Masukkan email terdaftar",
+    "submit": "Kirim Tautan Reset",
+    "successTitle": "Cek Email Anda!",
+    "successDesc": "Kami telah mengirimkan tautan reset kata sandi ke {{email}}. Silakan periksa kotak masuk atau folder spam Anda.",
+    "successHint": "Tautan akan kedaluwarsa dalam 1 jam. Jika tidak menerima email, pastikan alamat email Anda sudah benar.",
+    "backToLogin": "Kembali ke halaman masuk",
+    "errors": {
+      "emailRequired": "Email wajib diisi",
+      "failed": "Gagal mengirim email. Silakan coba lagi."
+    }
+  },
+  "resetPassword": {
+    "brandingTitle": "Pasar Ikan Tuna Terpercaya.",
+    "brandingDesc": "Wadah digital yang menghubungkan pembeli dengan nelayan terbaik Indonesia. Transaksi aman, kualitas terjamin, harga transparan.",
+    "heading": "Buat Kata Sandi Baru",
+    "subheading": "Masukkan kata sandi baru Anda di bawah ini. Pastikan minimal 8 karakter.",
+    "newPassword": "Kata Sandi Baru",
+    "passwordPlaceholder": "Masukkan kata sandi baru",
+    "passwordHint": "Minimal 8 karakter",
+    "confirmPassword": "Konfirmasi Kata Sandi",
+    "confirmPlaceholder": "Ulangi kata sandi baru",
+    "submit": "Simpan Kata Sandi Baru",
+    "checking": "Memverifikasi tautan...",
+    "invalidTitle": "Tautan Tidak Valid",
+    "invalidDesc": "Tautan reset kata sandi ini tidak valid atau sudah kedaluwarsa. Silakan minta tautan baru.",
+    "retryLink": "Minta Tautan Reset Baru",
+    "successTitle": "Kata Sandi Berhasil Diubah!",
+    "successDesc": "Kata sandi Anda telah berhasil diperbarui. Anda akan dialihkan ke halaman masuk dalam beberapa detik...",
+    "backToLogin": "Kembali ke halaman masuk",
+    "errors": {
+      "minLength": "Kata sandi minimal 8 karakter",
+      "mismatch": "Konfirmasi kata sandi tidak cocok",
+      "failed": "Gagal memperbarui kata sandi. Silakan coba lagi."
     }
   },
   "register": {
