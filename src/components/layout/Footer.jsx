@@ -87,10 +87,6 @@ const Footer = () => {
       {/* ── Bottom bar ─────────────────────────────── */}
       <div className="footer-bottom">
         <span className="footer-copy">{t('footer.copyright')}</span>
-        <div className="footer-bottom-links">
-          <a href="#">{t('footer.cookie')}</a>
-          <a href="#">{t('footer.status')}</a>
-        </div>
       </div>
     </footer>
   );
