@@ -1,0 +1,202 @@
+/* JangkauanSection.css */
+
+/* ── Fade-in animation ────────────────────────── */
+.jangkauan--hidden {
+  opacity: 0;
+  transform: translateY(32px);
+}
+
+.jangkauan--visible {
+  opacity: 1;
+  transform: translateY(0);
+  transition: opacity 0.7s ease, transform 0.7s ease;
+}
+
+/* ── Section wrapper ────────────────────────── */
+.jangkauan-section {
+  width: 100%;
+  background: #ffffff;
+  padding: 80px 0;
+  overflow: hidden;
+}
+
+/* ── Header text ────────────────────────────── */
+.jangkauan-header {
+  max-width: 800px;
+  margin: 0 auto 56px;
+  text-align: center;
+  padding: 0 24px;
+}
+
+.jangkauan-label {
+  font-family: 'Montserrat', sans-serif;
+  font-weight: 700;
+  font-size: 24px;
+  line-height: 29px;
+  color: #F5AB17;
+  margin: 0 0 16px 0;
+  display: block;
+}
+
+.jangkauan-title {
+  font-family: 'Montserrat', sans-serif;
+  font-weight: 600;
+  font-size: 40px;
+  line-height: 49px;
+  color: #0058C7;
+  margin: 0 0 16px 0;
+}
+
+.jangkauan-desc {
+  font-family: 'Montserrat', sans-serif;
+  font-weight: 400;
+  font-size: 20px;
+  line-height: 28px;
+  color: #0058C7;
+  margin: 0;
+  opacity: 0.8;
+}
+
+.jangkauan-divider {
+  width: 64px;
+  height: 4px;
+  background: #F6AA17;
+  border-radius: 2px;
+  margin: 24px auto 0;
+}
+
+/* ── Map ──────────────────────────────────────── */
+.jangkauan-map-wrap {
+  position: relative;
+  max-width: 1232px;
+  margin: 0 auto 48px;
+  padding: 0 24px;
+}
+
+.jangkauan-map-img {
+  width: 100%;
+  height: auto;
+  display: block;
+  filter: drop-shadow(0 8px 32px rgba(2, 115, 255, 0.12));
+}
+
+/* SVG animated line overlay */
+.jangkauan-map-line {
+  position: absolute;
+  inset: 0;
+  width: 100%;
+  height: 100%;
+  pointer-events: none;
+}
+
+.jangkauan-map-line path {
+  animation: dash-flow 3s linear infinite;
+}
+
+@keyframes dash-flow {
+  from { stroke-dashoffset: 0; }
+  to   { stroke-dashoffset: -80; }
+}
+
+/* ── Location cards ─────────────────────────── */
+.jangkauan-cards {
+  display: flex;
+  justify-content: center;
+  gap: 32px;
+  max-width: 1232px;
+  margin: 0 auto;
+  padding: 0 24px;
+  flex-wrap: wrap;
+}
+
+.jangkauan-card {
+  display: flex;
+  align-items: flex-start;
+  gap: 20px;
+  background: #F0F6FF;
+  border: 1.5px solid rgba(2, 115, 255, 0.12);
+  border-radius: 24px;
+  padding: 28px 32px;
+  flex: 1;
+  min-width: 280px;
+  max-width: 500px;
+  transition: box-shadow 0.25s ease, transform 0.2s ease;
+}
+
+.jangkauan-card:hover {
+  box-shadow: 0 8px 32px rgba(2, 115, 255, 0.12);
+  transform: translateY(-4px);
+}
+
+.jangkauan-card__icon {
+  font-size: 36px;
+  flex-shrink: 0;
+  line-height: 1;
+}
+
+.jangkauan-card__body {
+  display: flex;
+  flex-direction: column;
+  gap: 6px;
+}
+
+.jangkauan-card__label {
+  font-family: 'Montserrat', sans-serif;
+  font-weight: 700;
+  font-size: 12px;
+  line-height: 1;
+  letter-spacing: 1px;
+  text-transform: uppercase;
+  color: #F6AA17;
+  margin: 0;
+}
+
+.jangkauan-card__name {
+  font-family: 'Montserrat', sans-serif;
+  font-weight: 700;
+  font-size: 24px;
+  line-height: 30px;
+  color: #0058C7;
+  margin: 0;
+}
+
+.jangkauan-card__desc {
+  font-family: 'Montserrat', sans-serif;
+  font-weight: 400;
+  font-size: 16px;
+  line-height: 22px;
+  color: #0273FF;
+  margin: 0;
+  opacity: 0.8;
+}
+
+/* ── Responsive ─────────────────────────────── */
+@media (max-width: 900px) {
+  .jangkauan-title {
+    font-size: 32px;
+    line-height: 40px;
+  }
+  .jangkauan-desc {
+    font-size: 16px;
+  }
+  .jangkauan-cards {
+    flex-direction: column;
+    align-items: center;
+  }
+  .jangkauan-card {
+    max-width: 100%;
+  }
+}
+
+@media (max-width: 480px) {
+  .jangkauan-section {
+    padding: 48px 0;
+  }
+  .jangkauan-title {
+    font-size: 26px;
+    line-height: 34px;
+  }
+  .jangkauan-card {
+    padding: 20px;
+  }
+}

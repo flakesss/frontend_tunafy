@@ -1,7 +1,7 @@
-import { Link } from 'react-router-dom';
+﻿import { Link } from 'react-router-dom';
 import { useTranslation } from 'react-i18next';
 import './Footer.css';
-import logoTunafy from '../../assets/images/logo tunafy.png';
+import logoTunafy from '../../assets/images/logo flocify.svg';
 
 /* ── Social icon SVGs ─────────────────────────── */
 const FacebookIcon = () => (
@@ -36,7 +36,7 @@ const Footer = () => {
 
         {/* ── Left: Brand Column ──────────────────── */}
         <div className="footer-brand">
-          <img src={logoTunafy} alt="Tunafy Logo" className="footer-logo" />
+          <img src={logoTunafy} alt="Flocify Logo" className="footer-logo" />
           <p className="footer-tagline">
             {t('footer.tagline')}
           </p>
@@ -63,9 +63,8 @@ const Footer = () => {
           <h4 className="footer-col-title">{t('footer.navTitle')}</h4>
           <ul className="footer-links">
             <li><Link to="/">{t('nav.home')}</Link></li>
-            <li><Link to="/marketplace">{t('nav.marketplace')}</Link></li>
-            <li><Link to="/about">{t('nav.cart')}</Link></li>
-            <li><Link to="/orders">{t('nav.orders')}</Link></li>
+            <li><Link to="/products">Produk</Link></li>
+            <li><Link to="/about">{t('footer.about') || 'Tentang Kami'}</Link></li>
           </ul>
         </div>
 

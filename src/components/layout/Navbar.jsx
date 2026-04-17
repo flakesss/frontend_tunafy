@@ -3,7 +3,7 @@ import { Link, useLocation, useNavigate } from 'react-router-dom';
 import { useAuth } from '../../context/AuthContext';
 import { useTranslation } from 'react-i18next';
 import './Navbar.css';
-import logoTunafy from '../../assets/images/logo tunafy.png';
+import logoTunafy from '../../assets/images/logo flocify.svg';
 
 /**
  * Navbar component
@@ -26,20 +26,19 @@ const Navbar = ({ scrollYProgress, contentRef, alwaysVisible = false }) => {
   const langDropdownRef = useRef(null);
 
   const [activeLink, setActiveLink] = useState(() => {
-    if (currentPath === '/marketplace' || currentPath.startsWith('/product/')) return 'Marketplace';
-    if (currentPath === '/orders') return 'Orders';
-    if (currentPath === '/about' || currentPath === '/checkout') return 'Cart';
+    if (currentPath === '/products') return 'Products';
+    if (currentPath === '/about') return 'About';
     return 'Home';
   });
 
   // Update active link saat location berubah
   useEffect(() => {
-    if (currentPath === '/marketplace' || currentPath.startsWith('/product/')) {
-      setActiveLink('Marketplace');
-    } else if (currentPath === '/orders') {
-      setActiveLink('Orders');
-    } else if (currentPath === '/about' || currentPath === '/checkout') {
-      setActiveLink('Cart');
+    if (currentPath === '/products') {
+      setActiveLink('Products');
+    } else if (currentPath === '/about') {
+      setActiveLink('About');
+    } else if (currentPath.startsWith('/blog')) {
+      setActiveLink('Blog');
     } else {
       setActiveLink('Home');
     }
@@ -60,41 +59,26 @@ const Navbar = ({ scrollYProgress, contentRef, alwaysVisible = false }) => {
     return () => document.removeEventListener('mousedown', handleClickOutside);
   }, []);
 
-  const [showLogo, setShowLogo] = useState(alwaysVisible);
-  const [showMenu, setShowMenu] = useState(alwaysVisible);
-  const [hasScrolledPastHero, setHasScrolledPastHero] = useState(alwaysVisible);
+  const [showLogo, setShowLogo] = useState(true);
+  const [showMenu, setShowMenu] = useState(true);
+  const [hasScrolledPastHero, setHasScrolledPastHero] = useState(false);
 
   const navLinks = [
-    { name: 'Home',        label: t('nav.home'),        to: '/' },
-    { name: 'Marketplace', label: t('nav.marketplace'), to: '/marketplace' },
-    { name: 'Cart',        label: t('nav.cart'),        to: '/about' },
-    { name: 'Orders',      label: t('nav.orders'),      to: '/orders' },
+    { name: 'Home',     label: t('nav.home'),            to: '/' },
+    { name: 'Products', label: 'Produk',                  to: '/products' },
+    { name: 'Blog',     label: 'Blog',  to: '/blog' },
+    { name: 'About',    label: 'Tentang Kami',            to: '/about' },
   ];
 
+  // Deteksi scroll — transparan di atas, solid saat scroll > 10px
   useEffect(() => {
-    if (!scrollYProgress) return;
-    const unsubscribe = scrollYProgress.on('change', (latest) => {
-      const newShowLogo = latest >= 0.5;
-      const newShowMenu = latest >= 0.52;
-      setShowLogo(newShowLogo);
-      setShowMenu(newShowMenu);
-      // Tutup mobile menu ketika navbar kembali ke posisi awal (animasi hero)
-      if (!newShowMenu) {
-        setMobileMenuOpen(false);
-      }
-    });
-    return () => unsubscribe();
-  }, [scrollYProgress]);
-
-  useEffect(() => {
-    if (!contentRef || !contentRef.current) return;
-    const observer = new IntersectionObserver(
-      ([entry]) => { setHasScrolledPastHero(entry.isIntersecting); },
-      { threshold: 0, rootMargin: '-75px 0px 0px 0px' }
-    );
-    observer.observe(contentRef.current);
-    return () => observer.disconnect();
-  }, [contentRef]);
+    const handleScroll = () => {
+      setHasScrolledPastHero(window.scrollY > 10);
+    };
+    window.addEventListener('scroll', handleScroll, { passive: true });
+    handleScroll(); // cek posisi awal
+    return () => window.removeEventListener('scroll', handleScroll);
+  }, []);
 
   const getUserInitial = () => {
     const name = user?.user_metadata?.full_name || user?.email || '';
@@ -163,7 +147,7 @@ const Navbar = ({ scrollYProgress, contentRef, alwaysVisible = false }) => {
 
         {/* Center — Logo */}
         <div className={`navbar-logo-container ${showLogo ? 'visible' : 'hidden'}`}>
-          <img src={logoTunafy} alt="Tunafy Logo" className="navbar-logo" />
+          <img src={logoTunafy} alt="Flocify Logo" className="navbar-logo" />
         </div>
 
         {/* Right — Language & Login/User */}
@@ -235,12 +219,6 @@ const Navbar = ({ scrollYProgress, contentRef, alwaysVisible = false }) => {
                     <p className="navbar-dropdown__email">{user?.email}</p>
                   </div>
                   <div className="navbar-dropdown__divider" />
-                  <Link to="/about" className="navbar-dropdown__item" onClick={() => setDropdownOpen(false)}>
-                    <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round">
-                      <path d="M6 2L3 6v14a2 2 0 002 2h14a2 2 0 002-2V6l-3-4z"/><line x1="3" y1="6" x2="21" y2="6"/><path d="M16 10a4 4 0 01-8 0"/>
-                    </svg>
-                    {t('nav.basket')}
-                  </Link>
                   {(user?.user_metadata?.role === 'admin' || user?.user_metadata?.role === 'seller') && (
                     <Link to="/admin" className="navbar-dropdown__item" onClick={() => setDropdownOpen(false)}>
                       <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round">
@@ -261,7 +239,7 @@ const Navbar = ({ scrollYProgress, contentRef, alwaysVisible = false }) => {
               )}
             </div>
           ) : (
-            <Link to="/login" className="navbar-login-btn">{t('nav.login')}</Link>
+            <Link to="/hubungi" className="navbar-login-btn navbar-contact-btn">Hubungi Kami</Link>
           )}
         </div>
       </div>
@@ -295,8 +273,8 @@ const Navbar = ({ scrollYProgress, contentRef, alwaysVisible = false }) => {
           </div>
 
           {!isAuthenticated && (
-            <Link to="/login" className="navbar-mobile-link navbar-mobile-link--cta" onClick={() => setMobileMenuOpen(false)}>
-              {t('nav.login')}
+            <Link to="/hubungi" className="navbar-mobile-link navbar-mobile-link--cta" onClick={() => setMobileMenuOpen(false)}>
+              Hubungi Kami
             </Link>
           )}
         </div>

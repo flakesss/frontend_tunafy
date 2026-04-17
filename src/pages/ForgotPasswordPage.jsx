@@ -1,4 +1,4 @@
-import React, { useState } from 'react'
+﻿import React, { useState } from 'react'
 import { Link } from 'react-router-dom'
 import { useTranslation } from 'react-i18next'
 import { createClient } from '@supabase/supabase-js'
@@ -62,7 +62,7 @@ const ForgotPasswordPage = () => {
               <img src={nelayanBawaTuna} alt="Nelayan" />
             </div>
             <div className="fp-branding-logo">
-              <img src={logoTunafyPutih} alt="Tunafy" />
+              <img src={logoTunafyPutih} alt="Flocify" />
             </div>
             <div
               className="fp-branding-overlay"
@@ -79,7 +79,7 @@ const ForgotPasswordPage = () => {
             <div className="fp-form-wrapper">
               {/* Logo */}
               <div className="fp-logo">
-                <img src={logoTunafyBiru} alt="Tunafy" />
+                <img src={logoTunafyBiru} alt="Flocify" />
               </div>
 
               {!success ? (

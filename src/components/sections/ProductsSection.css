@@ -1,0 +1,309 @@
+/* ProductsSection.css */
+
+/* ── Section wrapper ────────────────────────── */
+.products-section {
+  width: 100%;
+  background: #ffffff;
+  padding: 80px 0 80px 0;
+  overflow: hidden;
+}
+
+.products-inner {
+  display: flex;
+  flex-direction: column;
+  gap: 48px;
+  width: 100%;
+  /* Use a shared centering anchor: 1232px content centered on page */
+  --products-content-start: max(20px, calc(50% - 616px));
+}
+
+/* ── Header text block ──────────────────────── */
+.products-text {
+  max-width: 848px;
+  /* Left edge = same as bento grid left edge: centered 1232px container */
+  margin-left: var(--products-content-start, max(20px, calc(50% - 616px)));
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
+}
+
+.products-label {
+  font-family: 'Montserrat', sans-serif;
+  font-weight: 700;
+  font-size: 24px;
+  line-height: 29px;
+  color: #F5AB17;
+  margin: 0 0 16px 0;
+}
+
+.products-heading {
+  font-family: 'Montserrat', sans-serif;
+  font-weight: 600;
+  font-size: 40px;
+  line-height: 49px;
+  color: #0058C7;
+  margin: 0 0 16px 0;
+  max-width: 780px;
+}
+
+.products-body {
+  font-family: 'Montserrat', sans-serif;
+  font-weight: 400;
+  font-size: 24px;
+  line-height: 29px;
+  color: #0058C7;
+  margin: 0;
+  max-width: 848px;
+}
+
+/* ── Bento Grid ─────────────────────────────── */
+.products-bento {
+  display: flex;
+  gap: 32px;
+  /* Centering: same as a 1232px max-width container centered */
+  width: min(1232px, calc(100% - 40px));
+  height: 650px;
+  margin: 0 auto;
+  box-sizing: border-box;
+}
+
+/* Right column stacks two small cards */
+.products-bento-right {
+  display: flex;
+  flex-direction: column;
+  gap: 32px;
+  flex: 0 0 429px;
+  height: 650px;
+}
+
+/* ── Base Card ──────────────────────────────── */
+.product-card {
+  position: relative;
+  border-radius: 32px;
+  overflow: hidden;
+  background-size: cover;
+  background-position: center;
+  background-repeat: no-repeat;
+  flex-shrink: 0;
+}
+
+/* Large card — left column */
+.product-card--large {
+  flex: 1; /* fills remaining width = ~771px */
+  height: 650px;
+}
+
+/* Small cards — right column */
+.product-card--small {
+  flex: 1; /* Each card takes equal half of the 650px column height */
+  width: 100%;
+  height: 309px; /* explicit: (650 - 32gap) / 2 = 309px */
+  min-height: 0;
+}
+
+/* ── Overlay gradients ──────────────────────── */
+.product-card__overlay {
+  position: absolute;
+  inset: 0;
+  border-radius: 32px;
+  pointer-events: none;
+}
+
+/* Bottom-to-top blue gradient (large card, Yellowfin) */
+.product-card__overlay--bottom {
+  background: linear-gradient(0deg, #0273FF 0%, rgba(1, 69, 153, 0) 100%);
+}
+
+/* Top-to-bottom blue gradient (small cards) */
+.product-card__overlay--top {
+  background: linear-gradient(360deg, #0273FF 0%, rgba(1, 69, 153, 0) 100%);
+}
+
+/* ── Card content ───────────────────────────── */
+.product-card__content {
+  position: absolute;
+  z-index: 2;
+  display: flex;
+  flex-direction: column;
+}
+
+/* Large card — content at the bottom */
+.product-card__content--large {
+  left: 62px;
+  bottom: 60px;
+  right: 62px;
+  gap: 16px;
+}
+
+/* Small cards — content at the bottom */
+.product-card__content--small {
+  left: 26px;
+  bottom: 26px;
+  right: 26px;
+  gap: 10px;
+}
+
+/* ── Card text ──────────────────────────────── */
+.product-card__name {
+  font-family: 'Montserrat', sans-serif;
+  font-weight: 600;
+  color: #FFFFFF;
+  margin: 0;
+}
+
+.product-card__name--large {
+  font-size: 40px;
+  line-height: 49px;
+}
+
+.product-card__name--small {
+  font-size: 24px;
+  line-height: 29px;
+}
+
+.product-card__desc {
+  font-family: 'Montserrat', sans-serif;
+  font-weight: 400;
+  color: #FFFFFF;
+  margin: 0;
+}
+
+.product-card__desc--large {
+  font-size: 24px;
+  line-height: 29px;
+}
+
+.product-card__desc--small {
+  font-size: 16px;
+  line-height: 20px;
+}
+
+/* CTA button (large card) */
+.product-card__btn {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: 258px;
+  height: 46px;
+  background: #F6AA17;
+  border: none;
+  border-radius: 16px;
+  font-family: 'Montserrat', sans-serif;
+  font-weight: 700;
+  font-size: 14px;
+  line-height: 17px;
+  color: #FFFFFF;
+  cursor: pointer;
+  transition: background 0.25s ease, transform 0.2s ease;
+  flex-shrink: 0;
+}
+
+.product-card__btn:hover {
+  background: #e59d0f;
+  transform: translateY(-2px);
+}
+
+/* CTA link text (small cards) */
+.product-card__link {
+  font-family: 'Montserrat', sans-serif;
+  font-weight: 700;
+  font-size: 14px;
+  line-height: 17px;
+  color: #F6AA17;
+  cursor: pointer;
+}
+
+/* ── Responsive ─────────────────────────────── */
+@media (max-width: 1300px) {
+  .products-bento {
+    height: auto;
+  }
+
+  .product-card--large {
+    height: 500px;
+  }
+
+  .product-card--small {
+    height: 240px;
+  }
+
+  .products-bento-right {
+    flex: 0 0 320px;
+    height: auto;
+  }
+}
+
+@media (max-width: 1024px) {
+  .products-text {
+    margin-left: max(20px, 4%);
+    padding-right: 20px;
+  }
+  .products-bento {
+    width: calc(100% - 40px);
+  }
+}
+
+@media (max-width: 900px) {
+  .products-bento {
+    flex-direction: column;
+    height: auto;
+  }
+
+  .product-card--large {
+    width: 100%;
+    height: 420px;
+  }
+
+  .product-card--small {
+    width: 100%;
+    min-height: 260px;
+  }
+
+  .products-bento-right {
+    flex: none;
+  }
+
+  .products-text {
+    margin-left: 0;
+    padding: 0 6%;
+    align-items: center;
+    text-align: center;
+  }
+}
+
+@media (max-width: 480px) {
+  .products-section {
+    padding: 48px 0;
+  }
+  .products-text {
+    padding: 0 20px;
+  }
+  .products-label {
+    font-size: 16px;
+  }
+  .products-heading {
+    font-size: 26px;
+    line-height: 34px;
+  }
+  .products-body {
+    font-size: 15px;
+    line-height: 22px;
+  }
+  .product-card__name--large {
+    font-size: 28px;
+    line-height: 36px;
+  }
+  .product-card__desc--large {
+    font-size: 16px;
+    line-height: 22px;
+  }
+  .product-card__content--large {
+    left: 24px;
+    bottom: 32px;
+    right: 24px;
+  }
+  .product-card__btn {
+    width: 220px;
+    font-size: 13px;
+  }
+}

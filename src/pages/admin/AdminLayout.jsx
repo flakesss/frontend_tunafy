@@ -1,4 +1,4 @@
-import { NavLink, useNavigate } from 'react-router-dom'
+﻿import { NavLink, useNavigate } from 'react-router-dom'
 import { useAuth } from '../../context/AuthContext'
 import './AdminLayout.css'
 
@@ -76,7 +76,7 @@ export default function AdminLayout({ children }) {
         <div className="admin-sidebar__brand">
           <div className="admin-sidebar__logo">T</div>
           <div>
-            <p className="admin-sidebar__brand-name">Tunafy</p>
+            <p className="admin-sidebar__brand-name">Flocify</p>
             <p className="admin-sidebar__brand-sub">Admin Panel</p>
           </div>
         </div>

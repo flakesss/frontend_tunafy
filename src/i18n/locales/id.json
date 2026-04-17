@@ -1,25 +1,22 @@
 {
   "nav": {
     "home": "Beranda",
-    "marketplace": "Marketplace",
-    "cart": "Keranjang",
-    "orders": "Pesanan",
     "login": "Masuk",
     "logout": "Keluar",
-    "adminPanel": "Panel Admin",
-    "basket": "Keranjang"
+    "adminPanel": "Panel Admin"
   },
   "hero": {
+    "tagline": "AGREGATOR TERPERCAYA · DISTRIBUSI PERIKANAN",
     "title": "Pembelian Tuna Premium Jadi Mudah",
     "description": "Cara terpintar membeli Tuna Premium Grade. Sepenuhnya dapat dilacak, sesuai hukum, dan dikirim ke seluruh dunia.",
-    "cta": "Lihat Katalog Produk",
+    "cta": "Ke Blog Kami",
     "loading": "Menyiapkan Pengalaman Tuna Terbaik..."
   },
   "whyTunafy": {
-    "label": "MENGAPA MEMILIH TUNAFY",
+    "label": "MENGAPA MEMILIH FLOCIFY",
     "heading": "Sumber Terlacak dari Jantung Laut Banda.",
     "body": "Rantai pasokan kami dioptimalkan untuk kecepatan dan transparansi. Dari nelayan artisanal Maluku hingga pasar global, kami memastikan setiap ikan terlacak, tercatat suhunya, dan dikirim dengan integritas.",
-    "cta": "Lihat Katalog Produk"
+    "cta": "Lihat Artikel"
   },
   "bandaSea": {
     "heading": "Menghubungkan Perikanan Indonesia ke Pasar Global",
@@ -45,158 +42,7 @@
     "privacy": "Kebijakan Privasi",
     "cookie": "Kebijakan Cookie",
     "status": "Status",
-    "copyright": "© 2026 Tunafy. Semua Hak Dilindungi"
-  },
-  "marketplace": {
-    "title": "Daftar Marketplace",
-    "description": "Akses inventaris real-time kami berupa tuna bluefin, bigeye, dan yellowfin premium. Semua listing terverifikasi untuk kualitas ekspor.",
-    "activeLabel": "Aktif:",
-    "allProducts": "Semua Produk",
-    "loading": "Memuat produk...",
-    "error": "Gagal memuat produk. Silakan coba lagi.",
-    "noProducts": "Tidak ada produk yang sesuai dengan filter Anda.",
-    "sortRecommended": "Rekomendasi",
-    "sortPriceLow": "Harga: Terendah",
-    "sortPriceHigh": "Harga: Tertinggi",
-    "sortNewest": "Terbaru",
-    "filter": {
-      "title": "Filter",
-      "species": "Spesies",
-      "form": "Bentuk",
-      "grade": "Grade",
-      "all": "Semua",
-      "applyFilter": "Terapkan Filter",
-      "reset": "Reset"
-    },
-    "card": {
-      "perKg": "/ kg",
-      "minOrder": "Min. Pesanan",
-      "viewDetail": "Lihat Detail"
-    }
-  },
-  "productDetail": {
-    "loading": "Memuat produk...",
-    "notFound": "Produk tidak ditemukan.",
-    "error": "Produk tidak ditemukan atau terjadi kesalahan.",
-    "backToMarket": "← Kembali ke Marketplace",
-    "tabDelivery": "Pengiriman",
-    "tabDetail": "Detail Produk",
-    "shippedFrom": "Dikirim dari",
-    "catchDate": "Tanggal Tangkap",
-    "vesselName": "Nama Kapal",
-    "oceanZone": "Zona Laut",
-    "vesselId": "ID Kapal",
-    "outOfStock": "Stok Habis",
-    "orderQty": "Jumlah Pemesanan (Kg)",
-    "minOrder": "Min Pesanan",
-    "stockAvail": "Stok Tersedia",
-    "subtotal": "Subtotal",
-    "cart": "Keranjang",
-    "orderNow": "Beli Sekarang",
-    "addCart": "Tambah ke Keranjang",
-    "buyNow": "Beli Sekarang",
-    "drawerTitleCart": "Tambah ke Keranjang",
-    "drawerTitleOrder": "Beli Sekarang",
-    "toastSuccess": "Produk berhasil ditambahkan ke keranjang!",
-    "toastLoginRequired": "Silakan login terlebih dahulu.",
-    "toastCartError": "Gagal menambahkan ke keranjang.",
-    "toastOrderError": "Gagal memproses pesanan."
-  },
-  "cart": {
-    "title": "Keranjang Pesanan",
-    "subtitle": "Periksa kembali pesanan Anda sebelum melanjutkan ke pembayaran.",
-    "loading": "Memuat keranjang...",
-    "empty": "Keranjang masih kosong",
-    "emptyDesc": "Temukan produk tuna berkualitas di marketplace kami.",
-    "exploreMarket": "Jelajahi Marketplace",
-    "loginRequired": "Silakan login untuk melihat keranjang Anda.",
-    "loginNow": "Login Sekarang",
-    "loadError": "Gagal memuat keranjang. Silakan coba lagi.",
-    "products": "Produk",
-    "total": "total",
-    "stockOut": "Stok Habis - Produk ini tidak dapat dipesan",
-    "stockInsufficient": "Stok Tidak Mencukupi - Tersedia:",
-    "inCart": "Di keranjang:",
-    "stock": "Stok:",
-    "stockEmpty": "Habis",
-    "backToMarket": "← Kembali ke Marketplace",
-    "orderSummary": "Ringkasan Pesanan",
-    "orderTotal": "Total",
-    "stockWarningOut": "produk stok habis dan tidak dapat dipesan.",
-    "stockWarningInsufficient": "produk dengan stok tidak mencukupi. Kurangi jumlah atau hapus dari keranjang.",
-    "checkout": "Lanjutkan Pemesanan →",
-    "priceNote": "Harga belum termasuk pajak. Ongkos kirim dikonfirmasi oleh tim kami.",
-    "remove": "Hapus item"
-  },
-  "orders": {
-    "title": "Status Pemesanan",
-    "subtitle": "Pantau status dan riwayat semua pesanan Anda.",
-    "loading": "Memuat pesanan...",
-    "empty": "Belum ada pesanan",
-    "emptyDesc": "Mulai belanja dan pesanan Anda akan muncul di sini.",
-    "shopNow": "Jelajahi Marketplace",
-    "backToMarket": "← Kembali ke Marketplace",
-    "loginNow": "Login Sekarang",
-    "loginRequired": "Silakan login untuk melihat pesanan Anda.",
-    "loadError": "Gagal memuat pesanan. Silakan coba lagi.",
-    "orderNumber": "No. Pesanan",
-    "cancelConfirm": "Batalkan pesanan ini?",
-    "cancel": "Batalkan",
-    "cancelling": "Membatalkan...",
-    "cancelError": "Gagal membatalkan pesanan.",
-    "products": "produk",
-    "total": "Total",
-    "status": {
-      "pending": "Menunggu",
-      "confirmed": "Dikonfirmasi",
-      "processing": "Diproses",
-      "shipped": "Dikirim",
-      "delivered": "Selesai",
-      "cancelled": "Dibatalkan"
-    }
-  },
-  "checkout": {
-    "title": "Form Pemesanan",
-    "subtitle": "Lengkapi data Anda untuk menyelesaikan pesanan.",
-    "breadcrumbCart": "Keranjang",
-    "section1": "Data Pembeli",
-    "section2": "Alamat Pengiriman",
-    "fullName": "Nama Lengkap",
-    "phone": "Nomor Telepon",
-    "email": "Email",
-    "address": "Alamat Lengkap",
-    "city": "Kota / Kabupaten",
-    "postalCode": "Kode Pos",
-    "province": "Provinsi",
-    "selectProvince": "-- Pilih Provinsi --",
-    "notes": "Catatan Pengiriman",
-    "notesOptional": "(opsional)",
-    "namePlaceholder": "Contoh: Budi Santoso",
-    "cityPlaceholder": "Contoh: Jakarta Selatan",
-    "addressPlaceholder": "Jl. Contoh No. 12, RT 01/RW 02, Kelurahan...",
-    "notesPH": "Contoh: Titip ke satpam, atau hubungi dulu sebelum antar.",
-    "orderSummary": "Ringkasan Pesanan",
-    "total": "Total",
-    "priceNote": "Harga belum termasuk pajak. Ongkos kirim dikonfirmasi oleh tim kami.",
-    "processing": "Memproses...",
-    "confirm": "Konfirmasi Pesanan →",
-    "successTitle": "Pesanan Dikonfirmasi!",
-    "successDesc": "Terima kasih, {{name}}! Pesanan Anda telah kami terima. Admin kami akan segera menghubungi Anda melalui WhatsApp di nomor {{phone}} untuk melanjutkan proses pesanan.",
-    "orderNo": "No. Pesanan:",
-    "backToMarket": "Kembali ke Marketplace",
-    "viewCart": "Lihat Keranjang",
-    "validation": {
-      "fullName": "Nama lengkap wajib diisi",
-      "phone": "Nomor telepon wajib diisi",
-      "phoneFormat": "Format nomor tidak valid",
-      "email": "Email wajib diisi",
-      "emailFormat": "Format email tidak valid",
-      "address": "Alamat wajib diisi",
-      "city": "Kota wajib diisi",
-      "province": "Provinsi wajib dipilih",
-      "postalCode": "Kode pos wajib diisi",
-      "postalCodeFormat": "Kode pos harus 5 digit"
-    }
+    "copyright": "© 2026 Flocify. Semua Hak Dilindungi"
   },
   "login": {
     "brandingTitle": "Pasar Ikan Tuna Terpercaya.",
@@ -263,7 +109,7 @@
     "brandingTitle": "Pasar Ikan Tuna Terpercaya.",
     "brandingDesc": "Wadah digital yang menghubungkan pembeli dengan nelayan terbaik Indonesia. Transaksi aman, kualitas terjamin, harga transparan.",
     "heading": "Buat Akun Baru",
-    "subheading": "Bergabunglah dengan Tunafy dan mulai bertransaksi ikan tuna berkualitas dengan aman.",
+    "subheading": "Bergabunglah dengan Flocify dan mulai bertransaksi ikan tuna berkualitas dengan aman.",
     "email": "Email",
     "emailPlaceholder": "Masukkan email",
     "name": "Nama Lengkap",
@@ -292,7 +138,7 @@
     "termsLink": "Syarat & Ketentuan",
     "and": "dan",
     "privacyLink": "Kebijakan Privasi",
-    "termsOf": "Tunafy",
+    "termsOf": "Flocify",
     "submit": "Daftar Sekarang",
     "submitting": "Memproses...",
     "orDivider": "atau",
@@ -322,7 +168,7 @@
   },
   "companyAbout": {
     "title": "Tentang Kami",
-    "dummyContent1": "Tunafy hadir untuk merevolusi rantai pasok tuna premium dari jantung laut Banda. Kami menjembatani para nelayan lokal dengan pasar global dengan cara yang transparan dan dapat dilacak sepenuhnya.",
+    "dummyContent1": "Flocify hadir untuk merevolusi rantai pasok tuna premium dari jantung laut Banda. Kami menjembatani para nelayan lokal dengan pasar global dengan cara yang transparan dan dapat dilacak sepenuhnya.",
     "dummyContent2": "Visi kami adalah menciptakan ekosistem laut yang berkelanjutan dan memajukan kesejahteraan masyarakat pesisir di kepulauan Indonesia timur."
   },
   "terms": {
@@ -330,36 +176,100 @@
     "title": "Syarat & Ketentuan",
     "effective": "Berlaku sejak: 16 Maret 2026",
     "updated": "Terakhir diperbarui",
-    "intro": "Harap baca Syarat dan Ketentuan ini dengan seksama sebelum menggunakan platform Tunafy. Dengan mengakses atau menggunakan layanan kami, Anda setuju untuk terikat oleh ketentuan ini. Jika Anda tidak menyetujui, harap segera hentikan penggunaan.",
+    "intro": "Harap baca Syarat dan Ketentuan ini dengan seksama sebelum menggunakan platform Flocify. Dengan mengakses atau menggunakan layanan kami, Anda setuju untuk terikat oleh ketentuan ini. Jika Anda tidak menyetujui, harap segera hentikan penggunaan.",
     "toc": "Daftar Isi",
-    "s1": { "title": "Definisi", "body": "Dalam Syarat dan Ketentuan ini: Tunafy merujuk pada PT Tunafy Nusantara. Pengguna merujuk pada setiap pembeli atau penjual terdaftar yang mengakses platform kami. Platform merujuk pada website Tunafy, API, dan layanan digital terkait. Produk merujuk pada tuna premium dan produk perikanan yang dicantumkan untuk dijual. Pesanan merujuk pada permintaan pembelian yang dikonfirmasi melalui Platform." },
-    "s2": { "title": "Kelayakan & Akun", "body": "Anda harus berusia minimal 18 tahun dan mewakili badan usaha yang terdaftar secara sah untuk menggunakan platform Tunafy sebagai pembeli atau penjual. Anda bertanggung jawab untuk menjaga kerahasiaan kredensial akun Anda dan atas semua aktivitas yang terjadi di bawah akun Anda. Anda setuju untuk segera memberitahu kami tentang penggunaan akun yang tidak sah. Tunafy berhak untuk menangguhkan atau mengakhiri akun yang melanggar ketentuan ini." },
-    "s3": { "title": "Penggunaan Platform", "body": "Anda setuju untuk menggunakan platform Tunafy hanya untuk tujuan yang sah dan dengan cara yang tidak melanggar hak-hak pihak lain. Aktivitas yang dilarang meliputi: menyalahartikan asal usul, spesies, atau kualitas produk perikanan; melewati langkah-langkah keamanan atau kontrol akses; pengambilan data otomatis tanpa izin tertulis; menggunakan platform untuk transaksi yang melanggar regulasi ekspor/impor yang berlaku; dan terlibat dalam perilaku penipuan atau menyesatkan." },
-    "s4": { "title": "Pesanan & Harga", "body": "Semua listing produk di Tunafy menampilkan harga indikatif per kilogram (IDR/kg). Harga dapat berubah sesuai konfirmasi dari tim operasional kami berdasarkan stok aktual, tanggal tangkap, dan volume. Pesanan dianggap terkonfirmasi hanya setelah Tunafy mengeluarkan konfirmasi pesanan tertulis melalui email atau WhatsApp. Kuantitas pesanan minimum berlaku seperti tertera pada setiap listing produk. Tunafy berhak menolak atau membatalkan pesanan apa pun atas kebijakannya sendiri." },
-    "s5": { "title": "Pembayaran", "body": "Pembayaran diterima melalui transfer bank ke rekening Tunafy yang telah ditentukan. Pembayaran penuh diperlukan sebelum pengiriman kecuali ada pengaturan kredit yang telah disetujui secara tertulis. Faktur akan diterbitkan setelah konfirmasi pesanan. Untuk pesanan internasional, pembayaran harus dilakukan dalam USD atau IDR sesuai kesepakatan; biaya bank atau konversi mata uang menjadi tanggung jawab pembeli." },
-    "s6": { "title": "Pengiriman & Logistik", "body": "Tunafy mengkoordinasikan logistik rantai dingin dari Maluku dan wilayah tangkap lainnya ke alamat pengiriman yang ditentukan pembeli. Estimasi waktu pengiriman diberikan saat konfirmasi pesanan dan tergantung pada jadwal kapal, kondisi cuaca, dan proses kepabeanan untuk pengiriman internasional. Risiko kehilangan berpindah ke pembeli saat penyerahan ke operator pengiriman yang ditunjuk." },
-    "s7": { "title": "Kualitas Produk & Pengembalian", "body": "Semua produk tuna dan perikanan yang dijual melalui Tunafy bersumber dari nelayan terverifikasi dan menjalani inspeksi kualitas sebelum pengiriman. Produk dikelaskan (A+, A, B+) dan suhu dicatat sepanjang rantai pasokan. Jika terjadi sengketa kualitas produk, Anda harus memberitahu Tunafy dalam 24 jam setelah pengiriman disertai bukti fotografi." },
-    "s8": { "title": "Keterlacakan & Kepatuhan", "body": "Tunafy berkomitmen pada praktik penangkapan ikan yang legal dan berkelanjutan. Semua produk yang terdaftar bersumber dari nelayan dan kapal yang beroperasi sesuai hukum perikanan Indonesia (UU No. 45/2009) dan konvensi internasional. Tunafy menyediakan sertifikat tangkap dan dokumentasi kapal atas permintaan." },
-    "s9": { "title": "Kekayaan Intelektual", "body": "Semua konten di platform Tunafy termasuk logo, aset merek, fotografi produk, data, dan perangkat lunak adalah milik eksklusif PT Tunafy Nusantara dan dilindungi oleh hukum hak cipta Indonesia dan internasional. Anda tidak boleh mereproduksi atau mendistribusikan konten Tunafy tanpa izin tertulis sebelumnya." },
-    "s10": { "title": "Batasan Tanggung Jawab", "body": "Sejauh yang diizinkan oleh hukum yang berlaku, Tunafy tidak bertanggung jawab atas kerusakan tidak langsung, insidental, atau konsekuensial yang timbul dari penggunaan platform atau produk yang dibeli melaluinya. Total kewajiban kami sehubungan dengan klaim apa pun tidak akan melebihi nilai pesanan yang menimbulkan klaim tersebut." },
-    "s11": { "title": "Hukum & Penyelesaian Sengketa", "body": "Syarat dan Ketentuan ini diatur oleh hukum Republik Indonesia. Setiap sengketa yang tidak dapat diselesaikan melalui negosiasi dengan itikad baik akan diserahkan ke Badan Arbitrase Nasional Indonesia (BANI) di Jakarta untuk arbitrase mengikat sesuai dengan aturannya." },
-    "s12": { "title": "Hubungi Kami", "body": "Jika Anda memiliki pertanyaan tentang Syarat dan Ketentuan ini, silakan hubungi kami. Kami berusaha merespons semua pertanyaan hukum dalam 3 hari kerja.", "email": "support@tunafy.id", "cta": "Kirim Email" }
+    "s1": {
+      "title": "Definisi",
+      "body": "Dalam Syarat dan Ketentuan ini: Flocify merujuk pada PT Flocify Nusantara. Pengguna merujuk pada setiap pembeli atau penjual terdaftar yang mengakses platform kami. Platform merujuk pada website Flocify, API, dan layanan digital terkait. Produk merujuk pada tuna premium dan produk perikanan yang dicantumkan untuk dijual. Pesanan merujuk pada permintaan pembelian yang dikonfirmasi melalui Platform."
+    },
+    "s2": {
+      "title": "Kelayakan & Akun",
+      "body": "Anda harus berusia minimal 18 tahun dan mewakili badan usaha yang terdaftar secara sah untuk menggunakan platform Flocify sebagai pembeli atau penjual. Anda bertanggung jawab untuk menjaga kerahasiaan kredensial akun Anda dan atas semua aktivitas yang terjadi di bawah akun Anda. Anda setuju untuk segera memberitahu kami tentang penggunaan akun yang tidak sah. Flocify berhak untuk menangguhkan atau mengakhiri akun yang melanggar ketentuan ini."
+    },
+    "s3": {
+      "title": "Penggunaan Platform",
+      "body": "Anda setuju untuk menggunakan platform Flocify hanya untuk tujuan yang sah dan dengan cara yang tidak melanggar hak-hak pihak lain. Aktivitas yang dilarang meliputi: menyalahartikan asal usul, spesies, atau kualitas produk perikanan; melewati langkah-langkah keamanan atau kontrol akses; pengambilan data otomatis tanpa izin tertulis; menggunakan platform untuk transaksi yang melanggar regulasi ekspor/impor yang berlaku; dan terlibat dalam perilaku penipuan atau menyesatkan."
+    },
+    "s4": {
+      "title": "Pesanan & Harga",
+      "body": "Semua listing produk di Flocify menampilkan harga indikatif per kilogram (IDR/kg). Harga dapat berubah sesuai konfirmasi dari tim operasional kami berdasarkan stok aktual, tanggal tangkap, dan volume. Pesanan dianggap terkonfirmasi hanya setelah Flocify mengeluarkan konfirmasi pesanan tertulis melalui email atau WhatsApp. Kuantitas pesanan minimum berlaku seperti tertera pada setiap listing produk. Flocify berhak menolak atau membatalkan pesanan apa pun atas kebijakannya sendiri."
+    },
+    "s5": {
+      "title": "Pembayaran",
+      "body": "Pembayaran diterima melalui transfer bank ke rekening Flocify yang telah ditentukan. Pembayaran penuh diperlukan sebelum pengiriman kecuali ada pengaturan kredit yang telah disetujui secara tertulis. Faktur akan diterbitkan setelah konfirmasi pesanan. Untuk pesanan internasional, pembayaran harus dilakukan dalam USD atau IDR sesuai kesepakatan; biaya bank atau konversi mata uang menjadi tanggung jawab pembeli."
+    },
+    "s6": {
+      "title": "Pengiriman & Logistik",
+      "body": "Flocify mengkoordinasikan logistik rantai dingin dari Maluku dan wilayah tangkap lainnya ke alamat pengiriman yang ditentukan pembeli. Estimasi waktu pengiriman diberikan saat konfirmasi pesanan dan tergantung pada jadwal kapal, kondisi cuaca, dan proses kepabeanan untuk pengiriman internasional. Risiko kehilangan berpindah ke pembeli saat penyerahan ke operator pengiriman yang ditunjuk."
+    },
+    "s7": {
+      "title": "Kualitas Produk & Pengembalian",
+      "body": "Semua produk tuna dan perikanan yang dijual melalui Flocify bersumber dari nelayan terverifikasi dan menjalani inspeksi kualitas sebelum pengiriman. Produk dikelaskan (A+, A, B+) dan suhu dicatat sepanjang rantai pasokan. Jika terjadi sengketa kualitas produk, Anda harus memberitahu Flocify dalam 24 jam setelah pengiriman disertai bukti fotografi."
+    },
+    "s8": {
+      "title": "Keterlacakan & Kepatuhan",
+      "body": "Flocify berkomitmen pada praktik penangkapan ikan yang legal dan berkelanjutan. Semua produk yang terdaftar bersumber dari nelayan dan kapal yang beroperasi sesuai hukum perikanan Indonesia (UU No. 45/2009) dan konvensi internasional. Flocify menyediakan sertifikat tangkap dan dokumentasi kapal atas permintaan."
+    },
+    "s9": {
+      "title": "Kekayaan Intelektual",
+      "body": "Semua konten di platform Flocify termasuk logo, aset merek, fotografi produk, data, dan perangkat lunak adalah milik eksklusif PT Flocify Nusantara dan dilindungi oleh hukum hak cipta Indonesia dan internasional. Anda tidak boleh mereproduksi atau mendistribusikan konten Flocify tanpa izin tertulis sebelumnya."
+    },
+    "s10": {
+      "title": "Batasan Tanggung Jawab",
+      "body": "Sejauh yang diizinkan oleh hukum yang berlaku, Flocify tidak bertanggung jawab atas kerusakan tidak langsung, insidental, atau konsekuensial yang timbul dari penggunaan platform atau produk yang dibeli melaluinya. Total kewajiban kami sehubungan dengan klaim apa pun tidak akan melebihi nilai pesanan yang menimbulkan klaim tersebut."
+    },
+    "s11": {
+      "title": "Hukum & Penyelesaian Sengketa",
+      "body": "Syarat dan Ketentuan ini diatur oleh hukum Republik Indonesia. Setiap sengketa yang tidak dapat diselesaikan melalui negosiasi dengan itikad baik akan diserahkan ke Badan Arbitrase Nasional Indonesia (BANI) di Jakarta untuk arbitrase mengikat sesuai dengan aturannya."
+    },
+    "s12": {
+      "title": "Hubungi Kami",
+      "body": "Jika Anda memiliki pertanyaan tentang Syarat dan Ketentuan ini, silakan hubungi kami. Kami berusaha merespons semua pertanyaan hukum dalam 3 hari kerja.",
+      "email": "contact@flocify.id",
+      "cta": "Kirim Email"
+    }
   },
   "privacy": {
     "heroBadge": "Legal",
     "title": "Kebijakan Privasi",
     "effective": "Berlaku sejak: 16 Maret 2026",
     "updated": "Terakhir diperbarui",
-    "intro": "Di Tunafy, privasi Anda adalah fondasi kepercayaan yang kami bangun dengan nelayan, pembeli, dan mitra kami. Kebijakan Privasi ini menjelaskan bagaimana PT Tunafy Nusantara mengumpulkan, menggunakan, menyimpan, dan melindungi informasi pribadi Anda ketika menggunakan platform kami.",
+    "intro": "Di Flocify, privasi Anda adalah fondasi kepercayaan yang kami bangun dengan nelayan, pembeli, dan mitra kami. Kebijakan Privasi ini menjelaskan bagaimana PT Flocify Nusantara mengumpulkan, menggunakan, menyimpan, dan melindungi informasi pribadi Anda ketika menggunakan platform kami.",
     "toc": "Daftar Isi",
-    "s1": { "title": "Informasi yang Kami Kumpulkan", "body": "Saat Anda mendaftar dan menggunakan platform Tunafy, kami mengumpulkan: Informasi akun (nama lengkap, alamat email, username, nomor telepon, dan detail perusahaan); Informasi pesanan (alamat pengiriman, riwayat pesanan, kuantitas, dan preferensi produk); Catatan komunikasi (email, pesan WhatsApp yang dipertukarkan dengan tim operasional kami); Data penggunaan (alamat IP, jenis browser, halaman yang dikunjungi, dan durasi sesi); serta Informasi perangkat yang dikumpulkan secara otomatis melalui teknologi web standar." },
-    "s2": { "title": "Cara Kami Menggunakan Data Anda", "body": "Kami menggunakan data pribadi Anda untuk: memproses dan memenuhi pesanan Anda serta mengkomunikasikan status pengiriman; memverifikasi identitas dan pendaftaran bisnis Anda; mengirim konfirmasi pesanan, faktur, dan notifikasi operasional; meningkatkan fitur platform dan pengalaman pengguna; mematuhi regulasi pajak, perdagangan, dan perikanan Indonesia; mendeteksi dan mencegah aktivitas penipuan; dan, dengan persetujuan Anda, mengirim pembaruan tentang produk baru, wawasan pasar, atau promosi." },
-    "s3": { "title": "Berbagi Data", "body": "Tunafy tidak menjual data pribadi Anda kepada pihak ketiga. Kami hanya berbagi data Anda dengan: mitra logistik dan operator rantai dingin yang diperlukan untuk memenuhi pesanan Anda; bank pemroses pembayaran untuk verifikasi transaksi; otoritas pemerintah ketika diwajibkan oleh hukum Indonesia (mis. bea cukai, kementerian kelautan); dan penyedia layanan teknologi (mis. hosting cloud, analitik) yang terikat secara kontraktual untuk melindungi data Anda. Semua mitra pihak ketiga diwajibkan menangani data Anda sesuai hukum privasi yang berlaku." },
-    "s4": { "title": "Keamanan Data", "body": "Kami menerapkan langkah-langkah keamanan standar industri untuk melindungi informasi pribadi Anda, termasuk enkripsi TLS untuk data yang sedang ditransmisikan, keamanan database tingkat baris (Supabase RLS), kontrol akses yang membatasi akses data hanya kepada personel yang berwenang, dan audit keamanan berkala. Meskipun kami berupaya melindungi data Anda, tidak ada transmisi internet yang 100% aman. Anda bertanggung jawab untuk menjaga kerahasiaan kredensial akun Anda." },
-    "s5": { "title": "Cookie & Pelacakan", "body": "Tunafy menggunakan cookie sesi yang diperlukan agar platform dapat berfungsi (mis. token autentikasi). Kami juga menggunakan cookie analitik untuk memahami cara pengguna menavigasi platform, membantu kami meningkatkan pengalaman. Anda dapat mengontrol pengaturan cookie melalui browser Anda. Menonaktifkan cookie esensial dapat mengganggu fungsionalitas platform. Kami tidak menggunakan cookie pelacakan iklan pihak ketiga." },
-    "s6": { "title": "Retensi Data", "body": "Kami menyimpan data akun dan pesanan Anda selama akun Anda aktif atau sesuai yang diwajibkan hukum Indonesia (biasanya 5 tahun untuk catatan transaksi komersial). Data pesanan dan faktur dapat disimpan lebih lama untuk memenuhi kewajiban pajak. Anda dapat meminta penghapusan data pribadi Anda kapan saja, tergantung kewajiban retensi hukum kami." },
-    "s7": { "title": "Hak-Hak Anda", "body": "Berdasarkan regulasi perlindungan data Indonesia yang berlaku, Anda memiliki hak untuk: mengakses data pribadi yang kami simpan tentang Anda; meminta koreksi data yang tidak akurat; meminta penghapusan data Anda (tergantung persyaratan retensi hukum); menarik persetujuan untuk komunikasi pemasaran kapan saja; dan mengajukan keluhan kepada otoritas perlindungan data Indonesia yang relevan. Untuk menggunakan hak-hak ini, hubungi kami di email di bawah." },
-    "s8": { "title": "Hubungi Kami", "body": "Jika Anda memiliki pertanyaan atau kekhawatiran tentang Kebijakan Privasi ini atau cara kami menangani data Anda, silakan hubungi tim perlindungan data kami. Kami berusaha merespons dalam 5 hari kerja.", "email": "support@tunafy.id", "cta": "Kirim Email" }
+    "s1": {
+      "title": "Informasi yang Kami Kumpulkan",
+      "body": "Saat Anda mendaftar dan menggunakan platform Flocify, kami mengumpulkan: Informasi akun (nama lengkap, alamat email, username, nomor telepon, dan detail perusahaan); Informasi pesanan (alamat pengiriman, riwayat pesanan, kuantitas, dan preferensi produk); Catatan komunikasi (email, pesan WhatsApp yang dipertukarkan dengan tim operasional kami); Data penggunaan (alamat IP, jenis browser, halaman yang dikunjungi, dan durasi sesi); serta Informasi perangkat yang dikumpulkan secara otomatis melalui teknologi web standar."
+    },
+    "s2": {
+      "title": "Cara Kami Menggunakan Data Anda",
+      "body": "Kami menggunakan data pribadi Anda untuk: memproses dan memenuhi pesanan Anda serta mengkomunikasikan status pengiriman; memverifikasi identitas dan pendaftaran bisnis Anda; mengirim konfirmasi pesanan, faktur, dan notifikasi operasional; meningkatkan fitur platform dan pengalaman pengguna; mematuhi regulasi pajak, perdagangan, dan perikanan Indonesia; mendeteksi dan mencegah aktivitas penipuan; dan, dengan persetujuan Anda, mengirim pembaruan tentang produk baru, wawasan pasar, atau promosi."
+    },
+    "s3": {
+      "title": "Berbagi Data",
+      "body": "Flocify tidak menjual data pribadi Anda kepada pihak ketiga. Kami hanya berbagi data Anda dengan: mitra logistik dan operator rantai dingin yang diperlukan untuk memenuhi pesanan Anda; bank pemroses pembayaran untuk verifikasi transaksi; otoritas pemerintah ketika diwajibkan oleh hukum Indonesia (mis. bea cukai, kementerian kelautan); dan penyedia layanan teknologi (mis. hosting cloud, analitik) yang terikat secara kontraktual untuk melindungi data Anda. Semua mitra pihak ketiga diwajibkan menangani data Anda sesuai hukum privasi yang berlaku."
+    },
+    "s4": {
+      "title": "Keamanan Data",
+      "body": "Kami menerapkan langkah-langkah keamanan standar industri untuk melindungi informasi pribadi Anda, termasuk enkripsi TLS untuk data yang sedang ditransmisikan, keamanan database tingkat baris (Supabase RLS), kontrol akses yang membatasi akses data hanya kepada personel yang berwenang, dan audit keamanan berkala. Meskipun kami berupaya melindungi data Anda, tidak ada transmisi internet yang 100% aman. Anda bertanggung jawab untuk menjaga kerahasiaan kredensial akun Anda."
+    },
+    "s5": {
+      "title": "Cookie & Pelacakan",
+      "body": "Flocify menggunakan cookie sesi yang diperlukan agar platform dapat berfungsi (mis. token autentikasi). Kami juga menggunakan cookie analitik untuk memahami cara pengguna menavigasi platform, membantu kami meningkatkan pengalaman. Anda dapat mengontrol pengaturan cookie melalui browser Anda. Menonaktifkan cookie esensial dapat mengganggu fungsionalitas platform. Kami tidak menggunakan cookie pelacakan iklan pihak ketiga."
+    },
+    "s6": {
+      "title": "Retensi Data",
+      "body": "Kami menyimpan data akun dan pesanan Anda selama akun Anda aktif atau sesuai yang diwajibkan hukum Indonesia (biasanya 5 tahun untuk catatan transaksi komersial). Data pesanan dan faktur dapat disimpan lebih lama untuk memenuhi kewajiban pajak. Anda dapat meminta penghapusan data pribadi Anda kapan saja, tergantung kewajiban retensi hukum kami."
+    },
+    "s7": {
+      "title": "Hak-Hak Anda",
+      "body": "Berdasarkan regulasi perlindungan data Indonesia yang berlaku, Anda memiliki hak untuk: mengakses data pribadi yang kami simpan tentang Anda; meminta koreksi data yang tidak akurat; meminta penghapusan data Anda (tergantung persyaratan retensi hukum); menarik persetujuan untuk komunikasi pemasaran kapan saja; dan mengajukan keluhan kepada otoritas perlindungan data Indonesia yang relevan. Untuk menggunakan hak-hak ini, hubungi kami di email di bawah."
+    },
+    "s8": {
+      "title": "Hubungi Kami",
+      "body": "Jika Anda memiliki pertanyaan atau kekhawatiran tentang Kebijakan Privasi ini atau cara kami menangani data Anda, silakan hubungi tim perlindungan data kami. Kami berusaha merespons dalam 5 hari kerja.",
+      "email": "contact@flocify.id",
+      "cta": "Kirim Email"
+    }
   },
   "common": {
     "loading": "Memuat...",
@@ -378,4 +288,3 @@
     "kg": "kg"
   }
 }
-

@@ -1,4 +1,4 @@
-import React, { useState, useCallback, useEffect } from 'react'
+﻿import React, { useState, useCallback, useEffect } from 'react'
 import { Link, useNavigate } from 'react-router-dom'
 import { useTranslation } from 'react-i18next'
 import GoogleLoginButton from '../components/GoogleLoginButton'
@@ -237,7 +237,7 @@ export default function RegisterStep1() {
 
               {/* Logo Icon - Top Left */}
               <div className="register-branding-logo">
-                <img src={logoTunafyPutih} alt="Tunafy" />
+                <img src={logoTunafyPutih} alt="Flocify" />
               </div>
 
               {/* Gradient Overlay */}
@@ -318,7 +318,7 @@ export default function RegisterStep1() {
 
             {/* Logo Icon - Top Left */}
             <div className="register-branding-logo">
-              <img src={logoTunafyPutih} alt="Tunafy" />
+              <img src={logoTunafyPutih} alt="Flocify" />
             </div>
 
             {/* Gradient Overlay */}
@@ -341,7 +341,7 @@ export default function RegisterStep1() {
             <div className="register-form-wrapper">
               {/* Logo */}
               <div className="register-logo">
-                <img src={logoTunafyBiru} alt="Tunafy" />
+                <img src={logoTunafyBiru} alt="Flocify" />
               </div>
 
               {/* Heading */}

@@ -1,0 +1,1093 @@
+/* ─── HubungiKamiPage.css ─────────────────────────────────────────────────── */
+/* Palette: Brand Blue #0273FF | Deep Blue #0053AD | Navy #002C60              */
+/*          Gold #F5AB17 | Cream #FFEDD4 | Near Black #000F1E | White #FFFFFF  */
+
+/* ────────────────────────────────── HEADER ─────────────────────────────── */
+.hk-header {
+  position: relative;
+  min-height: 394px;
+  padding-top: 107px;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  overflow: hidden;
+}
+
+/* Background image */
+.hk-header__bg {
+  position: absolute;
+  inset: 0;
+  background-size: cover;
+  background-position: center center;
+  background-repeat: no-repeat;
+}
+
+/* Blue overlay */
+.hk-header__overlay {
+  position: absolute;
+  inset: 0;
+  background: rgba(2, 115, 255, 0.6);
+}
+
+.hk-header-content {
+  position: relative;
+  z-index: 1;
+  width: 100%;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  text-align: center;
+  padding: 0 24px 60px;
+}
+
+/* Header text */
+.hk-header-label {
+  font-family: 'Montserrat', sans-serif;
+  font-weight: 700;
+  font-size: 16px;
+  line-height: 20px;
+  text-align: center;
+  color: #F6AA17;
+  margin-bottom: 0;
+}
+
+.hk-header-title {
+  font-family: 'Montserrat', sans-serif;
+  font-weight: 700;
+  font-size: 32px;
+  line-height: 39px;
+  text-align: center;
+  color: #FFFFFF;
+  max-width: 90%;
+  margin: 16px 0 0 0;
+}
+
+.hk-header-sub {
+  font-family: 'Montserrat', sans-serif;
+  font-weight: 500;
+  font-size: 14px;
+  line-height: 22px;
+  text-align: center;
+  color: #FFFFFF;
+  max-width: 560px;
+  margin: 20px 0 0 0;
+}
+
+/* Wave divider */
+.hk-header-wave {
+  position: absolute;
+  bottom: 0;
+  left: 0;
+  width: 100%;
+  line-height: 0;
+  z-index: 2;
+}
+
+.hk-header-wave svg {
+  display: block;
+  width: 100%;
+  height: 60px;
+}
+
+/* ────────────────────────────── MAIN CONTENT ────────────────────────────── */
+.hk-main {
+  background: #FFFFFF;
+  padding: 64px 0 80px;
+}
+
+.hk-main-container {
+  max-width: 1232px;
+  margin: 0 auto;
+  padding: 0 104px;
+  display: flex;
+  gap: 48px;
+  align-items: flex-start;
+}
+
+/* ── Form Column (60%) ── */
+.hk-form-col {
+  flex: 0 0 60%;
+  min-width: 0;
+}
+
+.hk-form-card {
+  background: rgba(255, 255, 255, 0.92);
+  backdrop-filter: blur(12px);
+  -webkit-backdrop-filter: blur(12px);
+  border: 1px solid rgba(2, 115, 255, 0.08);
+  border-radius: 24px;
+  padding: 0;
+  box-shadow: 0 8px 40px rgba(0, 88, 199, 0.12);
+  overflow: hidden;
+}
+
+/* Form header area */
+.hk-form-header {
+  padding: 28px 36px 20px;
+  border-bottom: 1px solid rgba(2, 115, 255, 0.08);
+}
+
+/* Form body area */
+.hk-form-body {
+  padding: 24px 36px 36px;
+}
+
+.hk-form-body form {
+  display: flex;
+  flex-direction: column;
+  gap: 20px;
+}
+
+.hk-form-title {
+  font-family: 'Montserrat', sans-serif;
+  font-size: 22px;
+  font-weight: 700;
+  color: #002C60;
+  margin: 0 0 6px;
+}
+
+.hk-form-sub {
+  font-family: 'Montserrat', sans-serif;
+  font-size: 13px;
+  color: rgba(0, 44, 96, 0.55);
+  margin: 0;
+  line-height: 1.6;
+}
+
+/* ── Field ── */
+.hk-field {
+  display: flex;
+  flex-direction: column;
+  gap: 8px;
+}
+
+.hk-field label {
+  font-family: 'Montserrat', sans-serif;
+  font-weight: 600;
+  font-size: 14px;
+  color: #002C60;
+}
+
+.hk-field label span.req,
+.req {
+  color: #F5AB17;
+  margin-left: 2px;
+}
+
+/* Row dua kolom */
+.hk-field-row {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 16px;
+}
+
+/* ── Input Styles ── */
+.hk-input {
+  width: 100%;
+  background: #F5F9FF;
+  border: 1.5px solid rgba(2, 115, 255, 0.2);
+  border-radius: 12px;
+  padding: 12px 16px;
+  font-family: 'Montserrat', sans-serif;
+  font-size: 15px;
+  color: #002C60;
+  outline: none;
+  transition: border-color 0.2s ease, box-shadow 0.2s ease, background 0.2s ease;
+  box-sizing: border-box;
+  appearance: none;
+  -webkit-appearance: none;
+}
+
+.hk-input::placeholder {
+  color: rgba(0, 44, 96, 0.4);
+}
+
+.hk-input:focus {
+  border-color: #0273FF;
+  box-shadow: 0 0 0 3px rgba(2, 115, 255, 0.12);
+  background: #ffffff;
+}
+
+.hk-input.error {
+  border-color: #E53E3E;
+  box-shadow: 0 0 0 3px rgba(229, 62, 62, 0.10);
+}
+
+.hk-input.valid {
+  border-color: rgba(56, 161, 105, 0.50);
+}
+
+.hk-textarea {
+  resize: vertical;
+  min-height: 88px;
+}
+
+/* Select wrapper */
+.hk-select-wrap {
+  position: relative;
+}
+
+.hk-select-wrap .hk-input {
+  padding-right: 44px;
+  cursor: pointer;
+}
+
+.hk-select-arrow {
+  position: absolute;
+  right: 14px;
+  top: 50%;
+  transform: translateY(-50%);
+  pointer-events: none;
+}
+
+/* ── Field Notes ── */
+.hk-field-note {
+  font-family: 'Montserrat', sans-serif;
+  font-size: 12px;
+  color: rgba(0, 44, 96, 0.55);
+  margin: 0;
+}
+
+/* ── Error Message ── */
+.hk-error-msg {
+  font-family: 'Montserrat', sans-serif;
+  font-size: 12px;
+  color: #E53E3E;
+  margin: 0;
+}
+
+/* ── Custom Checkboxes ── */
+.hk-checkbox-group {
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+}
+
+.hk-checkbox-label {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  font-family: 'Montserrat', sans-serif;
+  font-size: 14px;
+  font-weight: 500;
+  color: #002C60;
+  cursor: pointer;
+}
+
+.hk-checkbox {
+  position: absolute;
+  opacity: 0;
+  width: 0;
+  height: 0;
+}
+
+.hk-checkbox-custom {
+  width: 20px;
+  height: 20px;
+  border: 2px solid rgba(2, 115, 255, 0.35);
+  border-radius: 6px;
+  background: #F5F9FF;
+  flex-shrink: 0;
+  position: relative;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  transition: background 0.18s ease, border-color 0.18s ease;
+}
+
+.hk-checkbox-label:hover .hk-checkbox-custom {
+  border-color: #0273FF;
+}
+
+.hk-checkbox:checked + .hk-checkbox-custom {
+  background: #0273FF;
+  border-color: #0273FF;
+}
+
+.hk-checkbox:checked + .hk-checkbox-custom::after {
+  content: '';
+  display: block;
+  width: 6px;
+  height: 10px;
+  border: 2px solid #FFFFFF;
+  border-top: none;
+  border-left: none;
+  transform: rotate(45deg) translateY(-1px);
+}
+
+/* ── Submit Button ── */
+.hk-btn-submit {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 8px;
+  width: 100%;
+  height: 52px;
+  background: #F5AB17;
+  color: #ffffff;
+  font-family: 'Montserrat', sans-serif;
+  font-weight: 700;
+  font-size: 16px;
+  border: none;
+  border-radius: 14px;
+  cursor: pointer;
+  box-shadow: 0 4px 20px rgba(245, 171, 23, 0.40);
+  transition: background 0.25s ease, transform 0.2s ease, box-shadow 0.25s ease;
+}
+
+.hk-btn-submit:hover {
+  background: #e59d0f;
+  transform: translateY(-2px);
+  box-shadow: 0 6px 28px rgba(245, 171, 23, 0.55);
+}
+
+.hk-btn-submit:active {
+  background: #c98c0d;
+  transform: translateY(0);
+}
+
+.hk-btn-submit.loading,
+.hk-btn-submit:disabled {
+  opacity: 0.65;
+  cursor: not-allowed;
+  transform: none;
+}
+
+/* Spinner */
+.hk-spinner {
+  width: 16px;
+  height: 16px;
+  border: 2px solid rgba(0, 44, 96, 0.30);
+  border-top-color: #002C60;
+  border-radius: 50%;
+  animation: spin 0.7s linear infinite;
+}
+
+@keyframes spin {
+  to { transform: rotate(360deg); }
+}
+
+/* ── Divider ── */
+.hk-divider {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+  margin-top: 4px;
+  margin-bottom: 16px;
+}
+
+.hk-divider span {
+  flex: 1;
+  height: 1px;
+  background: rgba(0, 44, 96, 0.12);
+}
+
+.hk-divider small {
+  font-family: 'Montserrat', sans-serif;
+  font-size: 14px;
+  color: rgba(0, 15, 30, 0.40);
+}
+
+/* ── WA Button (alternatif) ── */
+.hk-btn-wa {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 10px;
+  width: 100%;
+  padding: 14px;
+  background: transparent;
+  border: 2px solid #25D366;
+  color: #1A9E4A;
+  font-family: 'Montserrat', sans-serif;
+  font-weight: 600;
+  font-size: 15px;
+  border-radius: 8px;
+  text-decoration: none;
+  transition: background 200ms ease, color 200ms ease;
+}
+
+.hk-btn-wa:hover {
+  background: #25D366;
+  color: #FFFFFF;
+}
+
+/* ── Error Banner ── */
+.hk-error-banner {
+  background: #FFF5F5;
+  border: 1px solid #E53E3E;
+  border-radius: 8px;
+  padding: 14px 18px;
+  font-family: 'Montserrat', sans-serif;
+  font-size: 14px;
+  color: #C53030;
+  margin-bottom: 20px;
+}
+
+.hk-error-banner a {
+  color: #C53030;
+  font-weight: 600;
+  text-decoration: underline;
+}
+
+/* ── Success State ── */
+.hk-success {
+  text-align: center;
+  padding: 40px 36px;
+}
+
+.hk-success-check {
+  width: 72px;
+  height: 72px;
+  border-radius: 50%;
+  background: #38A169;
+  color: #FFFFFF;
+  font-size: 32px;
+  font-weight: 700;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  margin: 0 auto 20px;
+}
+
+.hk-success h3 {
+  font-family: 'Montserrat', sans-serif;
+  font-size: 22px;
+  font-weight: 600;
+  color: #002C60;
+  margin: 0 0 12px;
+}
+
+.hk-success p {
+  font-family: 'Montserrat', sans-serif;
+  font-size: 15px;
+  color: rgba(0, 15, 30, 0.70);
+  line-height: 1.7;
+  margin: 0 0 16px;
+}
+
+.hk-success-note {
+  font-size: 14px;
+}
+
+/* ── Gold Button ── */
+.hk-btn-gold {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  padding: 12px 28px;
+  background: #F5AB17;
+  color: #002C60;
+  font-family: 'Montserrat', sans-serif;
+  font-weight: 600;
+  font-size: 14px;
+  border-radius: 8px;
+  text-decoration: none;
+  transition: background 200ms ease;
+}
+
+.hk-btn-gold:hover {
+  background: #D4930F;
+}
+
+/* ── Contact Info Column (40%) ── */
+.hk-contact-col {
+  flex: 0 0 40%;
+  min-width: 0;
+  position: sticky;
+  top: 95px;
+  align-self: flex-start;
+  display: flex;
+  flex-direction: column;
+  gap: 16px;
+}
+
+/* ── Cards ── */
+.hk-card {
+  border-radius: 12px;
+  padding: 24px;
+  display: flex;
+  flex-direction: column;
+  gap: 8px;
+}
+
+.hk-card-wa {
+  background: #F0FDF4;
+  border: 1px solid rgba(37, 211, 102, 0.25);
+}
+
+.hk-card-email {
+  background: #EBF4FF;
+  border: 1px solid rgba(2, 115, 255, 0.15);
+}
+
+.hk-card-office {
+  background: #FFFFFF;
+  border: 1px solid rgba(0, 44, 96, 0.10);
+}
+
+.hk-card-icon {
+  margin-bottom: 4px;
+}
+
+.hk-card-badge {
+  display: inline-block;
+  font-family: 'Montserrat', sans-serif;
+  font-size: 11px;
+  font-weight: 700;
+  letter-spacing: 0.06em;
+  color: #1A9E4A;
+  text-transform: uppercase;
+  margin-bottom: 2px;
+}
+
+.hk-card h3 {
+  font-family: 'Montserrat', sans-serif;
+  font-size: 18px;
+  font-weight: 600;
+  color: #002C60;
+  margin: 0;
+}
+
+.hk-card p {
+  font-family: 'Montserrat', sans-serif;
+  font-size: 14px;
+  color: rgba(0, 15, 30, 0.65);
+  line-height: 1.6;
+  margin: 0;
+}
+
+/* WA Number link */
+.hk-wa-number {
+  display: flex;
+  align-items: center;
+  gap: 6px;
+  font-family: 'Montserrat', sans-serif;
+  font-size: 16px;
+  font-weight: 600;
+  color: #1A9E4A;
+  text-decoration: none;
+  margin-top: 4px;
+}
+
+.hk-wa-number:hover {
+  text-decoration: underline;
+}
+
+/* WA Button inside card */
+.hk-btn-wa-card {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  padding: 10px 20px;
+  background: #25D366;
+  color: #FFFFFF;
+  font-family: 'Montserrat', sans-serif;
+  font-weight: 600;
+  font-size: 14px;
+  border-radius: 8px;
+  text-decoration: none;
+  transition: background 200ms ease;
+  margin-top: 8px;
+  align-self: flex-start;
+}
+
+.hk-btn-wa-card:hover {
+  background: #1EA855;
+}
+
+/* Email link */
+.hk-email-link {
+  font-family: 'Montserrat', sans-serif;
+  font-size: 15px;
+  font-weight: 600;
+  color: #0273FF;
+  text-decoration: none;
+  margin-top: 4px;
+}
+
+.hk-email-link:hover {
+  text-decoration: underline;
+}
+
+.hk-card-note {
+  font-family: 'Montserrat', sans-serif;
+  font-style: italic;
+  font-size: 13px;
+  color: rgba(0, 15, 30, 0.45);
+}
+
+/* Address */
+.hk-address {
+  font-family: 'Montserrat', sans-serif;
+  font-size: 14px;
+  color: rgba(0, 15, 30, 0.70);
+  line-height: 1.6;
+  font-style: normal;
+  margin: 4px 0;
+}
+
+/* Maps Link */
+.hk-maps-link {
+  font-family: 'Montserrat', sans-serif;
+  font-size: 13px;
+  font-weight: 600;
+  color: #0273FF;
+  text-decoration: none;
+  margin-top: 4px;
+}
+
+.hk-maps-link:hover {
+  text-decoration: underline;
+}
+
+/* ── Jam Operasional ── */
+.hk-jam-ops {
+  padding: 4px 0;
+}
+
+.hk-jam-ops h4 {
+  font-family: 'Montserrat', sans-serif;
+  font-size: 15px;
+  font-weight: 600;
+  color: #002C60;
+  margin: 0 0 12px;
+}
+
+.hk-jam-table {
+  width: 100%;
+  border-collapse: collapse;
+}
+
+.hk-jam-table td {
+  font-family: 'Montserrat', sans-serif;
+  font-size: 14px;
+  padding: 3px 0;
+}
+
+.hk-jam-table td:first-child {
+  color: rgba(0, 15, 30, 0.60);
+}
+
+.hk-jam-table td:last-child {
+  font-weight: 600;
+  color: #002C60;
+  text-align: right;
+}
+
+.hk-libur {
+  color: rgba(0, 15, 30, 0.40) !important;
+  font-weight: 400 !important;
+}
+
+.hk-jam-note {
+  font-family: 'Montserrat', sans-serif;
+  font-style: italic;
+  font-size: 13px;
+  color: rgba(0, 15, 30, 0.45);
+  margin-top: 12px;
+}
+
+/* ── Social Media ── */
+.hk-social {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+  flex-wrap: wrap;
+}
+
+.hk-social-label {
+  font-family: 'Montserrat', sans-serif;
+  font-size: 13px;
+  font-weight: 600;
+  color: rgba(0, 15, 30, 0.50);
+}
+
+.hk-social-icons {
+  display: flex;
+  gap: 8px;
+}
+
+.hk-social-icon {
+  width: 36px;
+  height: 36px;
+  background: #F0F7FF;
+  color: #0273FF;
+  border-radius: 8px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  text-decoration: none;
+  transition: background 200ms ease, color 200ms ease;
+  flex-shrink: 0;
+}
+
+.hk-social-icon:hover {
+  background: #0273FF;
+  color: #FFFFFF;
+}
+
+/* ────────────────────────────── INFO SECTION ────────────────────────────── */
+.hk-info {
+  background: #FFEDD4;
+  padding: 72px 0;
+}
+
+.hk-info-container {
+  max-width: 1232px;
+  margin: 0 auto;
+  padding: 0 104px;
+}
+
+.hk-section-label {
+  font-family: 'Montserrat', sans-serif;
+  font-size: 12px;
+  font-weight: 700;
+  letter-spacing: 0.1em;
+  color: #0273FF;
+  text-transform: uppercase;
+  text-align: center;
+  margin: 0 0 10px;
+}
+
+.hk-section-title {
+  font-family: 'Montserrat', sans-serif;
+  font-size: 32px;
+  font-weight: 700;
+  color: #002C60;
+  text-align: center;
+  margin: 0 0 48px;
+}
+
+/* Trust Signals Grid */
+.hk-trust-grid {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 24px;
+  margin-bottom: 56px;
+}
+
+.hk-trust-card {
+  background: #FFFFFF;
+  border: 1px solid rgba(0, 44, 96, 0.08);
+  border-radius: 12px;
+  padding: 28px 24px;
+  text-align: center;
+  transition: box-shadow 250ms ease, transform 250ms ease;
+}
+
+.hk-trust-card:hover {
+  box-shadow: 0 8px 32px rgba(0, 44, 96, 0.10);
+  transform: translateY(-3px);
+}
+
+.hk-trust-icon {
+  font-size: 36px;
+  display: block;
+  margin-bottom: 12px;
+}
+
+.hk-trust-card h4 {
+  font-family: 'Montserrat', sans-serif;
+  font-size: 16px;
+  font-weight: 600;
+  color: #002C60;
+  margin: 0 0 8px;
+}
+
+.hk-trust-card p {
+  font-family: 'Montserrat', sans-serif;
+  font-size: 14px;
+  color: rgba(0, 15, 30, 0.65);
+  line-height: 1.6;
+  margin: 0;
+}
+
+/* ── FAQ Accordion ── */
+.hk-faq-list {
+  border-top: 1px solid rgba(0, 44, 96, 0.10);
+}
+
+.hk-faq-item {
+  border-bottom: 1px solid rgba(0, 44, 96, 0.10);
+}
+
+.hk-faq-header {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 16px;
+  width: 100%;
+  padding: 20px 0;
+  background: none;
+  border: none;
+  text-align: left;
+  cursor: pointer;
+  font-family: 'Montserrat', sans-serif;
+  font-size: 15px;
+  font-weight: 600;
+  color: #002C60;
+  transition: background 200ms ease;
+  border-radius: 4px;
+}
+
+.hk-faq-header:hover {
+  background: rgba(2, 115, 255, 0.03);
+  padding-left: 8px;
+  padding-right: 8px;
+  margin: 0 -8px;
+}
+
+.hk-faq-chevron {
+  color: #0273FF;
+  flex-shrink: 0;
+  transition: transform 250ms ease, color 250ms ease;
+}
+
+.hk-faq-chevron.open {
+  transform: rotate(180deg);
+  color: #F5AB17;
+}
+
+.hk-faq-body {
+  max-height: 0;
+  overflow: hidden;
+  transition: max-height 300ms ease;
+}
+
+.hk-faq-item.open .hk-faq-body {
+  max-height: 400px;
+}
+
+.hk-faq-body p {
+  padding: 0 0 20px;
+  font-family: 'Montserrat', sans-serif;
+  font-size: 14px;
+  color: rgba(0, 15, 30, 0.70);
+  line-height: 1.7;
+  margin: 0;
+}
+
+/* ─────────────────────────── MAP SECTION ────────────────────────────────── */
+.hk-map-section {
+  background: #F8FAFC;
+  padding: 72px 0;
+}
+
+.hk-map-container {
+  max-width: 1232px;
+  margin: 0 auto;
+  padding: 0 104px;
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 56px;
+  align-items: start;
+}
+
+.hk-map-info .hk-section-label {
+  text-align: left;
+}
+
+.hk-map-info h2 {
+  font-family: 'Montserrat', sans-serif;
+  font-size: 28px;
+  font-weight: 700;
+  color: #002C60;
+  margin: 0 0 28px;
+}
+
+.hk-map-detail {
+  display: flex;
+  gap: 12px;
+  margin-bottom: 20px;
+  align-items: flex-start;
+}
+
+.hk-map-detail span {
+  font-size: 20px;
+  flex-shrink: 0;
+  margin-top: 2px;
+}
+
+.hk-map-detail strong {
+  display: block;
+  font-family: 'Montserrat', sans-serif;
+  font-size: 13px;
+  font-weight: 600;
+  color: #002C60;
+  margin-bottom: 4px;
+}
+
+.hk-map-detail p {
+  font-family: 'Montserrat', sans-serif;
+  font-size: 15px;
+  color: rgba(0, 15, 30, 0.70);
+  line-height: 1.6;
+  margin: 0;
+}
+
+.hk-map-detail a {
+  color: #0273FF;
+  text-decoration: none;
+}
+
+.hk-map-detail a:hover {
+  text-decoration: underline;
+}
+
+.hk-map-note {
+  font-family: 'Montserrat', sans-serif;
+  font-style: italic;
+  font-size: 13px;
+  color: rgba(0, 15, 30, 0.45);
+  margin-top: 12px;
+}
+
+.hk-map-embed iframe {
+  width: 100%;
+  height: 360px;
+  border-radius: 16px;
+  border: 1px solid rgba(0, 44, 96, 0.10);
+  box-shadow: 0 4px 20px rgba(0, 44, 96, 0.08);
+  display: block;
+}
+
+/* ─────────────────────────── RESPONSIVE ────────────────────────────────── */
+
+/* Tablet (768px – 1199px) */
+@media (max-width: 1199px) {
+  .hk-header-content {
+    padding: 40px 40px 56px;
+  }
+
+  .hk-main-container,
+  .hk-info-container,
+  .hk-map-container {
+    padding: 0 40px;
+  }
+
+  .hk-main-container {
+    flex-direction: column;
+  }
+
+  .hk-form-col,
+  .hk-contact-col {
+    flex: none;
+    width: 100%;
+  }
+
+  .hk-contact-col {
+    position: static;
+    flex-direction: row;
+    flex-wrap: wrap;
+  }
+
+  .hk-card {
+    flex: 1 1 calc(50% - 8px);
+  }
+
+  .hk-jam-ops,
+  .hk-social {
+    flex: 1 1 100%;
+  }
+
+  .hk-header-title {
+    font-size: 36px;
+  }
+
+  .hk-trust-grid {
+    grid-template-columns: repeat(3, 1fr);
+    gap: 16px;
+  }
+
+  .hk-map-container {
+    grid-template-columns: 1fr;
+    gap: 36px;
+  }
+}
+
+/* Mobile (< 768px) */
+@media (max-width: 768px) {
+  .hk-header {
+    min-height: 180px;
+  }
+
+  .hk-header-content {
+    padding: 28px 24px 48px;
+  }
+
+  .hk-header-title {
+    font-size: 28px;
+  }
+
+  .hk-header-sub {
+    font-size: 14px;
+  }
+
+  .hk-main {
+    padding: 40px 0 56px;
+  }
+
+  .hk-main-container {
+    padding: 0 24px;
+  }
+
+  .hk-form-card {
+    padding: 24px;
+  }
+
+  .hk-field-row {
+    grid-template-columns: 1fr;
+  }
+
+  .hk-info-container,
+  .hk-map-container {
+    padding: 0 24px;
+  }
+
+  .hk-section-title {
+    font-size: 24px;
+  }
+
+  .hk-trust-grid {
+    grid-template-columns: 1fr;
+    gap: 16px;
+  }
+
+  .hk-contact-col {
+    flex-direction: column;
+  }
+
+  .hk-card {
+    flex: none;
+    width: 100%;
+  }
+
+  .hk-btn-submit,
+  .hk-btn-wa,
+  .hk-btn-gold {
+    width: 100%;
+  }
+
+  .hk-map-embed iframe {
+    height: 240px;
+  }
+}
+
+@media (max-width: 480px) {
+  .hk-header-content {
+    padding: 24px 16px 44px;
+  }
+
+  .hk-main-container,
+  .hk-info-container,
+  .hk-map-container {
+    padding: 0 16px;
+  }
+
+  .hk-header-title {
+    font-size: 24px;
+  }
+}

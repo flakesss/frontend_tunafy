@@ -1,4 +1,4 @@
-import { useState, useEffect, useCallback } from 'react'
+﻿import { useState, useEffect, useCallback } from 'react'
 import AdminLayout from './AdminLayout'
 import { adminApi } from '../../api/adminApi'
 
@@ -12,7 +12,7 @@ const EMPTY_FORM = {
   excerpt: '',
   content: '',
   cover_image: '',
-  author_name: 'Admin Tunafy',
+  author_name: 'Admin Flocify',
   read_time_min: 3,
   is_featured: false,
   is_published: false,
@@ -72,7 +72,7 @@ export default function AdminBlogPage() {
       excerpt: article.excerpt || '',
       content: article.content || '',
       cover_image: article.cover_image || '',
-      author_name: article.author_name || 'Admin Tunafy',
+      author_name: article.author_name || 'Admin Flocify',
       read_time_min: article.read_time_min || 3,
       is_featured: article.is_featured || false,
       is_published: article.is_published || false,

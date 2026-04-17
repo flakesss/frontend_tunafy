@@ -62,29 +62,34 @@
   max-width: 608px;
 }
 
-/* CTA Button */
-.why-tunafy-btn {
-  width: 226px;
-  height: 46px;
-  background: #F6AA17;
-  border: none;
-  border-radius: 16px;
-  font-family: 'Montserrat', sans-serif;
-  font-style: normal;
-  font-weight: 700;
-  font-size: 14px;
-  line-height: 17px;
-  color: #ffffff;
-  cursor: pointer;
-  transition: background 0.25s ease, transform 0.2s ease, box-shadow 0.25s ease;
-  box-shadow: 0 4px 20px rgba(246, 170, 23, 0.35);
-  flex-shrink: 0;
+/* Stats Row */
+.why-tunafy-stats {
+  display: flex;
+  align-items: flex-start;
+  gap: 40px;
+  margin-top: 32px;
 }
 
-.why-tunafy-btn:hover {
-  background: #e59d0f;
-  transform: translateY(-2px);
-  box-shadow: 0 6px 30px rgba(246, 170, 23, 0.55);
+.why-tunafy-stat {
+  display: flex;
+  flex-direction: column;
+  gap: 6px;
+}
+
+.why-tunafy-stat-value {
+  font-family: 'Montserrat', sans-serif;
+  font-weight: 700;
+  font-size: 32px;
+  line-height: 39px;
+  color: #F6AA17;
+}
+
+.why-tunafy-stat-label {
+  font-family: 'Montserrat', sans-serif;
+  font-weight: 500;
+  font-size: 20px;
+  line-height: 24px;
+  color: #0058C7;
 }
 
 /* ── Right: Image Column ───────────────────────── */

@@ -5,6 +5,7 @@ import { useTranslation } from 'react-i18next'
 import Navbar from '../components/layout/Navbar'
 import Footer from '../components/layout/Footer'
 import { articleApi } from '../api/articleApi'
+import heroBg from '../assets/images/Tangkapan-Tuna-di-Perairan-Maluku-Utara.-Foto-USAID-for-Kieraha.com_.jpg'
 import './BlogPage.css'
 
 const CATS_BY_LANG = {
@@ -65,13 +66,24 @@ export default function BlogPage() {
       <Navbar scrollYProgress={null} contentRef={null} alwaysVisible />
 
       <main className="blog-page">
-        <div className="blog-container">
 
-          {/* ── Header ── */}
-          <header className="blog-header">
+        {/* ── Header ── */}
+        <header className="blog-header">
+          <div className="blog-header__bg" style={{ backgroundImage: `url(${heroBg})` }} />
+          <div className="blog-header__overlay" />
+          <div className="blog-header__content">
+            <span className="blog-header__label">BLOG FLOCIFY</span>
             <h1 className="blog-header__title">{t('blog.title')}</h1>
             <p className="blog-header__subtitle">{t('blog.subtitle')}</p>
-          </header>
+          </div>
+          <div className="blog-header__wave" aria-hidden="true">
+            <svg viewBox="0 0 1440 60" preserveAspectRatio="none" xmlns="http://www.w3.org/2000/svg">
+              <path d="M0,30 C360,60 1080,0 1440,30 L1440,60 L0,60 Z" fill="#ffffff"/>
+            </svg>
+          </div>
+        </header>
+
+        <div className="blog-container">
 
           {/* ── Category Filters ── */}
           <div className="blog-cats">

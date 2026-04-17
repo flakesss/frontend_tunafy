@@ -1,4 +1,4 @@
-import { useState, useEffect } from 'react'
+﻿import { useState, useEffect } from 'react'
 import { Link } from 'react-router-dom'
 import AdminLayout from './AdminLayout'
 import { adminApi } from '../../api/adminApi'
@@ -52,7 +52,7 @@ export default function AdminDashboardPage() {
       <div className="admin-page-header">
         <div>
           <h1 className="admin-page-title">Dashboard</h1>
-          <p className="admin-page-subtitle">Selamat datang di panel admin Tunafy</p>
+          <p className="admin-page-subtitle">Selamat datang di panel admin Flocify</p>
         </div>
       </div>
 

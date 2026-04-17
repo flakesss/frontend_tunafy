@@ -1,0 +1,862 @@
+/* ════════════════════════════════════════════════════════════════════════
+   AboutPage.css — Halaman Tentang Kami Tunafy
+   Design: B2B Company Profile — warm, honest, visionary
+   Font: Montserrat | Palette: Navy #002C60 / Blue #0273FF / Gold #F5AB17
+════════════════════════════════════════════════════════════════════════ */
+
+/* ── HERO SECTION (Group 195) ─────────────────────────────────────────── */
+.about-hero {
+  position: relative;
+  width: 100%;
+  min-height: 394px; /* navbar ~107px + konten tengah */
+  padding-top: 107px; /* dorong seluruh hero ke bawah navbar fixed */
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center; /* konten center vertikal di sisa ruang */
+  margin-top: 0;
+}
+
+/* Rectangle 284 — Background Image */
+.about-hero__bg {
+  position: absolute;
+  inset: 0;
+  background-size: cover;
+  background-position: center center;
+  background-repeat: no-repeat;
+  overflow: hidden;
+}
+
+/* Rectangle 285 — Blue Overlay rgba(2, 115, 255, 0.6) */
+.about-hero__overlay {
+  position: absolute;
+  inset: 0;
+  background: rgba(2, 115, 255, 0.6);
+}
+
+/* Group 182 — Content Container */
+.about-hero__content {
+  position: relative;
+  z-index: 1;
+  width: 100%;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  text-align: center;
+  padding: 0 24px 60px; /* bottom padding beri ruang untuk wave absolut */
+}
+
+/* "TENTANG TUNAFY" — top: 160px */
+.about-hero__label {
+  font-family: 'Montserrat', sans-serif;
+  font-style: normal;
+  font-weight: 700;
+  font-size: 16px;
+  line-height: 20px;
+  text-align: center;
+  color: #F6AA17;
+  display: flex;
+  align-items: center;
+  width: 978px;
+  max-width: 100%;
+  justify-content: center;
+  margin-bottom: 0;
+}
+
+/* "Membawa Tuna Terbaik Maluku..." — top: 196px */
+.about-hero__title {
+  font-family: 'Montserrat', sans-serif;
+  font-style: normal;
+  font-weight: 700;
+  font-size: 32px;
+  line-height: 39px;
+  text-align: center;
+  color: #FFFFFF;
+  width: 807px;
+  max-width: 90%;
+  margin: 16px 0 0 0;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+/* Subtitle — top: 290px */
+.about-hero__desc {
+  font-family: 'Montserrat', sans-serif;
+  font-style: normal;
+  font-weight: 500;
+  font-size: 14px;
+  line-height: 17px;
+  text-align: center;
+  color: #FFFFFF;
+  width: 610px;
+  max-width: 90%;
+  margin: 30px 0 0 0;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+/* Wave Divider — absolute di bottom agar konten bisa center sempurna */
+.about-hero__wave {
+  position: absolute;
+  bottom: 0;
+  left: 0;
+  width: 100%;
+  line-height: 0;
+  z-index: 2;
+}
+.about-hero__wave svg {
+  display: block;
+  width: 100%;
+  height: 60px;
+}
+
+/* Responsive hero */
+@media (max-width: 1199px) {
+  .about-hero__title { font-size: 26px; }
+}
+
+@media (max-width: 767px) {
+  .about-hero {
+    min-height: 260px;
+    padding-top: 80px;
+    margin-top: 0;
+  }
+  .about-hero__content { padding: 0 20px 70px; }
+  .about-hero__label { font-size: 13px; width: 100%; }
+  .about-hero__title { font-size: 22px; line-height: 30px; width: 100%; margin-top: 10px; }
+  .about-hero__desc  { font-size: 12px; width: 100%; margin-top: 14px; }
+}
+
+/* ── Shared Utilities ─────────────────────────────────────────────────── */
+.about-label {
+  display: block;
+  font-family: 'Montserrat', sans-serif;
+  font-size: 12px;
+  font-weight: 700;
+  letter-spacing: 0.12em;
+  text-transform: uppercase;
+  margin-bottom: 14px;
+}
+.about-label--blue  { color: #0273FF; }
+.about-label--gold  { color: #F5AB17; }
+
+/* Shared gold divider — dipakai di semua section */
+.about-section-divider {
+  width: 60px;
+  height: 2px;
+  background: #F5AB17;
+  border-radius: 2px;
+  margin: 16px auto 0;
+}
+
+.about-section--hidden  { opacity: 0; transform: translateY(28px); }
+.about-section--visible {
+  opacity: 1;
+  transform: translateY(0);
+  transition: opacity 0.65s ease-out, transform 0.65s ease-out;
+}
+
+/* ── [1] PAGE HEADER ──────────────────────────────────────────────────── */
+.about-header {
+  position: relative;
+  min-height: 340px;
+  display: flex;
+  flex-direction: column;
+  justify-content: flex-end;
+  padding-top: 90px;
+  overflow: hidden;
+  background: linear-gradient(135deg, #002C60 0%, #0053AD 100%);
+}
+.about-header__overlay {
+  position: absolute;
+  inset: 0;
+  background: linear-gradient(135deg, rgba(0,44,96,0.75) 0%, rgba(0,83,173,0.65) 100%);
+}
+.about-header__inner {
+  position: relative;
+  z-index: 1;
+  max-width: 1200px;
+  margin: 0 auto;
+  padding: 0 40px 40px;
+  width: 100%;
+}
+.about-header__breadcrumb {
+  display: flex;
+  align-items: center;
+  gap: 4px;
+  margin-bottom: 28px;
+  font-family: 'Montserrat', sans-serif;
+  font-size: 13px;
+  color: rgba(255,255,255,0.50);
+}
+.about-header__breadcrumb a {
+  color: rgba(255,255,255,0.50);
+  text-decoration: none;
+  transition: color 0.2s;
+}
+.about-header__breadcrumb a:hover { color: #ffffff; }
+.about-header__breadcrumb-sep { color: #F5AB17; }
+
+.about-header__content {
+  max-width: 680px;
+}
+.about-header__label {
+  display: block;
+  font-family: 'Montserrat', sans-serif;
+  font-size: 12px;
+  font-weight: 700;
+  letter-spacing: 0.12em;
+  text-transform: uppercase;
+  color: #F5AB17;
+  margin-bottom: 14px;
+}
+.about-header__title {
+  font-family: 'Montserrat', sans-serif;
+  font-size: 46px;
+  font-weight: 700;
+  color: #ffffff;
+  line-height: 1.2;
+  margin: 0 0 18px;
+}
+.about-header__desc {
+  font-family: 'Montserrat', sans-serif;
+  font-size: 17px;
+  font-weight: 400;
+  color: rgba(255,255,255,0.80);
+  line-height: 1.75;
+  max-width: 580px;
+  margin: 0;
+}
+.about-header__wave {
+  position: relative;
+  z-index: 1;
+  width: 100%;
+  line-height: 0;
+  margin-top: 40px;
+}
+.about-header__wave svg {
+  display: block;
+  width: 100%;
+  height: 60px;
+}
+
+/* ── [2] CERITA TUNAFY ────────────────────────────────────────────────── */
+.about-story {
+  background: #ffffff;
+  padding: 80px 0;
+  position: relative;
+  overflow: hidden;
+}
+
+/* Supergraphic — dekoratif di kanan section */
+.about-story__supergraphic {
+  position: absolute;
+  right: -60px;
+  top: 0;
+  bottom: 0;
+  height: 100%;
+  width: auto;
+  opacity: 1; /* tidak transparan */
+  pointer-events: none;
+  user-select: none;
+}
+
+.about-story__inner {
+  position: relative;
+  z-index: 1;
+  display: flex;
+  align-items: center;
+  width: 100%;
+  gap: 40px;
+}
+
+/* Kolom kiri — teks fixed width, margin-left mengikuti kontainer 1440px */
+.about-story__text {
+  flex: 0 0 608px;
+  margin-left: max(40px, calc((100% - 1440px) / 2 + 40px));
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
+  /* Tidak ada background — hanya teks, infobox yang punya box */
+}
+
+/* Custom ukuran & warna label khusus di story section */
+.about-story__text .about-label {
+  font-size: 24px;
+  line-height: 29px;
+  color: #F5AB17;
+  text-transform: uppercase;
+  margin-bottom: 16px;
+}
+
+/* Single-column variant — tanpa visual kanan */
+.about-story__inner--text-only {
+  flex-direction: column;
+  padding: 0 40px;
+}
+.about-story__inner--text-only .about-story__text {
+  flex: none;
+  margin-left: 0;
+  max-width: 760px;
+}
+.about-story__title {
+  font-family: 'Montserrat', sans-serif;
+  font-size: 34px;
+  font-weight: 700;
+  color: #0273FF;
+  line-height: 1.25;
+  margin: 0 0 20px;
+}
+.about-story__divider {
+  width: 48px;
+  height: 3px;
+  background: #F5AB17;
+  border-radius: 2px;
+  margin-bottom: 24px;
+}
+.about-story__para {
+  font-family: 'Montserrat', sans-serif;
+  font-size: 15px;
+  font-weight: 400;
+  color: rgba(0,15,30,0.75);
+  line-height: 1.75;
+  margin: 0 0 18px;
+}
+.about-story__infobox {
+  /* Rectangle 286 — kotak PT, website, email */
+  background: rgba(2, 115, 255, 0.37);
+  border-radius: 24px;
+  padding: 20px 24px;
+  margin-top: 28px;
+  display: flex;
+  flex-direction: column;
+  gap: 12px;
+  width: 100%;
+}
+.about-story__info-row {
+  display: flex;
+  align-items: flex-start;
+  gap: 10px;
+}
+.about-story__info-icon { font-size: 1rem; margin-top: 1px; flex-shrink: 0; }
+.about-story__info-name {
+  font-family: 'Montserrat', sans-serif;
+  font-size: 14px;
+  font-weight: 700;
+  color: #002C60;
+  margin: 0 0 2px;
+}
+.about-story__info-detail {
+  font-family: 'Montserrat', sans-serif;
+  font-size: 13px;
+  font-weight: 400;
+  color: rgba(0,44,96,0.75);
+  margin: 0;
+  line-height: 1.5;
+}
+
+/* Right visual — flex:1. Center secara vertikal. */
+.about-story__visual {
+  flex: 1;
+  min-width: 0;
+  align-self: center; /* center vertikal, tidak stretch */
+  overflow: hidden;
+  border: none;
+  border-radius: 0;
+  padding: 0;
+  margin: 0;
+}
+.about-story__photo-img {
+  width: 100%;
+  height: auto;
+  display: block;
+  border: none;
+  border-radius: 0;
+  outline: none;
+  box-shadow: none;
+  padding: 0;
+  margin: 0;
+  object-fit: cover;
+}
+.about-story__asset-img {
+  width: 100%;
+  max-width: 566px;
+  height: auto;
+  display: block;
+  object-fit: contain;
+}
+.about-story__photo-wrap {
+  aspect-ratio: 4/5;
+  border-radius: 16px;
+  overflow: hidden;
+  box-shadow: 0 12px 40px rgba(0,44,96,0.12);
+  background: linear-gradient(135deg, #EBF4FF 0%, #C7DDFF 100%);
+}
+.about-story__photo-placeholder {
+  width: 100%;
+  height: 100%;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  gap: 10px;
+}
+.about-story__photo-label {
+  font-family: 'Montserrat', sans-serif;
+  font-size: 13px;
+  color: rgba(2,115,255,0.6);
+}
+.about-story__badge {
+  position: absolute;
+  bottom: 20px;
+  left: -16px;
+  background: #F5AB17;
+  border-radius: 12px;
+  padding: 12px 20px;
+  box-shadow: 0 4px 20px rgba(245,171,23,0.30);
+}
+.about-story__badge-year {
+  font-family: 'Montserrat', sans-serif;
+  font-size: 18px;
+  font-weight: 700;
+  color: #002C60;
+  margin: 0 0 2px;
+}
+.about-story__badge-loc {
+  font-family: 'Montserrat', sans-serif;
+  font-size: 13px;
+  font-weight: 400;
+  color: rgba(0,44,96,0.70);
+  margin: 0;
+}
+
+/* ── [3] VISI & MISI ──────────────────────────────────────────────────── */
+.about-visimisi {
+  background: #F8FAFC;
+  padding: 80px 0;
+}
+
+.about-visimisi__visi {
+  text-align: center;
+  max-width: 760px;
+  margin: 0 auto 64px;
+  padding: 0 40px;
+}
+.about-visimisi__visi-title {
+  font-family: 'Montserrat', sans-serif;
+  font-size: 34px;
+  font-weight: 700;
+  color: #0273FF;
+  line-height: 1.4;
+  margin: 0 0 20px;
+}
+.about-visimisi__visi-divider {
+  width: 60px;
+  height: 2px;
+  background: #F5AB17;
+  margin: 0 auto 20px;
+}
+.about-visimisi__visi-desc {
+  font-family: 'Montserrat', sans-serif;
+  font-size: 16px;
+  font-weight: 400;
+  color: rgba(0,44,96,0.70);
+  line-height: 1.75;
+  max-width: 560px;
+  margin: 0 auto;
+}
+
+/* Misi — Pill Cards */
+.about-visimisi__misi {
+  margin: 0;
+  padding: 0;
+}
+.about-misi-header {
+  text-align: center;
+  margin-bottom: 36px;
+  padding: 0 40px;
+}
+.about-visimisi__misi-subtitle {
+  font-family: 'Montserrat', sans-serif;
+  font-size: 32px;
+  font-weight: 700;
+  color: #0273FF;
+  text-align: center;
+  margin: 0;
+}
+
+/* Row */
+.about-misi-row {
+  display: flex;
+  width: 100%;
+  gap: 18px;
+  margin-bottom: 18px;
+  align-items: center;
+  justify-content: space-between;
+}
+.about-misi-row:last-child { margin-bottom: 0; }
+
+/* Pill card base */
+.about-misi-pill {
+  position: relative;
+  width: 49%;
+  height: 176px;
+  overflow: hidden;
+  flex-shrink: 0;
+}
+.about-misi-pill--left  { border-radius: 0 88px 88px 0; margin-right: 0; }
+.about-misi-pill--right { border-radius: 88px 0 0 88px; margin-left: 0; }
+
+/* Background photo */
+.about-misi-pill__bg {
+  position: absolute;
+  inset: 0;
+  background-size: cover;
+  background-position: center;
+}
+
+/* Gradient overlay */
+.about-misi-pill__overlay { position: absolute; inset: 0; }
+/* LEFT pill: transparan di KIRI (foto kiri), solid di KANAN (teks kanan) */
+.about-misi-pill__overlay--left  { background: linear-gradient(270deg, #FFEDD4 60%, rgba(144,100,13,0) 100%); }
+/* RIGHT pill: solid di KIRI (teks kiri), transparan di KANAN (foto kanan) */
+.about-misi-pill__overlay--right { background: linear-gradient(90deg,  #FFEDD4 60%, rgba(144,100,13,0) 100%); }
+
+/* Content */
+.about-misi-pill__content {
+  position: relative;
+  z-index: 1;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  height: 100%;
+  max-width: 380px;
+  padding: 20px 32px;
+}
+/* LEFT pill: teks di sisi KANAN (area solid) */
+.about-misi-pill__content--left {
+  margin-left: auto;
+  text-align: left;
+  align-items: flex-start;
+}
+/* RIGHT pill: teks di sisi KIRI (area solid) */
+.about-misi-pill__content--right {
+  margin-left: 0;
+  text-align: left;
+  align-items: flex-start;
+}
+
+.about-misi-pill__title {
+  font-family: 'Montserrat', sans-serif;
+  font-size: 18px;
+  font-weight: 700;
+  color: #000000;
+  margin: 0 0 8px;
+  line-height: 1.3;
+}
+.about-misi-pill__desc {
+  font-family: 'Montserrat', sans-serif;
+  font-size: 13px;
+  font-weight: 500;
+  color: #1a1a1a;
+  line-height: 1.6;
+  margin: 0;
+}
+
+/* ── [4] JANGKAUAN OPERASIONAL HEADER ────────────────────────────────── */
+.about-jangkauan-header {
+  background: #ffffff;
+  padding: 80px 40px 40px;
+}
+.about-jangkauan-header__inner {
+  max-width: 1216px;
+  margin: 0 auto;
+  text-align: center;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+.about-jangkauan-header__title {
+  font-family: 'Montserrat', sans-serif;
+  font-size: 34px;
+  font-weight: 700;
+  color: #0273FF;
+  line-height: 1.4;
+  margin: 0 0 16px;
+  text-align: center;
+}
+.about-jangkauan-header__desc {
+  font-family: 'Montserrat', sans-serif;
+  font-size: 16px;
+  font-weight: 400;
+  color: rgba(0, 44, 96, 0.70);
+  line-height: 1.75;
+  max-width: 620px;
+  text-align: center;
+  margin: 0;
+}
+
+/* ── [5] PETA ─────────────────────────────────────────────────────────── */
+.about-peta {
+  position: relative;
+  width: 100%;
+  max-width: 1232px;
+  margin: 0 auto 48px;
+  padding: 0 24px;
+  line-height: 0; /* hilangkan gap bawah img */
+}
+.about-peta__map-img {
+  width: 100%;
+  height: auto;
+  display: block;
+  border: none;
+  outline: none;
+  filter: drop-shadow(0 8px 32px rgba(2, 115, 255, 0.12));
+}
+
+/* ── [6] TIM ──────────────────────────────────────────────────────────── */
+.about-tim {
+  background: #ffffff;
+  padding: 80px 40px;
+}
+.about-tim__inner {
+  max-width: 900px;
+  margin: 0 auto;
+}
+.about-tim__header {
+  text-align: center;
+  margin-bottom: 52px;
+}
+.about-tim__title {
+  font-family: 'Montserrat', sans-serif;
+  font-size: 34px;
+  font-weight: 700;
+  color: #0273FF;
+  margin: 0 0 12px;
+}
+.about-tim__desc {
+  font-family: 'Montserrat', sans-serif;
+  font-size: 15px;
+  font-weight: 400;
+  color: rgba(0,15,30,0.60);
+  max-width: 480px;
+  margin: 0 auto;
+  line-height: 1.65;
+}
+.about-tim__grid {
+  display: flex;
+  justify-content: center;
+  gap: 24px;
+  flex-wrap: wrap;
+}
+.about-tim-card {
+  background: #ffffff;
+  border: 1px solid rgba(2,115,255,0.08);
+  border-radius: 16px;
+  padding: 32px 28px;
+  text-align: center;
+  box-shadow: 0 2px 16px rgba(0,44,96,0.06);
+  max-width: 320px;
+  width: 100%;
+  transition: transform 0.25s, box-shadow 0.25s;
+}
+.about-tim-card:hover {
+  transform: translateY(-4px);
+  box-shadow: 0 12px 36px rgba(0,44,96,0.12);
+}
+.about-tim-card__photo {
+  width: 120px;
+  height: 120px;
+  border-radius: 50%;
+  border: 3px solid #F5AB17;
+  background: linear-gradient(135deg, #0273FF 0%, #0053AD 100%);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  margin: 0 auto 20px;
+  transition: transform 0.25s;
+}
+.about-tim-card:hover .about-tim-card__photo { transform: scale(1.03); }
+.about-tim-card__initials {
+  font-family: 'Montserrat', sans-serif;
+  font-size: 36px;
+  font-weight: 700;
+  color: #ffffff;
+}
+.about-tim-card__name {
+  font-family: 'Montserrat', sans-serif;
+  font-size: 18px;
+  font-weight: 600;
+  color: #002C60;
+  margin: 0 0 8px;
+}
+.about-tim-card__role {
+  display: inline-block;
+  background: #EBF4FF;
+  color: #0273FF;
+  font-family: 'Montserrat', sans-serif;
+  font-size: 12px;
+  font-weight: 600;
+  text-transform: uppercase;
+  letter-spacing: 0.06em;
+  padding: 4px 12px;
+  border-radius: 20px;
+  margin-bottom: 16px;
+}
+.about-tim-card__desc {
+  font-family: 'Montserrat', sans-serif;
+  font-size: 14px;
+  font-weight: 400;
+  color: rgba(0,15,30,0.65);
+  line-height: 1.65;
+  margin: 0 0 20px;
+}
+.about-tim-card__linkedin {
+  display: inline-flex;
+  align-items: center;
+  gap: 6px;
+  background: none;
+  border: 1.5px solid #0273FF;
+  color: #0273FF;
+  font-family: 'Montserrat', sans-serif;
+  font-size: 13px;
+  font-weight: 600;
+  padding: 8px 18px;
+  border-radius: 6px;
+  cursor: pointer;
+  transition: background 0.2s, color 0.2s;
+}
+.about-tim-card__linkedin:hover {
+  background: #0273FF;
+  color: #ffffff;
+}
+
+/* ── [7] CTA ──────────────────────────────────────────────────────────── */
+.about-cta {
+  background: linear-gradient(135deg, #0053AD 0%, #002C60 100%);
+  padding: 80px 40px;
+  position: relative;
+  overflow: hidden;
+}
+.about-cta__inner {
+  max-width: 640px;
+  margin: 0 auto;
+  text-align: center;
+  position: relative;
+  z-index: 1;
+}
+.about-cta__title {
+  font-family: 'Montserrat', sans-serif;
+  font-size: 38px;
+  font-weight: 700;
+  color: #ffffff;
+  line-height: 1.3;
+  margin: 0 0 16px;
+}
+.about-cta__desc {
+  font-family: 'Montserrat', sans-serif;
+  font-size: 16px;
+  font-weight: 400;
+  color: rgba(255,255,255,0.80);
+  line-height: 1.70;
+  margin: 0 0 32px;
+  max-width: 500px;
+  margin-left: auto;
+  margin-right: auto;
+}
+.about-cta__btns {
+  display: flex;
+  gap: 16px;
+  justify-content: center;
+  flex-wrap: wrap;
+  margin-bottom: 20px;
+}
+.about-cta__btn-primary {
+  background: #F5AB17;
+  color: #ffffff;
+  border: none;
+  padding: 16px 40px;
+  border-radius: 8px;
+  font-family: 'Montserrat', sans-serif;
+  font-size: 15px;
+  font-weight: 600;
+  cursor: pointer;
+  transition: background 0.2s, transform 0.2s;
+  box-shadow: 0 4px 20px rgba(245,171,23,0.30);
+}
+.about-cta__btn-primary:hover {
+  background: #D4930F;
+  transform: scale(1.02);
+}
+.about-cta__btn-secondary {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  padding: 14px 36px;
+  border: 2px solid rgba(255,255,255,0.55);
+  color: #ffffff;
+  border-radius: 8px;
+  font-family: 'Montserrat', sans-serif;
+  font-size: 15px;
+  font-weight: 600;
+  text-decoration: none;
+  transition: border-color 0.2s, background 0.2s;
+}
+.about-cta__btn-secondary:hover {
+  border-color: #ffffff;
+  background: rgba(255,255,255,0.08);
+}
+.about-cta__trust {
+  font-family: 'Montserrat', sans-serif;
+  font-size: 13px;
+  color: rgba(255,255,255,0.50);
+  margin: 0;
+}
+
+/* ── RESPONSIVE ───────────────────────────────────────────────────────── */
+
+/* Tablet */
+@media (max-width: 1199px) {
+  .about-story__inner  { grid-template-columns: 1fr; gap: 48px; }
+  .about-story__visual { order: -1; max-width: 480px; margin: 0 auto; }
+  .about-story__badge  { left: 0; }
+  .about-peta__inner   { grid-template-columns: 1fr; gap: 40px; }
+  .about-visimisi__misi-grid { grid-template-columns: 1fr; }
+}
+
+/* Mobile */
+@media (max-width: 767px) {
+  .about-header { min-height: 240px; padding-top: 85px; }
+  .about-header__title { font-size: 28px; }
+  .about-header__inner { padding: 0 20px 32px; }
+  .about-header__desc  { font-size: 15px; }
+
+  .about-story  { padding: 60px 20px; }
+  .about-story__title { font-size: 26px; }
+
+  .about-visimisi  { padding: 60px 20px; }
+  .about-visimisi__visi-title { font-size: 24px; }
+  .about-visimisi__misi-grid { grid-template-columns: 1fr; }
+
+  .about-nilai  { padding: 60px 20px; }
+  .about-nilai__title { font-size: 26px; }
+  .about-nilai__grid { grid-template-columns: 1fr; }
+
+  .about-peta   { padding: 60px 20px; }
+  .about-peta__title { font-size: 26px; }
+  .about-peta__boxes { grid-template-columns: 1fr; }
+
+  .about-tim    { padding: 60px 20px; }
+  .about-tim__title { font-size: 26px; }
+  .about-tim-card__photo { width: 96px; height: 96px; }
+  .about-tim-card__initials { font-size: 28px; }
+
+  .about-cta    { padding: 60px 20px; }
+  .about-cta__title { font-size: 26px; }
+  .about-cta__btns  { flex-direction: column; }
+  .about-cta__btn-primary,
+  .about-cta__btn-secondary { width: 100%; }
+}

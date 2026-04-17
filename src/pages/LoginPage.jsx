@@ -1,4 +1,4 @@
-import React, { useState, useEffect } from 'react'
+﻿import React, { useState, useEffect } from 'react'
 import { Link, useNavigate } from 'react-router-dom'
 import { useAuth } from '../context/AuthContext'
 import { authAPI } from '../api/axios'
@@ -112,7 +112,7 @@ const LoginPage = () => {
 
             {/* Logo Icon - Top Left */}
             <div className="login-branding-logo">
-              <img src={logoTunafyPutih} alt="Tunafy" />
+              <img src={logoTunafyPutih} alt="Flocify" />
             </div>
 
             {/* Gradient Overlay -50% Transparent */}
@@ -137,7 +137,7 @@ const LoginPage = () => {
             <div className="login-form-wrapper">
               {/* Logo */}
               <div className="login-logo">
-                <img src={logoTunafyBiru} alt="Tunafy" />
+                <img src={logoTunafyBiru} alt="Flocify" />
               </div>
 
               {/* Heading */}

@@ -1,4 +1,4 @@
-import React, { useState, useEffect } from 'react'
+﻿import React, { useState, useEffect } from 'react'
 import { Link, useNavigate } from 'react-router-dom'
 import { useTranslation } from 'react-i18next'
 import { createClient } from '@supabase/supabase-js'
@@ -112,7 +112,7 @@ const ResetPasswordPage = () => {
               <img src={nelayanBawaTuna} alt="Nelayan" />
             </div>
             <div className="rp-branding-logo">
-              <img src={logoTunafyPutih} alt="Tunafy" />
+              <img src={logoTunafyPutih} alt="Flocify" />
             </div>
             <div
               className="rp-branding-overlay"
@@ -128,7 +128,7 @@ const ResetPasswordPage = () => {
           <div className="rp-form-container">
             <div className="rp-form-wrapper">
               <div className="rp-logo">
-                <img src={logoTunafyBiru} alt="Tunafy" />
+                <img src={logoTunafyBiru} alt="Flocify" />
               </div>
 
               {/* Invalid Token State */}

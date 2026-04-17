@@ -1,0 +1,627 @@
+/* ════════════════════════════════════════════════════════════════════════
+   ProductsPage.css — Halaman Produk Tunafy
+   Design: Professional Maritime B2B, sesuai DESIGN_PRODUK_Tunafy.md
+   Font: Montserrat (digunakan via existing global CSS)
+   Colour palette:
+     Primary navy   #002C60
+     Primary blue   #0273FF / #0053AD
+     Yellow accent  #F6AA17 / #D4930F
+     Light bg       #F8FAFC
+     Body text      #000F1E
+════════════════════════════════════════════════════════════════════════ */
+
+/* ── [1] PAGE HEADER ──────────────────────────────────────────────────── */
+.produk-header {
+  position: relative;
+  min-height: 394px;
+  padding-top: 107px;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  overflow: hidden;
+  margin-top: 0;
+}
+
+/* Background image — sama dengan about-hero__bg */
+.produk-header__bg {
+  position: absolute;
+  inset: 0;
+  background-size: cover;
+  background-position: center center;
+  background-repeat: no-repeat;
+}
+
+/* Blue overlay — rgba(2, 115, 255, 0.6) sama dengan about-hero__overlay */
+.produk-header__overlay {
+  position: absolute;
+  inset: 0;
+  background: rgba(2, 115, 255, 0.6);
+}
+
+.produk-header__content {
+  position: relative;
+  z-index: 1;
+  width: 100%;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  text-align: center;
+  padding: 0 24px 60px;
+}
+
+.produk-header__label {
+  font-family: 'Montserrat', sans-serif;
+  font-style: normal;
+  font-weight: 700;
+  font-size: 16px;
+  line-height: 20px;
+  text-align: center;
+  color: #F6AA17;
+  display: flex;
+  align-items: center;
+  width: 978px;
+  max-width: 100%;
+  justify-content: center;
+  margin-bottom: 0;
+}
+
+.produk-header__title {
+  font-family: 'Montserrat', sans-serif;
+  font-weight: 700;
+  font-size: 32px;
+  line-height: 39px;
+  text-align: center;
+  color: #FFFFFF;
+  width: 807px;
+  max-width: 90%;
+  margin: 16px 0 0 0;
+}
+
+.produk-header__desc {
+  font-family: 'Montserrat', sans-serif;
+  font-weight: 500;
+  font-size: 14px;
+  line-height: 17px;
+  text-align: center;
+  color: #FFFFFF;
+  width: 610px;
+  max-width: 90%;
+  margin: 30px 0 0 0;
+}
+
+.produk-header__wave {
+  position: absolute;
+  bottom: 0;
+  left: 0;
+  width: 100%;
+  line-height: 0;
+  z-index: 2;
+}
+.produk-header__wave svg {
+  display: block;
+  width: 100%;
+  height: 60px;
+}
+
+
+
+/* ── [2] PRODUCT OVERVIEW ─────────────────────────────────────────────── */
+.produk-overview {
+  background: #F8FAFC;
+  padding: 80px 40px;
+}
+.produk-overview__inner {
+  max-width: 1200px;
+  margin: 0 auto;
+}
+.produk-overview__header {
+  text-align: center;
+  margin-bottom: 52px;
+}
+.produk-overview__label {
+  display: block;
+  font-family: 'Montserrat', sans-serif;
+  font-size: 12px;
+  font-weight: 700;
+  letter-spacing: 0.1em;
+  text-transform: uppercase;
+  color: #F5AB17;
+  margin-bottom: 12px;
+}
+.produk-overview__title {
+  font-family: 'Montserrat', sans-serif;
+  font-size: 36px;
+  font-weight: 600;
+  color: #002C60;
+  margin: 0 0 12px;
+}
+.produk-overview__desc {
+  font-family: 'Montserrat', sans-serif;
+  font-size: 15px;
+  font-weight: 400;
+  color: rgba(0, 15, 30, 0.6);
+  max-width: 480px;
+  margin: 0 auto;
+  line-height: 1.6;
+}
+
+.produk-overview__grid {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 24px;
+}
+
+/* ── Product Card ─────────────────────────────────────────────────────── */
+.produk-card {
+  background: #ffffff;
+  border: 1px solid rgba(2, 115, 255, 0.08);
+  border-radius: 12px;
+  box-shadow: 0 2px 16px rgba(0, 44, 96, 0.06);
+  overflow: hidden;
+  cursor: pointer;
+  transition: border-color 0.25s ease, box-shadow 0.25s ease, transform 0.25s ease;
+  outline: none;
+}
+.produk-card:hover,
+.produk-card:focus {
+  border-color: rgba(2, 115, 255, 0.35);
+  box-shadow: 0 8px 32px rgba(0, 44, 96, 0.12);
+  transform: translateY(-4px);
+}
+
+.produk-card__img-wrap {
+  aspect-ratio: 4 / 3;
+  overflow: hidden;
+  background: #EBF4FF;
+}
+.produk-card__img-placeholder {
+  width: 100%;
+  height: 100%;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  gap: 8px;
+  background: linear-gradient(135deg, #EBF4FF 0%, #D6EAFF 100%);
+}
+.produk-card__img-icon { font-size: 3rem; }
+.produk-card__img-label {
+  font-family: 'Montserrat', sans-serif;
+  font-size: 12px;
+  color: rgba(2, 115, 255, 0.6);
+}
+
+.produk-card__body {
+  padding: 20px 24px 24px;
+}
+
+.produk-card__badge {
+  display: inline-block;
+  background: #EBF4FF;
+  color: #0273FF;
+  font-family: 'Montserrat', sans-serif;
+  font-size: 11px;
+  font-weight: 600;
+  text-transform: uppercase;
+  letter-spacing: 0.06em;
+  padding: 4px 10px;
+  border-radius: 20px;
+  margin-bottom: 10px;
+}
+
+.produk-card__name {
+  font-family: 'Montserrat', sans-serif;
+  font-size: 18px;
+  font-weight: 600;
+  color: #002C60;
+  margin: 0 0 8px;
+}
+.produk-card__desc {
+  font-family: 'Montserrat', sans-serif;
+  font-size: 13px;
+  color: rgba(0, 15, 30, 0.6);
+  line-height: 1.6;
+  margin: 0 0 16px;
+}
+
+.produk-card__divider {
+  height: 1px;
+  background: rgba(2, 115, 255, 0.08);
+  margin-bottom: 14px;
+}
+
+.produk-card__info {
+  display: flex;
+  flex-direction: column;
+  gap: 5px;
+  margin-bottom: 16px;
+}
+.produk-card__info-item {
+  display: flex;
+  align-items: center;
+  gap: 6px;
+  font-family: 'Montserrat', sans-serif;
+  font-size: 13px;
+  color: #0273FF;
+}
+.produk-card__info-dot {
+  width: 6px;
+  height: 6px;
+  background: #0273FF;
+  border-radius: 50%;
+  flex-shrink: 0;
+}
+
+.produk-card__cta {
+  background: #F5AB17;
+  border: none;
+  color: #ffffff;
+  font-family: 'Montserrat', sans-serif;
+  font-size: 13px;
+  font-weight: 600;
+  padding: 8px 16px;
+  border-radius: 6px;
+  cursor: pointer;
+  transition: background 0.2s, transform 0.2s;
+}
+.produk-card__cta:hover {
+  background: #D4930F;
+  transform: translateY(-2px);
+}
+
+/* ── [3] PRODUCT DETAIL ───────────────────────────────────────────────── */
+.produk-detail {
+  padding: 80px 40px;
+  scroll-margin-top: 135px; /* navbar + sticky nav */
+}
+.produk-detail--white { background: #ffffff; }
+.produk-detail--gray  { background: #F8FAFC; }
+
+.produk-detail__inner {
+  max-width: 1200px;
+  margin: 0 auto;
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 64px;
+  align-items: start;
+}
+
+/* Visual */
+.produk-detail__photo-main {
+  aspect-ratio: 4 / 3;
+  border-radius: 16px;
+  overflow: hidden;
+  box-shadow: 0 8px 32px rgba(0, 44, 96, 0.12);
+  margin-bottom: 16px;
+}
+.produk-detail__photo-placeholder {
+  width: 100%;
+  height: 100%;
+  background: linear-gradient(135deg, #EBF4FF 0%, #C7DDFF 100%);
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  gap: 12px;
+}
+.produk-detail__photo-icon { font-size: 4rem; }
+.produk-detail__photo-label {
+  font-family: 'Montserrat', sans-serif;
+  font-size: 13px;
+  color: rgba(2, 115, 255, 0.7);
+}
+
+.produk-detail__thumbnails {
+  display: flex;
+  gap: 10px;
+}
+.produk-detail__thumb {
+  width: 80px;
+  height: 80px;
+  border-radius: 8px;
+  background: #EBF4FF;
+  border: 2px solid transparent;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  cursor: pointer;
+  transition: border-color 0.2s, opacity 0.2s;
+}
+.produk-detail__thumb:hover { opacity: 0.8; }
+.produk-detail__thumb--active { border-color: #0273FF; }
+
+/* Info */
+.produk-detail__breadcrumb {
+  font-family: 'Montserrat', sans-serif;
+  font-size: 13px;
+  color: rgba(2, 115, 255, 0.6);
+  margin-bottom: 12px;
+  display: flex;
+  align-items: center;
+  gap: 4px;
+}
+.produk-detail__breadcrumb-sep { color: rgba(2, 115, 255, 0.4); }
+
+.produk-detail__badge {
+  display: inline-block;
+  background: #EBF4FF;
+  color: #0273FF;
+  font-family: 'Montserrat', sans-serif;
+  font-size: 12px;
+  font-weight: 600;
+  text-transform: uppercase;
+  letter-spacing: 0.06em;
+  padding: 6px 14px;
+  border-radius: 20px;
+  margin-bottom: 14px;
+}
+
+.produk-detail__title {
+  font-family: 'Montserrat', sans-serif;
+  font-size: 36px;
+  font-weight: 600;
+  color: #002C60;
+  line-height: 1.2;
+  margin: 0 0 8px;
+}
+.produk-detail__sub {
+  font-family: 'Montserrat', sans-serif;
+  font-size: 18px;
+  font-weight: 500;
+  color: #0273FF;
+  margin: 0 0 16px;
+}
+.produk-detail__desc {
+  font-family: 'Montserrat', sans-serif;
+  font-size: 15px;
+  font-weight: 400;
+  color: rgba(0, 15, 30, 0.75);
+  line-height: 1.7;
+  margin: 0 0 20px;
+}
+.produk-detail__divider {
+  height: 1px;
+  background: rgba(2, 115, 255, 0.20);
+  margin: 0 0 24px;
+}
+
+/* Spec Table */
+.produk-detail__spec-wrap {
+  border-radius: 12px;
+  overflow: hidden;
+  border: 1px solid rgba(2, 115, 255, 0.08);
+  margin-bottom: 24px;
+}
+.produk-detail__spec-table {
+  width: 100%;
+  border-collapse: collapse;
+  font-family: 'Montserrat', sans-serif;
+  font-size: 14px;
+}
+.produk-detail__spec-row--even { background: #F0F7FF; }
+.produk-detail__spec-row--odd  { background: #ffffff; }
+.produk-detail__spec-label {
+  padding: 12px 16px;
+  font-weight: 600;
+  color: #002C60;
+  border-right: 1px solid rgba(2, 115, 255, 0.08);
+  width: 40%;
+  vertical-align: middle;
+}
+.produk-detail__spec-value {
+  padding: 12px 16px;
+  color: rgba(0, 15, 30, 0.75);
+  vertical-align: middle;
+}
+
+/* Tags */
+.produk-detail__tags-section { margin-bottom: 24px; }
+.produk-detail__tags-label {
+  display: block;
+  font-family: 'Montserrat', sans-serif;
+  font-size: 14px;
+  font-weight: 600;
+  color: #000F1E;
+  margin-bottom: 10px;
+}
+.produk-detail__tags {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 8px;
+}
+.produk-detail__tag {
+  background: #F0F7FF;
+  border: 1px solid rgba(2, 115, 255, 0.20);
+  color: #0053AD;
+  font-family: 'Montserrat', sans-serif;
+  font-size: 12px;
+  font-weight: 600;
+  padding: 6px 14px;
+  border-radius: 20px;
+}
+
+/* CTA Buttons */
+.produk-detail__cta-group {
+  display: flex;
+  flex-direction: column;
+  gap: 12px;
+}
+.produk-detail__btn-primary {
+  background: #F5AB17;
+  color: #ffffff;
+  border: none;
+  padding: 16px 32px;
+  border-radius: 8px;
+  font-family: 'Montserrat', sans-serif;
+  font-size: 15px;
+  font-weight: 600;
+  cursor: pointer;
+  transition: background 0.2s;
+  text-align: center;
+}
+.produk-detail__btn-primary:hover { background: #D4930F; }
+.produk-detail__btn-secondary {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 8px;
+  background: transparent;
+  color: #F5AB17;
+  border: 2px solid #F5AB17;
+  padding: 14px 32px;
+  border-radius: 8px;
+  font-family: 'Montserrat', sans-serif;
+  font-size: 15px;
+  font-weight: 600;
+  cursor: pointer;
+  transition: background 0.2s, color 0.2s;
+}
+.produk-detail__btn-secondary:hover {
+  background: #F5AB17;
+  color: #ffffff;
+}
+
+
+
+/* ── [6] CTA INQUIRY ─────────────────────────────────────────────────── */
+.produk-cta {
+  background: linear-gradient(135deg, #0273FF 0%, #002C60 100%);
+  padding: 80px 40px;
+  position: relative;
+  overflow: hidden;
+}
+.produk-cta__inner {
+  max-width: 640px;
+  margin: 0 auto;
+  text-align: center;
+  position: relative;
+  z-index: 1;
+}
+.produk-cta__label {
+  display: block;
+  font-family: 'Montserrat', sans-serif;
+  font-size: 12px;
+  font-weight: 600;
+  letter-spacing: 0.12em;
+  text-transform: uppercase;
+  color: #F6AA17;
+  margin-bottom: 12px;
+}
+.produk-cta__title {
+  font-family: 'Montserrat', sans-serif;
+  font-size: 36px;
+  font-weight: 700;
+  color: #ffffff;
+  line-height: 1.3;
+  margin: 0 0 16px;
+}
+.produk-cta__desc {
+  font-family: 'Montserrat', sans-serif;
+  font-size: 15px;
+  color: rgba(255, 255, 255, 0.80);
+  line-height: 1.7;
+  margin: 0 0 32px;
+}
+.produk-cta__btns {
+  display: flex;
+  gap: 16px;
+  justify-content: center;
+  flex-wrap: wrap;
+  margin-bottom: 20px;
+}
+.produk-cta__btn-primary {
+  background: #F5AB17;
+  color: #ffffff;
+  border: none;
+  padding: 16px 36px;
+  border-radius: 8px;
+  font-family: 'Montserrat', sans-serif;
+  font-size: 15px;
+  font-weight: 600;
+  cursor: pointer;
+  transition: background 0.2s;
+}
+.produk-cta__btn-primary:hover { background: #D4930F; }
+.produk-cta__btn-secondary {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  background: transparent;
+  color: #F5AB17;
+  border: 2px solid #F5AB17;
+  padding: 14px 36px;
+  border-radius: 8px;
+  font-family: 'Montserrat', sans-serif;
+  font-size: 15px;
+  font-weight: 600;
+  cursor: pointer;
+  transition: background 0.2s, color 0.2s;
+}
+.produk-cta__btn-secondary:hover {
+  background: #F5AB17;
+  color: #ffffff;
+}
+.produk-cta__trust {
+  font-family: 'Montserrat', sans-serif;
+  font-size: 13px;
+  color: rgba(255, 255, 255, 0.55);
+  margin: 0;
+}
+
+
+
+/* ── RESPONSIVE ───────────────────────────────────────────────────────── */
+
+/* Tablet (768px – 1199px) */
+@media (max-width: 1199px) {
+  .produk-header__title { font-size: 38px; }
+  .produk-overview__grid { grid-template-columns: repeat(2, 1fr); }
+  .produk-detail__inner { grid-template-columns: 1fr; gap: 40px; }
+  .produk-kapasitas__inner { grid-template-columns: 1fr; gap: 40px; }
+  .produk-kapasitas__boxes { grid-template-columns: repeat(3, 1fr); }
+  .produk-proses__steps { flex-wrap: wrap; }
+  .produk-proses__step-wrapper { width: 48%; flex: unset; }
+  .produk-proses__connector { display: none; }
+}
+
+/* Mobile (< 768px) */
+@media (max-width: 767px) {
+  .produk-header { min-height: 260px; padding-top: 80px; }
+  .produk-header__content { padding: 0 20px 70px; }
+  .produk-header__label { font-size: 13px; width: 100%; }
+  .produk-header__title { font-size: 22px; line-height: 30px; width: 100%; margin-top: 10px; }
+  .produk-header__desc  { font-size: 12px; width: 100%; margin-top: 14px; }
+
+
+
+  .produk-overview { padding: 60px 20px; }
+  .produk-overview__title { font-size: 28px; }
+  .produk-overview__grid { grid-template-columns: 1fr; }
+
+  .produk-detail { padding: 60px 20px; scroll-margin-top: 110px; }
+  .produk-detail__inner { grid-template-columns: 1fr; gap: 32px; }
+  .produk-detail__title { font-size: 26px; }
+  .produk-detail__thumbnails { overflow-x: auto; }
+
+  .produk-kapasitas { padding: 60px 20px 50px; }
+  .produk-kapasitas__inner { grid-template-columns: 1fr; gap: 32px; }
+  .produk-kapasitas__boxes { grid-template-columns: 1fr; }
+  .produk-kapasitas__title { font-size: 24px; }
+  .produk-kapasitas__note { padding: 0; }
+
+  .produk-proses { padding: 60px 20px; }
+  .produk-proses__title { font-size: 26px; }
+  .produk-proses__steps { flex-direction: column; gap: 16px; }
+  .produk-proses__step-wrapper { width: 100%; }
+  .produk-proses__connector { display: none; }
+
+  .produk-cta { padding: 60px 20px; }
+  .produk-cta__title { font-size: 26px; }
+  .produk-cta__btns { flex-direction: column; }
+  .produk-cta__btn-primary,
+  .produk-cta__btn-secondary { width: 100%; justify-content: center; }
+
+
+}

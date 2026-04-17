@@ -1,23 +1,31 @@
-/* HeroSection.css - Scroll-based animation hero section styles */
-
-/* Main container - 300vh for scroll animation */
+/* Main container - 100vh statis, tidak perlu scroll */
 .hero-container {
   position: relative;
-  height: 300vh;
+  height: 100vh;
   width: 100%;
 }
 
-/* Sticky wrapper - stays fixed while scrolling through the container */
+/* Wrapper - full height, tidak sticky */
 .hero-sticky-wrapper {
-  position: sticky;
-  top: 0;
+  position: relative;
   height: 100vh;
   width: 100%;
   overflow: hidden;
   display: flex;
   align-items: center;
   justify-content: center;
-  isolation: isolate; /* pastikan stacking context lokal */
+  isolation: isolate;
+}
+
+/* Background image statis */
+.hero-static-bg {
+  position: absolute;
+  inset: 0;
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  object-position: center;
+  z-index: 1;
 }
 
 /* Full white background loading state */
@@ -125,12 +133,10 @@
   background: linear-gradient(
     to bottom,
     rgba(255, 255, 255, 0)    0%,
-    rgba(255, 255, 255, 0.05) 15%,
-    rgba(255, 255, 255, 0.15) 30%,
-    rgba(255, 255, 255, 0.40) 45%,
-    rgba(255, 255, 255, 0.70) 65%,
-    rgba(255, 255, 255, 0.90) 80%,
-    rgba(255, 255, 255, 1)    95%,
+    rgba(255, 255, 255, 0)    40%,
+    rgba(255, 255, 255, 0.10) 60%,
+    rgba(255, 255, 255, 0.40) 80%,
+    rgba(255, 255, 255, 0.85) 95%,
     rgba(255, 255, 255, 1)    100%
   );
   pointer-events: none;
@@ -187,40 +193,62 @@
   }
 }
 
-/* Text & Button Container - wrapper untuk centering */
+/* Text & Button Wrapper — menutup seluruh hero agar child bisa absolute */
 .hero-text-wrapper {
   position: absolute;
-  top: 50%;
-  left: 50%;
-  transform: translate(-50%, -50%);
-  z-index: 100; /* di atas semua layer termasuk blue overlay (z-index: 2) */
-  width: 958px;
-  max-width: 90%;
+  inset: 0;
+  z-index: 100;
   pointer-events: none;
 }
 
-/* Inner container yang dianimasi */
+/* Group 159 — kontainer utama teks, sesuai spek Figma */
 .hero-text-container {
-  width: 100%;
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-  text-align: center;
-  will-change: transform, opacity;
+  position: absolute;
+  width: 978px;
+  height: 288px;
+  left: calc(50% - 978px / 2);
+  top: 244px;
   pointer-events: auto;
 }
 
-/* Title styles */
+/* Tagline — "AGREGATOR TERPERCAYA · DISTRIBUSI PERIKANAN" */
+.hero-tagline {
+  position: absolute;
+  width: 978px;
+  height: 20px;
+  left: 0;
+  top: 0;
+  font-family: 'Montserrat', sans-serif;
+  font-style: normal;
+  font-weight: 600;
+  font-size: 16px;
+  line-height: 20px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  text-align: center;
+  color: #F6AA17;
+  letter-spacing: 0.5px;
+}
+
+/* Title */
 .hero-title {
+  position: absolute;
+  width: 807px;
+  height: 118px;
+  left: calc(50% - 807px / 2 + 0.5px);
+  top: 36px; /* 280px - 244px */
   font-family: 'Montserrat', sans-serif;
   font-style: normal;
   font-weight: 700;
   font-size: 48px;
   line-height: 59px;
-  display: block;
+  display: flex;
+  align-items: center;
+  justify-content: center;
   text-align: center;
   color: #FFFFFF;
-  margin: 0 0 16px 0;
+  margin: 0;
   text-shadow: 0 4px 30px rgba(0, 0, 0, 0.3);
 }
 
@@ -232,26 +260,34 @@
   display: inline-block;
 }
 
-/* Description styles */
+/* Description */
 .hero-description {
+  position: absolute;
+  width: 978px;
+  height: 48px;
+  left: 0;
+  top: 170px; /* 414px - 244px */
   font-family: 'Montserrat', sans-serif;
   font-style: normal;
   font-weight: 500;
   font-size: 20px;
   line-height: 24px;
-  display: block;
+  display: flex;
+  align-items: center;
+  justify-content: center;
   text-align: center;
   color: #FFFFFF;
-  margin: 0 auto 32px auto;
-  max-width: 958px;
-  width: 100%;
+  margin: 0;
   text-shadow: 0 2px 10px rgba(0, 0, 0, 0.3);
 }
 
 /* CTA Button */
 .hero-cta-button {
+  position: absolute;
   width: 226px;
   height: 46px;
+  left: calc(50% - 226px / 2);
+  top: 242px; /* 486px - 244px */
   background: #F6AA17;
   border: none;
   border-radius: 16px;
@@ -260,11 +296,12 @@
   font-weight: 700;
   font-size: 14px;
   line-height: 17px;
-  display: block;
+  display: flex;
+  align-items: center;
+  justify-content: center;
   text-align: center;
   color: #FFFFFF;
   cursor: pointer;
-  margin: 32px auto 0 auto;
   transition: all 0.3s ease;
   box-shadow: 0 4px 20px rgba(246, 170, 23, 0.3);
 }
@@ -273,24 +310,6 @@
   background: #e59d0f;
   transform: translateY(-2px);
   box-shadow: 0 6px 30px rgba(246, 170, 23, 0.5);
-}
-
-/* Tagline styles */
-.hero-tagline {
-  font-size: clamp(1.2rem, 3vw, 1.8rem);
-  font-weight: 600;
-  margin: 0;
-  color: rgba(255, 255, 255, 0.95);
-  text-shadow: 0 2px 10px rgba(0, 0, 0, 0.3);
-}
-
-.hero-description {
-  font-size: clamp(1rem, 2vw, 1.2rem);
-  font-weight: 400;
-  margin: 0;
-  color: rgba(255, 255, 255, 0.8);
-  max-width: 500px;
-  text-shadow: 0 2px 10px rgba(0, 0, 0, 0.3);
 }
 
 /* CTA buttons */
@@ -342,32 +361,69 @@
 /* Responsive styles */
 @media (max-width: 768px) {
   .hero-container {
-    height: 250vh;
+    height: 100vh;
+  }
+
+  .hero-sticky-wrapper {
+    height: 100vh;
   }
 
   .hero-content {
     padding: 0 1.5rem;
   }
 
-  .hero-text-wrapper {
+  .hero-text-container {
     width: 92%;
+    left: 4%;
+    top: 180px;
+    height: auto;
+  }
+
+  .hero-tagline {
+    position: relative;
+    width: 100%;
+    left: auto;
+    top: auto;
+    font-size: 12px;
+    margin-bottom: 12px;
+    display: block;
+    text-align: center;
   }
 
   .hero-title {
+    position: relative;
+    width: 100%;
+    left: auto;
+    top: auto;
     font-size: 28px;
     line-height: 36px;
+    height: auto;
+    margin-bottom: 16px;
+    display: block;
+    text-align: center;
   }
 
   .hero-description {
+    position: relative;
+    width: 100%;
+    left: auto;
+    top: auto;
     font-size: 14px;
     line-height: 20px;
-    width: 100%;
+    height: auto;
+    margin-bottom: 24px;
+    display: block;
+    text-align: center;
   }
 
   .hero-cta-button {
+    position: relative;
+    left: auto;
+    top: auto;
     width: 180px;
     height: 40px;
     font-size: 12px;
+    margin: 0 auto;
   }
 
   .hero-cta {
@@ -388,7 +444,7 @@
 
 @media (max-width: 480px) {
   .hero-container {
-    height: 200vh;
+    height: 100vh;
   }
 
   .hero-title {
@@ -397,7 +453,7 @@
   }
 
   .hero-tagline {
-    font-size: 1rem;
+    font-size: 11px;
   }
 
   .hero-description {
