@@ -1,7 +1,9 @@
 import React from 'react';
 import { useNavigate } from 'react-router-dom';
 import './ProductsSection.css';
-import tunaPhoto from '../../assets/images/foto tuna.png';
+import imgY1 from '../../assets/images/aset foto ikan/aset yellowfin (2).jpeg';
+import imgC1 from '../../assets/images/aset foto ikan/aset yellowfin.jpeg';
+import imgB1 from '../../assets/images/aset foto ikan/aset baby tuna.jpeg';
 
 const products = [
   {
@@ -52,10 +54,8 @@ const ProductsSection = () => {
         <div className="products-bento">
 
           {/* Large card — Yellowfin */}
-          <div
-            className="product-card product-card--large"
-            style={{ backgroundImage: `url(${tunaPhoto})` }}
-          >
+          <div className="product-card product-card--large">
+            <img src={imgY1} alt="Yellowfin Tuna" className="product-card__img" />
             <div className="product-card__overlay product-card__overlay--bottom" />
             <div className="product-card__content product-card__content--large">
               <h3 className="product-card__name product-card__name--large">
@@ -74,10 +74,8 @@ const ProductsSection = () => {
           <div className="products-bento-right">
 
             {/* Top: Cakalang */}
-            <div
-              className="product-card product-card--small"
-              style={{ backgroundImage: `url(${tunaPhoto})` }}
-            >
+            <div className="product-card product-card--small">
+              <img src={imgC1} alt="Cakalang Skipjack" className="product-card__img" />
               <div className="product-card__overlay product-card__overlay--top" />
               <div className="product-card__content product-card__content--small">
                 <h3 className="product-card__name product-card__name--small">
@@ -93,10 +91,8 @@ const ProductsSection = () => {
             </div>
 
             {/* Bottom: Baby Tuna */}
-            <div
-              className="product-card product-card--small"
-              style={{ backgroundImage: `url(${tunaPhoto})` }}
-            >
+            <div className="product-card product-card--small">
+              <img src={imgB1} alt="Baby Tuna" className="product-card__img" />
               <div className="product-card__overlay product-card__overlay--top" />
               <div className="product-card__content product-card__content--small">
                 <h3 className="product-card__name product-card__name--small">

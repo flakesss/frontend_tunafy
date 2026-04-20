@@ -79,16 +79,28 @@ const values = [
 
 const team = [
   {
-    initials: 'H',
-    name: 'Haqqy',
-    role: 'CEO',
-    desc: 'Memimpin visi dan strategi Flocify. Berpengalaman di bidang perdagangan komoditas dan pengembangan bisnis industri perikanan Indonesia.',
+    initials: 'YM',
+    name: 'Yattaqi Muazirul Mulki',
+    role: 'Chief Executive Officer',
+    desc: 'Memimpin visi dan arah strategis Flocify — membangun ekosistem perdagangan perikanan Indonesia yang transparan, efisien, dan berdaya saing global.',
   },
   {
-    initials: 'F',
-    name: 'Flakes',
-    role: 'CMO',
-    desc: 'Mengelola strategi pemasaran dan pengembangan mitra B2B. Ahli dalam membangun relasi dengan pelaku industri pengolahan seafood.',
+    initials: 'HD',
+    name: 'Hatta Dwi Putranto',
+    role: 'Chief Marketing Officer',
+    desc: 'Bertanggung jawab atas strategi pemasaran dan pengembangan klien Flocify — membangun kepercayaan buyer domestik dan internasional melalui pendekatan B2B yang terstruktur.',
+  },
+  {
+    initials: 'EF',
+    name: 'Ervan Fahri Adriansyah Wahab',
+    role: 'Chief Operating Officer',
+    desc: 'Mengawasi operasional harian Flocify — memastikan rantai pasok tuna dari Maluku ke buyer berjalan lancar, tepat waktu, dan sesuai standar kualitas.',
+  },
+  {
+    initials: 'RM',
+    name: 'Rafhan Mazaya Fathurrahman',
+    role: 'Chief Business Officer',
+    desc: 'Mengembangkan peluang bisnis dan kemitraan strategis Flocify — membuka pasar baru, menjalin hubungan dengan buyer dan mitra industri perikanan.',
   },
 ];
 

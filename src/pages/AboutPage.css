@@ -647,19 +647,18 @@
   line-height: 1.65;
 }
 .about-tim__grid {
-  display: flex;
+  display: grid;
+  grid-template-columns: repeat(4, 240px);
   justify-content: center;
   gap: 24px;
-  flex-wrap: wrap;
 }
 .about-tim-card {
   background: #ffffff;
   border: 1px solid rgba(2,115,255,0.08);
   border-radius: 16px;
-  padding: 32px 28px;
+  padding: 32px 24px;
   text-align: center;
   box-shadow: 0 2px 16px rgba(0,44,96,0.06);
-  max-width: 320px;
   width: 100%;
   transition: transform 0.25s, box-shadow 0.25s;
 }
@@ -851,6 +850,7 @@
 
   .about-tim    { padding: 60px 20px; }
   .about-tim__title { font-size: 26px; }
+  .about-tim__grid { grid-template-columns: repeat(2, 1fr); }
   .about-tim-card__photo { width: 96px; height: 96px; }
   .about-tim-card__initials { font-size: 28px; }
 

@@ -731,8 +731,8 @@
 
 /* ────────────────────────────── INFO SECTION ────────────────────────────── */
 .hk-info {
-  background: #FFEDD4;
-  padding: 72px 0;
+  background: linear-gradient(160deg, #002C60 0%, #0253C7 60%, #0273FF 100%);
+  padding: 80px 0;
 }
 
 .hk-info-container {
@@ -746,7 +746,7 @@
   font-size: 12px;
   font-weight: 700;
   letter-spacing: 0.1em;
-  color: #0273FF;
+  color: #F5AB17;
   text-transform: uppercase;
   text-align: center;
   margin: 0 0 10px;
@@ -756,7 +756,7 @@
   font-family: 'Montserrat', sans-serif;
   font-size: 32px;
   font-weight: 700;
-  color: #002C60;
+  color: #ffffff;
   text-align: center;
   margin: 0 0 48px;
 }
@@ -770,48 +770,60 @@
 }
 
 .hk-trust-card {
-  background: #FFFFFF;
-  border: 1px solid rgba(0, 44, 96, 0.08);
-  border-radius: 12px;
-  padding: 28px 24px;
+  background: rgba(255, 255, 255, 0.10);
+  border: 1px solid rgba(255, 255, 255, 0.18);
+  border-radius: 16px;
+  padding: 32px 24px;
   text-align: center;
-  transition: box-shadow 250ms ease, transform 250ms ease;
+  backdrop-filter: blur(6px);
+  transition: box-shadow 250ms ease, transform 250ms ease, background 250ms ease;
 }
 
 .hk-trust-card:hover {
-  box-shadow: 0 8px 32px rgba(0, 44, 96, 0.10);
-  transform: translateY(-3px);
+  background: rgba(255, 255, 255, 0.16);
+  box-shadow: 0 12px 40px rgba(0, 0, 0, 0.18);
+  transform: translateY(-4px);
 }
 
 .hk-trust-icon {
-  font-size: 36px;
+  font-size: 40px;
   display: block;
-  margin-bottom: 12px;
+  margin-bottom: 14px;
 }
 
 .hk-trust-card h4 {
   font-family: 'Montserrat', sans-serif;
   font-size: 16px;
-  font-weight: 600;
-  color: #002C60;
+  font-weight: 700;
+  color: #ffffff;
   margin: 0 0 8px;
 }
 
 .hk-trust-card p {
   font-family: 'Montserrat', sans-serif;
   font-size: 14px;
-  color: rgba(0, 15, 30, 0.65);
-  line-height: 1.6;
+  color: rgba(255, 255, 255, 0.75);
+  line-height: 1.65;
   margin: 0;
 }
 
 /* ── FAQ Accordion ── */
 .hk-faq-list {
-  border-top: 1px solid rgba(0, 44, 96, 0.10);
+  display: flex;
+  flex-direction: column;
+  gap: 12px;
 }
 
 .hk-faq-item {
-  border-bottom: 1px solid rgba(0, 44, 96, 0.10);
+  background: rgba(255, 255, 255, 0.08);
+  border: 1px solid rgba(255, 255, 255, 0.15);
+  border-radius: 12px;
+  overflow: hidden;
+  transition: background 250ms ease;
+}
+
+.hk-faq-item.open {
+  background: rgba(255, 255, 255, 0.13);
 }
 
 .hk-faq-header {
@@ -820,7 +832,7 @@
   justify-content: space-between;
   gap: 16px;
   width: 100%;
-  padding: 20px 0;
+  padding: 20px 24px;
   background: none;
   border: none;
   text-align: left;
@@ -828,33 +840,29 @@
   font-family: 'Montserrat', sans-serif;
   font-size: 15px;
   font-weight: 600;
-  color: #002C60;
+  color: #ffffff;
   transition: background 200ms ease;
-  border-radius: 4px;
 }
 
 .hk-faq-header:hover {
-  background: rgba(2, 115, 255, 0.03);
-  padding-left: 8px;
-  padding-right: 8px;
-  margin: 0 -8px;
+  background: rgba(255, 255, 255, 0.06);
 }
 
 .hk-faq-chevron {
-  color: #0273FF;
+  color: #F5AB17;
   flex-shrink: 0;
-  transition: transform 250ms ease, color 250ms ease;
+  transition: transform 300ms ease, color 300ms ease;
 }
 
 .hk-faq-chevron.open {
   transform: rotate(180deg);
-  color: #F5AB17;
+  color: #ffffff;
 }
 
 .hk-faq-body {
   max-height: 0;
   overflow: hidden;
-  transition: max-height 300ms ease;
+  transition: max-height 350ms ease;
 }
 
 .hk-faq-item.open .hk-faq-body {
@@ -862,12 +870,13 @@
 }
 
 .hk-faq-body p {
-  padding: 0 0 20px;
+  padding: 4px 24px 20px;
   font-family: 'Montserrat', sans-serif;
   font-size: 14px;
-  color: rgba(0, 15, 30, 0.70);
-  line-height: 1.7;
+  color: rgba(255, 255, 255, 0.72);
+  line-height: 1.75;
   margin: 0;
+  border-top: 1px solid rgba(255, 255, 255, 0.10);
 }
 
 /* ─────────────────────────── MAP SECTION ────────────────────────────────── */

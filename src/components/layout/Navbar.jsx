@@ -28,7 +28,8 @@ const Navbar = ({ scrollYProgress, contentRef, alwaysVisible = false }) => {
   const [activeLink, setActiveLink] = useState(() => {
     if (currentPath === '/products') return 'Products';
     if (currentPath === '/about') return 'About';
-    return 'Home';
+    if (currentPath === '/') return 'Home';
+    return '';
   });
 
   // Update active link saat location berubah
@@ -39,8 +40,10 @@ const Navbar = ({ scrollYProgress, contentRef, alwaysVisible = false }) => {
       setActiveLink('About');
     } else if (currentPath.startsWith('/blog')) {
       setActiveLink('Blog');
-    } else {
+    } else if (currentPath === '/') {
       setActiveLink('Home');
+    } else {
+      setActiveLink('');
     }
     setMobileMenuOpen(false);
   }, [currentPath]);
@@ -61,7 +64,8 @@ const Navbar = ({ scrollYProgress, contentRef, alwaysVisible = false }) => {
 
   const [showLogo, setShowLogo] = useState(true);
   const [showMenu, setShowMenu] = useState(true);
-  const [hasScrolledPastHero, setHasScrolledPastHero] = useState(false);
+  const isBlogArticle = /^\/blog\/.+/.test(currentPath);
+  const [hasScrolledPastHero, setHasScrolledPastHero] = useState(isBlogArticle);
 
   const navLinks = [
     { name: 'Home',     label: t('nav.home'),            to: '/' },
@@ -71,14 +75,16 @@ const Navbar = ({ scrollYProgress, contentRef, alwaysVisible = false }) => {
   ];
 
   // Deteksi scroll — transparan di atas, solid saat scroll > 10px
+  // Halaman artikel blog selalu solid tanpa perlu scroll
   useEffect(() => {
+    if (isBlogArticle) return;
     const handleScroll = () => {
       setHasScrolledPastHero(window.scrollY > 10);
     };
     window.addEventListener('scroll', handleScroll, { passive: true });
     handleScroll(); // cek posisi awal
     return () => window.removeEventListener('scroll', handleScroll);
-  }, []);
+  }, [isBlogArticle]);
 
   const getUserInitial = () => {
     const name = user?.user_metadata?.full_name || user?.email || '';
