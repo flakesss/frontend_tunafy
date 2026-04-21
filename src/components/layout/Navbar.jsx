@@ -115,7 +115,7 @@ const Navbar = ({ scrollYProgress, contentRef, alwaysVisible = false }) => {
   };
 
   return (
-    <nav className={`navbar ${hasScrolledPastHero ? 'scrolled' : ''}`}>
+    <nav className={`navbar ${hasScrolledPastHero ? 'scrolled' : ''} ${mobileMenuOpen ? 'menu-open' : ''}`}>
       <div className="navbar-container">
         {/* Hamburger Button */}
         <button
@@ -252,7 +252,7 @@ const Navbar = ({ scrollYProgress, contentRef, alwaysVisible = false }) => {
 
       {/* Mobile Menu Overlay */}
       {mobileMenuOpen && (
-        <div className={`navbar-mobile-menu${hasScrolledPastHero ? ' scrolled' : ''}`}>
+        <div className="navbar-mobile-menu">
           {navLinks.map((link) => (
             <Link
               key={link.name}

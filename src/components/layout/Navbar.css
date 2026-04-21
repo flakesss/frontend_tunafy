@@ -17,6 +17,11 @@
   background-color: #0273FF;
 }
 
+/* Fill navbar when mobile menu is open, even if not scrolled */
+.navbar.menu-open {
+  background-color: #0273FF;
+}
+
 .navbar-container {
   display: flex;
   align-items: center;
@@ -369,9 +374,6 @@
     display: none;
   }
 
-  /* Logo TETAP di tengah menggunakan position: absolute */
-  /* Tidak perlu override — default CSS sudah position: absolute; left: 50%; transform: translateX(-50%) */
-
   /* Pastikan ada cukup ruang di kiri untuk hamburger, dan logo tetap center */
   .navbar-container {
     justify-content: space-between;
@@ -379,6 +381,11 @@
 
   /* Sembunyikan language selector di mobile */
   .navbar-language {
+    display: none;
+  }
+
+  /* Hide desktop contact button on mobile — already in hamburger menu */
+  .navbar-contact-btn {
     display: none;
   }
 
@@ -446,19 +453,13 @@
   top: 75px;
   left: 0;
   right: 0;
-  background: transparent;
+  background: #0273FF; /* Always filled blue */
   display: flex;
   flex-direction: column;
   padding: 12px 0 20px;
   box-shadow: 0 8px 24px rgba(0, 0, 0, 0.15);
   animation: mobileMenuIn 0.22s ease;
   z-index: 999;
-  transition: background-color 0.3s ease;
-}
-
-/* Background biru muncul setelah melewati hero section */
-.navbar-mobile-menu.scrolled {
-  background: #0273FF;
 }
 
 @keyframes mobileMenuIn {
@@ -486,17 +487,22 @@
 }
 
 .navbar-mobile-link--cta {
-  margin: 8px 24px 0;
-  padding: 12px 24px;
-  background: #ffffff;
-  color: #0273FF;
-  border-radius: 12px;
+  margin: 12px 24px 0;
+  padding: 14px 24px;
+  background: #F6AA17;
+  color: #ffffff !important;
+  border-radius: 14px;
   text-align: center;
+  font-weight: 700;
+  font-size: 15px;
+  letter-spacing: 0.3px;
+  transition: background 0.2s ease, transform 0.2s ease;
 }
 
 .navbar-mobile-link--cta:hover {
-  background: #f0f0f0;
-  color: #0273FF;
+  background: #D4930F;
+  color: #ffffff !important;
+  transform: scale(1.02);
 }
 
 /* ─── User Avatar & Dropdown ──────────────────────────────── */

@@ -53,3 +53,16 @@
   }
 }
 
+/* Mobile: reduce height */
+@media (max-width: 768px) {
+  .scrolling-line-bg {
+    height: 40px;
+  }
+}
+
+@media (max-width: 480px) {
+  .scrolling-line-bg {
+    height: 32px;
+  }
+}
+

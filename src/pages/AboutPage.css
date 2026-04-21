@@ -824,39 +824,400 @@
   .about-story__badge  { left: 0; }
   .about-peta__inner   { grid-template-columns: 1fr; gap: 40px; }
   .about-visimisi__misi-grid { grid-template-columns: 1fr; }
+  
+  .about-story__title { font-size: 28px; }
+  .about-visimisi__visi-title { font-size: 28px; }
+  .about-visimisi__misi-subtitle { font-size: 26px; }
+  .about-jangkauan-header__title { font-size: 28px; }
+  .about-tim__title { font-size: 28px; }
+  .about-cta__title { font-size: 32px; }
 }
 
-/* Mobile */
+/* ── Small Tablet / Large Mobile (900px) ─────────────────────────────── */
+@media (max-width: 900px) {
+  /* Story section — stack vertically */
+  .about-story__inner {
+    flex-direction: column;
+    gap: 32px;
+  }
+  .about-story__text {
+    flex: 0 0 auto;
+    width: 100%;
+    margin-left: 0;
+    padding: 0 6%;
+    align-items: center;
+    text-align: center;
+  }
+  .about-story__text .about-label {
+    font-size: 18px;
+  }
+  .about-story__divider {
+    margin: 0 auto 24px;
+  }
+  .about-story__visual {
+    width: 100%;
+    height: 360px;
+    overflow: hidden;
+  }
+  .about-story__photo-img {
+    height: 100%;
+    object-fit: cover;
+    object-position: center;
+  }
+  .about-story__infobox {
+    text-align: left;
+  }
+  
+  /* Misi pills — stack vertically */
+  .about-misi-row {
+    flex-direction: column;
+    gap: 16px;
+  }
+  .about-misi-pill {
+    width: 100%;
+    height: 160px;
+  }
+  .about-misi-pill--left {
+    border-radius: 0 24px 24px 0;
+  }
+  .about-misi-pill--right {
+    border-radius: 24px 0 0 24px;
+  }
+  
+  /* Tim grid — 2 columns */
+  .about-tim__grid {
+    grid-template-columns: repeat(2, 1fr);
+  }
+  
+  /* Supergraphic — reduce visibility */
+  .about-story__supergraphic {
+    opacity: 0.15;
+    right: -120px;
+  }
+}
+
+/* ── Mobile (767px) ─────────────────────────────────────────────────── */
 @media (max-width: 767px) {
-  .about-header { min-height: 240px; padding-top: 85px; }
-  .about-header__title { font-size: 28px; }
-  .about-header__inner { padding: 0 20px 32px; }
-  .about-header__desc  { font-size: 15px; }
+  /* Hero */
+  .about-hero {
+    min-height: 280px;
+    padding-top: 80px;
+    margin-top: 0;
+  }
+  .about-hero__content {
+    padding: 0 20px 60px;
+  }
+  .about-hero__label {
+    font-size: 12px;
+    width: 100%;
+    letter-spacing: 1px;
+  }
+  .about-hero__title {
+    font-size: 22px;
+    line-height: 30px;
+    width: 100%;
+    margin-top: 12px;
+  }
+  .about-hero__desc {
+    font-size: 12px;
+    line-height: 18px;
+    width: 100%;
+    margin-top: 14px;
+  }
+  .about-hero__wave svg {
+    height: 40px;
+  }
 
-  .about-story  { padding: 60px 20px; }
-  .about-story__title { font-size: 26px; }
+  /* Story */
+  .about-story {
+    padding: 48px 0;
+  }
+  .about-story__text {
+    padding: 0 20px;
+  }
+  .about-story__text .about-label {
+    font-size: 14px;
+    margin-bottom: 10px;
+  }
+  .about-story__title {
+    font-size: 22px;
+    line-height: 30px;
+  }
+  .about-story__para {
+    font-size: 14px;
+    line-height: 1.7;
+  }
+  .about-story__infobox {
+    padding: 16px 18px;
+    border-radius: 16px;
+    margin-top: 20px;
+  }
+  .about-story__info-detail {
+    font-size: 12px;
+  }
+  .about-story__visual {
+    height: 280px;
+  }
+  
+  /* Hide supergraphic on mobile — it overlaps content */
+  .about-story__supergraphic {
+    display: none;
+  }
 
-  .about-visimisi  { padding: 60px 20px; }
-  .about-visimisi__visi-title { font-size: 24px; }
-  .about-visimisi__misi-grid { grid-template-columns: 1fr; }
+  /* Visi & Misi */
+  .about-visimisi {
+    padding: 48px 0;
+  }
+  .about-visimisi__visi {
+    padding: 0 20px;
+    margin-bottom: 48px;
+  }
+  .about-visimisi__visi-title {
+    font-size: 22px;
+    line-height: 30px;
+  }
+  .about-visimisi__visi-desc {
+    font-size: 13px;
+    line-height: 1.7;
+  }
+  .about-visimisi__visi-divider {
+    width: 48px;
+  }
+  .about-misi-header {
+    padding: 0 20px;
+    margin-bottom: 24px;
+  }
+  .about-misi-header .about-label {
+    font-size: 14px;
+  }
+  .about-visimisi__misi-subtitle {
+    font-size: 22px;
+    line-height: 30px;
+  }
+  
+  /* Misi pills — full width stacked */
+  .about-misi-row {
+    flex-direction: column;
+    gap: 14px;
+    margin-bottom: 14px;
+  }
+  .about-misi-pill {
+    width: 100%;
+    height: 140px;
+  }
+  .about-misi-pill--left {
+    border-radius: 0 20px 20px 0;
+  }
+  .about-misi-pill--right {
+    border-radius: 20px 0 0 20px;
+  }
+  .about-misi-pill__content {
+    padding: 16px 20px;
+    max-width: none;
+  }
+  .about-misi-pill__title {
+    font-size: 15px;
+    margin-bottom: 6px;
+  }
+  .about-misi-pill__desc {
+    font-size: 12px;
+    line-height: 1.5;
+  }
 
-  .about-nilai  { padding: 60px 20px; }
-  .about-nilai__title { font-size: 26px; }
-  .about-nilai__grid { grid-template-columns: 1fr; }
+  /* Jangkauan Header */
+  .about-jangkauan-header {
+    padding: 48px 20px 24px;
+  }
+  .about-jangkauan-header .about-label {
+    font-size: 14px;
+  }
+  .about-jangkauan-header__title {
+    font-size: 22px;
+    line-height: 30px;
+  }
+  .about-jangkauan-header__desc {
+    font-size: 13px;
+    line-height: 1.7;
+  }
 
-  .about-peta   { padding: 60px 20px; }
-  .about-peta__title { font-size: 26px; }
-  .about-peta__boxes { grid-template-columns: 1fr; }
+  /* Peta */
+  .about-peta {
+    padding: 0 16px;
+    margin-bottom: 32px;
+  }
 
-  .about-tim    { padding: 60px 20px; }
-  .about-tim__title { font-size: 26px; }
-  .about-tim__grid { grid-template-columns: repeat(2, 1fr); }
-  .about-tim-card__photo { width: 96px; height: 96px; }
-  .about-tim-card__initials { font-size: 28px; }
+  /* Tim */
+  .about-tim {
+    padding: 48px 20px;
+  }
+  .about-tim__header {
+    margin-bottom: 32px;
+  }
+  .about-tim__title {
+    font-size: 22px;
+    line-height: 30px;
+  }
+  .about-tim__desc {
+    font-size: 13px;
+    line-height: 1.6;
+  }
+  /* Single column team cards on mobile */
+  .about-tim__grid {
+    grid-template-columns: 1fr;
+    gap: 16px;
+    max-width: 360px;
+    margin: 0 auto;
+  }
+  .about-tim-card {
+    padding: 28px 20px;
+  }
+  .about-tim-card__photo {
+    width: 88px;
+    height: 88px;
+    margin-bottom: 16px;
+  }
+  .about-tim-card__initials {
+    font-size: 26px;
+  }
+  .about-tim-card__name {
+    font-size: 16px;
+    margin-bottom: 6px;
+  }
+  .about-tim-card__role {
+    font-size: 11px;
+    padding: 3px 10px;
+    margin-bottom: 12px;
+  }
+  .about-tim-card__desc {
+    font-size: 13px;
+    line-height: 1.6;
+    margin-bottom: 16px;
+  }
+  .about-tim-card__linkedin {
+    font-size: 12px;
+    padding: 7px 16px;
+  }
 
-  .about-cta    { padding: 60px 20px; }
-  .about-cta__title { font-size: 26px; }
-  .about-cta__btns  { flex-direction: column; }
+  /* CTA */
+  .about-cta {
+    padding: 48px 20px;
+  }
+  .about-cta .about-label {
+    font-size: 14px;
+  }
+  .about-cta__title {
+    font-size: 22px;
+    line-height: 30px;
+  }
+  .about-cta__desc {
+    font-size: 13px;
+    line-height: 1.7;
+    margin-bottom: 24px;
+  }
+  .about-cta__btns {
+    flex-direction: column;
+    gap: 12px;
+  }
   .about-cta__btn-primary,
-  .about-cta__btn-secondary { width: 100%; }
+  .about-cta__btn-secondary {
+    width: 100%;
+    padding: 14px 24px;
+    font-size: 14px;
+    border-radius: 12px;
+  }
+  .about-cta__trust {
+    font-size: 11px;
+    line-height: 1.6;
+    margin-top: 8px;
+  }
+}
+
+/* ── Very Small Mobile (480px) ─────────────────────────────────────── */
+@media (max-width: 480px) {
+  .about-hero__title {
+    font-size: 20px;
+    line-height: 28px;
+  }
+  .about-hero__desc {
+    font-size: 11px;
+    line-height: 17px;
+  }
+  
+  .about-story__title {
+    font-size: 20px;
+    line-height: 28px;
+  }
+  .about-story__para {
+    font-size: 13px;
+  }
+  
+  .about-visimisi__visi-title {
+    font-size: 20px;
+    line-height: 28px;
+  }
+  .about-visimisi__misi-subtitle {
+    font-size: 20px;
+    line-height: 28px;
+  }
+  
+  .about-misi-pill {
+    height: 130px;
+  }
+  .about-misi-pill__title {
+    font-size: 14px;
+  }
+  .about-misi-pill__desc {
+    font-size: 11px;
+  }
+  
+  .about-jangkauan-header__title {
+    font-size: 20px;
+    line-height: 28px;
+  }
+  
+  .about-tim__title {
+    font-size: 20px;
+    line-height: 28px;
+  }
+  
+  .about-cta__title {
+    font-size: 20px;
+    line-height: 28px;
+  }
+}
+
+/* ── Extra Small Mobile (360px) ────────────────────────────────────── */
+@media (max-width: 360px) {
+  .about-hero__title {
+    font-size: 18px;
+    line-height: 26px;
+  }
+  .about-story__title {
+    font-size: 18px;
+    line-height: 26px;
+  }
+  .about-visimisi__visi-title {
+    font-size: 18px;
+    line-height: 26px;
+  }
+  .about-visimisi__misi-subtitle {
+    font-size: 18px;
+    line-height: 26px;
+  }
+  .about-misi-pill {
+    height: 120px;
+  }
+  .about-misi-pill__title {
+    font-size: 13px;
+  }
+  .about-misi-pill__desc {
+    font-size: 10px;
+  }
+  .about-tim__grid {
+    max-width: 100%;
+  }
+  .about-cta__title {
+    font-size: 18px;
+    line-height: 26px;
+  }
 }

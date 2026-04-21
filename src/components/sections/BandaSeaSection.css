@@ -317,22 +317,90 @@
   }
   .banda-form-wrap {
     width: 100%;
+    max-width: none;
   }
-}
-
-@media (max-width: 480px) {
-  .banda-heading {
-    font-size: 26px;
-    line-height: 34px;
-  }
-  .banda-body {
-    font-size: 16px;
-    line-height: 22px;
-  }
-  .banda-form-wrap {
-    padding: 24px 20px;
+  .banda-gradient-top {
+    height: 380px;
   }
   .banda-label {
     font-size: 18px;
   }
+  .banda-heading {
+    font-size: 30px;
+    line-height: 40px;
+  }
+  .banda-body {
+    font-size: 18px;
+    line-height: 26px;
+  }
 }
+
+@media (max-width: 480px) {
+  .banda-content {
+    padding: 40px 20px 60px;
+    gap: 28px;
+  }
+  .banda-gradient-top {
+    height: 320px;
+  }
+  .banda-label {
+    font-size: 14px;
+    letter-spacing: 0.5px;
+    margin-bottom: 12px;
+  }
+  .banda-heading {
+    font-size: 22px;
+    line-height: 30px;
+    margin-bottom: 16px;
+  }
+  .banda-body {
+    font-size: 14px;
+    line-height: 22px;
+  }
+  .banda-form-wrap {
+    padding: 24px 20px;
+    border-radius: 20px;
+  }
+  .banda-form {
+    gap: 16px;
+  }
+  .banda-field__label {
+    font-size: 13px;
+  }
+  .banda-field__input,
+  .banda-field__select,
+  .banda-field__textarea {
+    font-size: 14px;
+    padding: 11px 14px;
+    border-radius: 10px;
+  }
+  .banda-checkbox__label {
+    font-size: 13px;
+  }
+  .banda-form__submit {
+    height: 46px;
+    font-size: 14px;
+    border-radius: 12px;
+  }
+}
+
+@media (max-width: 360px) {
+  .banda-heading {
+    font-size: 20px;
+    line-height: 28px;
+  }
+  .banda-body {
+    font-size: 13px;
+    line-height: 20px;
+  }
+  .banda-form-wrap {
+    padding: 20px 16px;
+  }
+  .banda-field__input,
+  .banda-field__select,
+  .banda-field__textarea {
+    font-size: 13px;
+    padding: 10px 12px;
+  }
+}
+

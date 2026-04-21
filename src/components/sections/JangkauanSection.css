@@ -172,12 +172,20 @@
 
 /* ── Responsive ─────────────────────────────── */
 @media (max-width: 900px) {
+  .jangkauan-section {
+    padding: 60px 0;
+  }
+  .jangkauan-label {
+    font-size: 18px;
+    line-height: 24px;
+  }
   .jangkauan-title {
     font-size: 32px;
     line-height: 40px;
   }
   .jangkauan-desc {
     font-size: 16px;
+    line-height: 24px;
   }
   .jangkauan-cards {
     flex-direction: column;
@@ -190,13 +198,47 @@
 
 @media (max-width: 480px) {
   .jangkauan-section {
-    padding: 48px 0;
+    padding: 40px 0;
+  }
+  .jangkauan-header {
+    margin-bottom: 32px;
+    padding: 0 20px;
+  }
+  .jangkauan-label {
+    font-size: 14px;
+    line-height: 20px;
+    letter-spacing: 0.5px;
+    margin-bottom: 12px;
   }
   .jangkauan-title {
-    font-size: 26px;
-    line-height: 34px;
+    font-size: 22px;
+    line-height: 30px;
+    margin-bottom: 12px;
+  }
+  .jangkauan-desc {
+    font-size: 13px;
+    line-height: 20px;
+  }
+  .jangkauan-divider {
+    width: 48px;
+    margin-top: 18px;
+  }
+  .jangkauan-map-wrap {
+    padding: 0 16px;
+    margin-bottom: 32px;
   }
   .jangkauan-card {
     padding: 20px;
+  }
+}
+
+@media (max-width: 360px) {
+  .jangkauan-title {
+    font-size: 20px;
+    line-height: 28px;
+  }
+  .jangkauan-desc {
+    font-size: 12px;
+    line-height: 18px;
   }
 }

@@ -138,7 +138,7 @@
 @media (max-width: 900px) {
   .why-tunafy-inner {
     flex-direction: column;
-    gap: 32px;
+    gap: 36px;
   }
   .why-tunafy-text {
     flex: 0 0 auto;
@@ -154,9 +154,20 @@
     max-width: none;
   }
   
+  /* Stats centered on mobile */
+  .why-tunafy-stats {
+    justify-content: center;
+    flex-wrap: wrap;
+    gap: 24px 36px;
+  }
+  
+  .why-tunafy-stat {
+    align-items: center;
+  }
+  
   .why-tunafy-image-wrap {
     width: 100%;
-    height: 400px; /* Force a consistent height for the photo on mobile */
+    height: 400px;
     align-self: auto;
   }
   
@@ -169,36 +180,78 @@
 
 @media (max-width: 600px) {
   .why-tunafy-section {
-    padding: 56px 0 0; /* no bottom padding since image touches bottom */
+    padding: 56px 0 0;
+  }
+  
+  .why-tunafy-stat-value {
+    font-size: 26px;
+    line-height: 32px;
+  }
+  
+  .why-tunafy-stat-label {
+    font-size: 15px;
+    line-height: 20px;
   }
   
   .why-tunafy-image-wrap {
-    height: 320px;
+    height: 300px;
   }
 }
 
 @media (max-width: 480px) {
   .why-tunafy-section {
-    padding: 48px 0 0;
+    padding: 40px 0 0;
   }
   .why-tunafy-text {
     padding: 0 20px;
   }
   .why-tunafy-label {
-    font-size: 16px;
-    margin-bottom: 12px;
+    font-size: 14px;
+    margin-bottom: 10px;
+    letter-spacing: 0.5px;
   }
   .why-tunafy-heading {
-    font-size: 26px;
-    line-height: 34px;
-    margin-bottom: 20px;
+    font-size: 22px;
+    line-height: 30px;
+    margin-bottom: 16px;
   }
   .why-tunafy-body {
-    font-size: 15px;
+    font-size: 14px;
     line-height: 22px;
-    margin-bottom: 32px;
+    margin-bottom: 24px;
   }
+  
+  .why-tunafy-stats {
+    gap: 20px 28px;
+    margin-top: 20px;
+  }
+  
+  .why-tunafy-stat-value {
+    font-size: 22px;
+    line-height: 28px;
+  }
+  
+  .why-tunafy-stat-label {
+    font-size: 13px;
+    line-height: 18px;
+  }
+  
   .why-tunafy-image-wrap {
-    height: 280px;
+    height: 260px;
+    margin-top: 8px;
+  }
+}
+
+@media (max-width: 360px) {
+  .why-tunafy-heading {
+    font-size: 20px;
+    line-height: 28px;
+  }
+  .why-tunafy-body {
+    font-size: 13px;
+    line-height: 20px;
+  }
+  .why-tunafy-stat-value {
+    font-size: 20px;
   }
 }
