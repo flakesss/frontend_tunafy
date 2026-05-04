@@ -1,31 +1,10 @@
-import React, { useEffect, useRef, useState } from 'react';
+import React from 'react';
 import './JangkauanSection.css';
 import mapIndo from '../../assets/images/peta indo.svg';
 
-function useInView(threshold = 0.15) {
-  const ref = useRef(null);
-  const [inView, setInView] = useState(false);
-  useEffect(() => {
-    const el = ref.current;
-    if (!el) return;
-    const obs = new IntersectionObserver(
-      ([entry]) => { if (entry.isIntersecting) { setInView(true); obs.disconnect(); } },
-      { threshold }
-    );
-    obs.observe(el);
-    return () => obs.disconnect();
-  }, [threshold]);
-  return [ref, inView];
-}
-
 const JangkauanSection = () => {
-  const [sectionRef, inView] = useInView(0.1);
-
   return (
-    <section
-      ref={sectionRef}
-      className={`jangkauan-section ${inView ? 'jangkauan--visible' : 'jangkauan--hidden'}`}
-    >
+    <section className="jangkauan-section">
       {/* Header */}
       <div className="jangkauan-header">
         <p className="jangkauan-label">JANGKAUAN OPERASIONAL</p>

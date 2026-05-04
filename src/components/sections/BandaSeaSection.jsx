@@ -1,6 +1,6 @@
-﻿import React, { useState } from 'react';
+import React, { useState } from 'react';
 import './BandaSeaSection.css';
-import bgPhoto from '../../assets/images/Tangkapan-Tuna-di-Perairan-Maluku-Utara.-Foto-USAID-for-Kieraha.com_.jpg';
+import bgPhoto from '../../assets/images/webp/Tangkapan-Tuna-di-Perairan-Maluku-Utara.-Foto-USAID-for-Kieraha.com_.webp';
 
 const PRODUCTS = [
   'Yellowfin Tuna Whole Round',
@@ -57,7 +57,7 @@ const BandaSeaSection = () => {
       `Volume/Bulan: ${form.volume}\n` +
       `Pesan: ${form.pesan}`
     );
-    window.location.href = `mailto:contact@tunafy.id?subject=${subject}&body=${body}`;
+    window.location.href = `mailto:hatta@flocify.id?subject=${subject}&body=${body}`;
     setSubmitted(true);
   };
 

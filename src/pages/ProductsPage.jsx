@@ -3,15 +3,15 @@ import { Link } from 'react-router-dom';
 import Navbar from '../components/layout/Navbar';
 import Footer from '../components/layout/Footer';
 import { Agentation } from 'agentation';
-import heroBg from '../assets/images/Tangkapan-Tuna-di-Perairan-Maluku-Utara.-Foto-USAID-for-Kieraha.com_.jpg';
+import heroBg from '../assets/images/webp/Tangkapan-Tuna-di-Perairan-Maluku-Utara.-Foto-USAID-for-Kieraha.com_.webp';
 import './ProductsPage.css';
 
-import imgY1 from '../assets/images/aset foto ikan/aset yellowfin (2).jpeg';
-import imgY2 from '../assets/images/aset foto ikan/aset yellowfin (3).jpeg';
-import imgY3 from '../assets/images/aset foto ikan/aset yellowfin (4).jpeg';
-import imgB1 from '../assets/images/aset foto ikan/aset baby tuna.jpeg';
-import imgB2 from '../assets/images/aset foto ikan/aset baby tuna (2).jpeg';
-import imgC1 from '../assets/images/aset foto ikan/aset yellowfin.jpeg'; // fallback
+import imgY1 from '../assets/images/aset foto ikan/webp/aset yellowfin (2).webp';
+import imgY2 from '../assets/images/aset foto ikan/webp/aset yellowfin (3).webp';
+import imgY3 from '../assets/images/aset foto ikan/webp/aset yellowfin (4).webp';
+import imgB1 from '../assets/images/aset foto ikan/webp/aset baby tuna.webp';
+import imgB2 from '../assets/images/aset foto ikan/webp/aset baby tuna (2).webp';
+import imgC1 from '../assets/images/aset foto ikan/webp/aset yellowfin.webp'; // fallback
 
 // ─── SVG Icons ────────────────────────────────────────────────────────────
 const IconClipboard = () => (
@@ -172,12 +172,12 @@ const ProductDetail = ({ product, bgWhite }) => {
   const handleInquiry = () => {
     const subject = encodeURIComponent(`Inquiry Produk: ${product.name}`);
     const body = encodeURIComponent(`Halo Tim Flocify,\n\nSaya tertarik dengan produk ${product.name}.\n\nMohon informasi mengenai:\n- Harga per kg\n- Ketersediaan stok\n- Minimum order\n\nTerima kasih.`);
-    window.location.href = `mailto:contact@flocify.id?subject=${subject}&body=${body}`;
+    window.location.href = `mailto:hatta@flocify.id?subject=${subject}&body=${body}`;
   };
 
   const handleWhatsApp = () => {
     const msg = encodeURIComponent(`Halo Flocify, saya tertarik dengan produk ${product.name}. Boleh minta info harga dan ketersediaan?`);
-    window.open(`https://wa.me/6281234567890?text=${msg}`, '_blank');
+    window.open(`https://wa.me/628211041731?text=${msg}`, '_blank');
   };
 
   return (
@@ -291,12 +291,12 @@ export default function ProductsPage() {
   const handleInquiryForm = () => {
     const subject = encodeURIComponent('Inquiry Produk Flocify');
     const body = encodeURIComponent('Halo Tim Flocify,\n\nSaya tertarik bermitra dengan Flocify.\n\nNama:\nPerusahaan:\nProduk yang dibutuhkan:\nVolume per bulan:\n\nTerma kasih.');
-    window.location.href = `mailto:contact@flocify.id?subject=${subject}&body=${body}`;
+    window.location.href = `mailto:hatta@flocify.id?subject=${subject}&body=${body}`;
   };
 
   const handleWhatsApp = () => {
     const msg = encodeURIComponent('Halo Flocify, saya ingin mendapatkan penawaran harga produk tuna untuk kebutuhan industri kami.');
-    window.open(`https://wa.me/6281234567890?text=${msg}`, '_blank');
+    window.open(`https://wa.me/628211041731?text=${msg}`, '_blank');
   };
 
   return (

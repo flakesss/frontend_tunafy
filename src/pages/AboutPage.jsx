@@ -3,9 +3,9 @@ import { Link } from 'react-router-dom';
 import { Agentation } from 'agentation';
 import Navbar from '../components/layout/Navbar';
 import Footer from '../components/layout/Footer';
-import heroBg from '../assets/images/Tangkapan-Tuna-di-Perairan-Maluku-Utara.-Foto-USAID-for-Kieraha.com_.jpg';
+import heroBg from '../assets/images/webp/Tangkapan-Tuna-di-Perairan-Maluku-Utara.-Foto-USAID-for-Kieraha.com_.webp';
 import storyAsset from '../assets/images/Page 7898 1.svg';
-import storyPhoto from '../assets/images/assets story.svg';
+import storyPhoto from '../assets/images/webp/assets story.webp';
 import mapIndo from '../assets/images/peta indo.svg';
 import './AboutPage.css';
 
@@ -104,22 +104,7 @@ const team = [
   },
 ];
 
-// ─── useInView hook ────────────────────────────────────────────────────────
-function useInView(threshold = 0.15) {
-  const ref = useRef(null);
-  const [inView, setInView] = useState(false);
-  useEffect(() => {
-    const el = ref.current;
-    if (!el) return;
-    const obs = new IntersectionObserver(
-      ([entry]) => { if (entry.isIntersecting) { setInView(true); obs.disconnect(); } },
-      { threshold }
-    );
-    obs.observe(el);
-    return () => obs.disconnect();
-  }, [threshold]);
-  return [ref, inView];
-}
+
 
 // ─── Misi Pill Card Component ──────────────────────────────────────────────
 function MisiPill({ mission, side, bg }) {
@@ -162,15 +147,10 @@ export default function AboutPage() {
   const handleContact = () => {
     const subject = encodeURIComponent('Inquiry Kemitraan — Flocify');
     const body = encodeURIComponent('Halo Tim Flocify,\n\nSaya tertarik untuk berdiskusi tentang kemitraan.\n\nNama:\nPerusahaan:\nKebutuhan:\n\nTerima kasih.');
-    window.location.href = `mailto:contact@tunafy.id?subject=${subject}&body=${body}`;
+    window.location.href = `mailto:hatta@flocify.id?subject=${subject}&body=${body}`;
   };
 
-  const [storyRef, storyVisible] = useInView();
-  const [visiRef, visiVisible] = useInView();
-  const [nilaiRef, nilaiVisible] = useInView();
-  const [petaRef, petaVisible] = useInView();
-  const [timRef, timVisible] = useInView();
-  const [ctaRef, ctaVisible] = useInView();
+
 
   return (
     <>
@@ -197,10 +177,7 @@ export default function AboutPage() {
       </div>
 
       {/* ── [2] CERITA TUNAFY ─────────────────────────────────────────── */}
-      <section
-        ref={storyRef}
-        className={`about-story ${storyVisible ? 'about-section--visible' : 'about-section--hidden'}`}
-      >
+      <section className="about-story">
         <img src={storyAsset} alt="" className="about-story__supergraphic" aria-hidden="true" />
         <div className="about-story__inner">
           <div className="about-story__text">
@@ -223,7 +200,7 @@ export default function AboutPage() {
               </div>
               <div className="about-story__info-row">
                 <span className="about-story__info-icon">✉️</span>
-                <p className="about-story__info-detail">contact@tunafy.id</p>
+                <p className="about-story__info-detail">hatta@flocify.id</p>
               </div>
             </div>
           </div>
@@ -234,10 +211,7 @@ export default function AboutPage() {
       </section>
 
       {/* ── [3] VISI & MISI ───────────────────────────────────────────── */}
-      <section
-        ref={visiRef}
-        className={`about-visimisi ${visiVisible ? 'about-section--visible' : 'about-section--hidden'}`}
-      >
+      <section className="about-visimisi">
         {/* Visi */}
         <div className="about-visimisi__visi">
           <span className="about-label about-label--gold">VISI KAMI</span>
@@ -271,10 +245,7 @@ export default function AboutPage() {
       </section>
 
       {/* ── [4] JANGKAUAN OPERASIONAL HEADER ─────────────────────────── */}
-      <section
-        ref={nilaiRef}
-        className={`about-jangkauan-header ${nilaiVisible ? 'about-section--visible' : 'about-section--hidden'}`}
-      >
+      <section className="about-jangkauan-header">
         <div className="about-jangkauan-header__inner">
           <span className="about-label about-label--gold">JANGKAUAN OPERASIONAL</span>
           <h2 className="about-jangkauan-header__title">Dari Laut Maluku ke Industri Jawa</h2>
@@ -286,18 +257,12 @@ export default function AboutPage() {
       </section>
 
       {/* ── [5] PETA ─────────────────────────────────────────────────── */}
-      <section
-        ref={petaRef}
-        className={`about-peta ${petaVisible ? 'about-section--visible' : 'about-section--hidden'}`}
-      >
+      <section className="about-peta">
         <img src={mapIndo} alt="Peta operasional Flocify — dari Maluku ke Jawa" className="about-peta__map-img" />
       </section>
 
       {/* ── [6] TIM ───────────────────────────────────────────────────── */}
-      <section
-        ref={timRef}
-        className={`about-tim ${timVisible ? 'about-section--visible' : 'about-section--hidden'}`}
-      >
+      <section className="about-tim">
         <div className="about-tim__inner">
           <div className="about-tim__header">
             <span className="about-label about-label--gold">TIM KAMI</span>
@@ -326,10 +291,7 @@ export default function AboutPage() {
       </section>
 
       {/* ── [7] CTA ───────────────────────────────────────────────────── */}
-      <section
-        ref={ctaRef}
-        className={`about-cta ${ctaVisible ? 'about-section--visible' : 'about-section--hidden'}`}
-      >
+      <section className="about-cta">
         <div className="about-cta__inner">
           <span className="about-label about-label--gold">SIAP BERMITRA?</span>
           <h2 className="about-cta__title">Mari Wujudkan Kerjasama yang Saling Menguntungkan</h2>

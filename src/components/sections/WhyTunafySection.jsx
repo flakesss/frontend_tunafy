@@ -1,7 +1,7 @@
 import React from 'react';
 import { useNavigate } from 'react-router-dom';
 import './WhyTunafySection.css';
-import storyAsset from '../../assets/images/assets story.svg';
+import storyAsset from '../../assets/images/webp/assets story.webp';
 
 const WhyTunafySection = () => {
   const navigate = useNavigate();

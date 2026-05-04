@@ -1,6 +1,6 @@
 import { useEffect, useRef } from 'react';
 import './ScrollingLine.css';
-import lineAsset from '../../assets/images/supergraphic_line.png';
+import lineAsset from '../../assets/images/webp/supergraphic_line.webp';
 
 const CSS_HEIGHT = 80; // harus sama dengan `height` di CSS
 

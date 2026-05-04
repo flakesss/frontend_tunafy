@@ -1,7 +1,7 @@
 import React from 'react';
 import { useNavigate } from 'react-router-dom';
 import './WhoFlocifySection.css';
-import berandaAsset from '../../assets/images/assets beranda 2.svg';
+import berandaAsset from '../../assets/images/webp/assets beranda 2.webp';
 
 const WhoFlocifySection = () => {
   const navigate = useNavigate();

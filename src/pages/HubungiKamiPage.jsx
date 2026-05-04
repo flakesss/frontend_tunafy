@@ -2,7 +2,7 @@ import { useState, useRef } from 'react';
 import { Link } from 'react-router-dom';
 import Navbar from '../components/layout/Navbar';
 import { Agentation } from 'agentation';
-import heroBg from '../assets/images/Tangkapan-Tuna-di-Perairan-Maluku-Utara.-Foto-USAID-for-Kieraha.com_.jpg';
+import heroBg from '../assets/images/webp/Tangkapan-Tuna-di-Perairan-Maluku-Utara.-Foto-USAID-for-Kieraha.com_.webp';
 import './HubungiKamiPage.css';
 
 /* ─── FAQ Data ─────────────────────────────────────────── */
@@ -127,8 +127,8 @@ export default function HubungiKamiPage() {
   const [status, setStatus] = useState('idle'); // idle | loading | success | error
   const formRef = useRef(null);
 
-  const WA_NUMBER = '6281234567890'; // Ganti dengan nomor WA resmi Tunafy
-  const WA_LINK = `https://wa.me/${WA_NUMBER}?text=Halo+Tunafy%2C+saya+ingin+bertanya...`;
+  const WA_NUMBER = '628211041731'; // Nomor WA resmi Flocify
+  const WA_LINK = `https://wa.me/${WA_NUMBER}?text=Halo+Flocify%2C+saya+ingin+bertanya...`;
 
   /* ── Produk list ── */
   const produkList = [
@@ -229,7 +229,7 @@ export default function HubungiKamiPage() {
           'addressRegion': 'Jawa Barat',
           'addressCountry': 'ID',
         },
-        'email': 'contact@flocify.id',
+        'email': 'hatta@flocify.id',
         'url': 'https://www.flocify.id',
         'openingHours': ['Mo-Fr 08:00-17:00', 'Sa 08:00-13:00'],
       }) }} />
@@ -521,7 +521,7 @@ export default function HubungiKamiPage() {
               <p>Respons langsung dari tim kami. Biasanya dibalas dalam beberapa menit di jam kerja.</p>
               <a href={`tel:+${WA_NUMBER}`} className="hk-wa-number">
                 <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2"><path d="M22 16.92v3a2 2 0 01-2.18 2 19.79 19.79 0 01-8.63-3.07A19.5 19.5 0 013.7 9.5a19.79 19.79 0 01-3.07-8.67 2 2 0 012-2.18h3.06a2 2 0 012 1.72c.127.96.361 1.903.7 2.81a2 2 0 01-.45 2.11l-1.27 1.27a16 16 0 006.29 6.29l1.27-1.27a2 2 0 012.11-.45c.907.339 1.85.573 2.81.7a2 2 0 011.72 2.03z"/></svg>
-                +62 812-3456-7890
+                0821-1041-731
               </a>
               <a href={WA_LINK} target="_blank" rel="noopener noreferrer" className="hk-btn-wa-card">
                 Mulai Chat →
@@ -538,7 +538,7 @@ export default function HubungiKamiPage() {
               </div>
               <h3>Kirim Email</h3>
               <p>Untuk inquiry formal atau yang membutuhkan dokumen pendukung.</p>
-              <a href="mailto:contact@flocify.id" className="hk-email-link">contact@flocify.id</a>
+              <a href="mailto:hatta@flocify.id" className="hk-email-link">hatta@flocify.id</a>
               <span className="hk-card-note">Dibalas dalam 1×24 jam kerja</span>
             </div>
 
@@ -553,11 +553,10 @@ export default function HubungiKamiPage() {
               <h3>Kantor Kami</h3>
               <address className="hk-address">
                 Nuansa Indah I No.4, Cipamokolan,<br/>
-                Kec. Rancasari, Kota Bandung,<br/>
-                Jawa Barat
+                Kec. Rancasari Bandung
               </address>
               <a
-                href="https://maps.google.com/?q=Cipamokolan,Rancasari,Bandung"
+                href="https://share.google/Y27u9mA3KLNfXx1bb"
                 target="_blank"
                 rel="noopener noreferrer"
                 className="hk-maps-link"
@@ -640,7 +639,7 @@ export default function HubungiKamiPage() {
               <span>📍</span>
               <div>
                 <strong>Alamat</strong>
-                <p>Nuansa Indah I No.4, Cipamokolan,<br/>Kec. Rancasari, Kota Bandung,<br/>Jawa Barat, Indonesia</p>
+                <p>Nuansa Indah I No.4, Cipamokolan,<br/>Kec. Rancasari Bandung</p>
               </div>
             </div>
 
@@ -656,7 +655,7 @@ export default function HubungiKamiPage() {
               <span>✉️</span>
               <div>
                 <strong>Email</strong>
-                <p><a href="mailto:contact@flocify.id">contact@flocify.id</a></p>
+                <p><a href="mailto:hatta@flocify.id">hatta@flocify.id</a></p>
               </div>
             </div>
 
@@ -669,7 +668,7 @@ export default function HubungiKamiPage() {
             </div>
 
             <a
-              href="https://maps.google.com/?q=Cipamokolan,Rancasari,Bandung"
+              href="https://share.google/Y27u9mA3KLNfXx1bb"
               target="_blank"
               rel="noopener noreferrer"
               className="hk-btn-gold"
@@ -682,8 +681,8 @@ export default function HubungiKamiPage() {
 
           <div className="hk-map-embed">
             <iframe
-              title="Lokasi Kantor Tunafy"
-              src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3960.9!2d107.66!3d-6.95!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x2e68e9a!2sRancasari%2C+Bandung!5e0!3m2!1sen!2sid!4v1234567890"
+              title="Lokasi Kantor Flocify"
+              src="https://maps.google.com/maps?q=Nuansa+Indah+I+No.4,+Cipamokolan,+Kec.+Rancasari,+Bandung&amp;t=&amp;z=15&amp;ie=UTF8&amp;iwloc=&amp;output=embed"
               width="100%"
               height="360"
               style={{ border: 0 }}

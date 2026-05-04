@@ -1,9 +1,9 @@
 import React from 'react';
 import { useNavigate } from 'react-router-dom';
 import './ProductsSection.css';
-import imgY1 from '../../assets/images/aset foto ikan/aset yellowfin (2).jpeg';
-import imgC1 from '../../assets/images/aset foto ikan/aset yellowfin.jpeg';
-import imgB1 from '../../assets/images/aset foto ikan/aset baby tuna.jpeg';
+import imgY1 from '../../assets/images/aset foto ikan/webp/aset yellowfin (2).webp';
+import imgC1 from '../../assets/images/aset foto ikan/webp/aset yellowfin.webp';
+import imgB1 from '../../assets/images/aset foto ikan/webp/aset baby tuna.webp';
 
 const products = [
   {

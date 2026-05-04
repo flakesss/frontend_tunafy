@@ -5,7 +5,7 @@ import { useTranslation } from 'react-i18next'
 import Navbar from '../components/layout/Navbar'
 import Footer from '../components/layout/Footer'
 import { articleApi } from '../api/articleApi'
-import heroBg from '../assets/images/Tangkapan-Tuna-di-Perairan-Maluku-Utara.-Foto-USAID-for-Kieraha.com_.jpg'
+import heroBg from '../assets/images/webp/Tangkapan-Tuna-di-Perairan-Maluku-Utara.-Foto-USAID-for-Kieraha.com_.webp'
 import './BlogPage.css'
 
 const CATS_BY_LANG = {
